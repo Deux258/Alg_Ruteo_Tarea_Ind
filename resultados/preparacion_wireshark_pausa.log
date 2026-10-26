@@ -1,0 +1,74 @@
+Esperando el cierre de la ronda 1 antes de descargar la imagen gráfica.
+Pausa revisada expresamente: campaña detenida, descarga sin mediciones simultáneas.
+latest: Pulling from linuxserver/wireshark
+be53f3672280: Pulling fs layer
+2adf12abb99f: Pulling fs layer
+83ea5805ebf1: Pulling fs layer
+2f069796463b: Pulling fs layer
+043bf9ac7f7d: Pulling fs layer
+ba64bb608575: Pulling fs layer
+0ce97819c8c9: Pulling fs layer
+f6a4c3e338ed: Pulling fs layer
+613f2bad5cf4: Pulling fs layer
+046807dbf599: Pulling fs layer
+dcd188380dbe: Pulling fs layer
+36d7ccea11a6: Pulling fs layer
+166d6e51c9e2: Pulling fs layer
+e29673b462c2: Pulling fs layer
+c4ec73c5d89f: Pulling fs layer
+441eaab17b32: Pulling fs layer
+a88bc1363394: Pulling fs layer
+44136fa355b3: Already exists
+2adf12abb99f: Download complete
+be53f3672280: Download complete
+2f069796463b: Download complete
+be53f3672280: Pull complete
+ba64bb608575: Download complete
+83ea5805ebf1: Download complete
+043bf9ac7f7d: Download complete
+0ce97819c8c9: Download complete
+dcd188380dbe: Download complete
+613f2bad5cf4: Download complete
+f6a4c3e338ed: Download complete
+613f2bad5cf4: Pull complete
+f6a4c3e338ed: Pull complete
+83ea5805ebf1: Pull complete
+c4ec73c5d89f: Download complete
+36d7ccea11a6: Download complete
+c4ec73c5d89f: Pull complete
+dcd188380dbe: Pull complete
+166d6e51c9e2: Download complete
+441eaab17b32: Download complete
+166d6e51c9e2: Pull complete
+a88bc1363394: Download complete
+1dc71e7011b6: Download complete
+046807dbf599: Download complete
+c2a0ceb9dc69: Download complete
+e29673b462c2: Download complete
+e29673b462c2: Pull complete
+441eaab17b32: Pull complete
+2adf12abb99f: Pull complete
+2f069796463b: Pull complete
+043bf9ac7f7d: Pull complete
+ba64bb608575: Pull complete
+0ce97819c8c9: Pull complete
+a88bc1363394: Pull complete
+36d7ccea11a6: Pull complete
+046807dbf599: Pull complete
+Digest: sha256:9f35035b96eec43ec8736e0ad66fa52b0f5a12e37b1e8e9cfc6f19bf2fdf7583
+Status: Downloaded newer image for lscr.io/linuxserver/wireshark:latest
+lscr.io/linuxserver/wireshark:latest
+time="2026-10-25T23:36:04-03:00" level=warning msg="Found orphan containers (path-discovery-atlas) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+ Network path-discovery_default Creating 
+ Network path-discovery_default Creating 
+ Volume path-discovery_wireshark_config Creating 
+ Volume path-discovery_wireshark_config Creating 
+ Volume path-discovery_wireshark_config Created 
+ Volume path-discovery_wireshark_config Created 
+ Network path-discovery_default Created 
+ Network path-discovery_default Created 
+ Container path-discovery-wireshark Creating 
+ Container path-discovery-wireshark Created 
+ Container path-discovery-wireshark Starting 
+ Container path-discovery-wireshark Started 
+Wireshark gráfico disponible en http://127.0.0.1:8767/

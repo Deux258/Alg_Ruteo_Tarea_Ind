@@ -1,0 +1,10 @@
+Midiendo 138.204.230.242|scamper|trace|udp|ida
+Midiendo 138.204.230.242|scamper|trace|icmp|ida
+Midiendo 138.204.230.242|scamper|trace|udp-paris|ida
+Midiendo 138.204.230.242|scamper|trace|icmp-paris|ida
+Midiendo 138.204.230.242|scamper|trace|tcp|ida
+Midiendo 138.204.230.242|scamper|trace|tcp-ack|ida
+Midiendo 138.204.230.242|scamper|tracelb|udp-dport|ida
+Midiendo 138.204.230.242|scamper|tracelb|icmp-echo|ida
+Midiendo 138.204.230.242|scamper|tracelb|udp-sport|ida
+Midiendo 138.204.230.242|scamper|tracelb|tcp-sport|ida

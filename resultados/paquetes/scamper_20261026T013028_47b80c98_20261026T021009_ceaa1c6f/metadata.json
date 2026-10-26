@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "run_id": "scamper_20261026T013028_47b80c98",
+  "tool": "scamper",
+  "method": "udp-paris",
+  "family": "trace",
+  "target": "138.204.230.242",
+  "direction": "ida",
+  "round": 1,
+  "pilot": false,
+  "packets_captured": 20,
+  "candidate_emitted_packets": 10,
+  "outbound_transport_packets": 10,
+  "outbound_nonprobe_packets": 0,
+  "reverse_capture_is_partial": false,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/scamper_20261026T013028_47b80c98/manifest.json",
+  "source_manifest_sha256": "6e7290d2cb372ef169f1b3a08240e7ea7e3db0d93f17c529aa7031d1da254361"
+}

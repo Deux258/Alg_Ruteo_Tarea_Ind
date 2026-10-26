@@ -1,0 +1,10 @@
+.git
+.tools
+.state
+.env
+datos
+resultados
+capturas
+grafos
+entrega
+__pycache__

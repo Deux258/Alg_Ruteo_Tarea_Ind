@@ -1,0 +1,175 @@
+{
+  "reviewed_at": "2026-10-26T11:57:07.961977+00:00",
+  "mode": "real_wireshark_gui_via_local_browser",
+  "wireshark_version": "4.6.6",
+  "image": {
+    "image": "lscr.io/linuxserver/wireshark@sha256:9f35035b96eec43ec8736e0ad66fa52b0f5a12e37b1e8e9cfc6f19bf2fdf7583",
+    "image_id": "sha256:9f35035b96eec43ec8736e0ad66fa52b0f5a12e37b1e8e9cfc6f19bf2fdf7583",
+    "source": "https://docs.linuxserver.io/images/docker-wireshark/",
+    "url": "http://127.0.0.1:8767/",
+    "pcap_mount": "/captures (solo lectura)",
+    "host_capture_capabilities_added": false
+  },
+  "reviewed_runs": [
+    {
+      "method": "scamper_trace_udp",
+      "run_id": "scamper_20261026T013020_07d8e853",
+      "source": "datos/originales/scamper_20261026T013020_07d8e853/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_trace_udp__scamper_20261026T013020_07d8e853.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_trace_udp__scamper_20261026T013020_07d8e853.pcapng",
+      "sha256": "e781903f8c56be8fa452279a44c218d754fc4be7dfd9a2192370290587d9331e",
+      "screenshot": "capturas/wireshark_scamper_trace_udp_r1.png",
+      "screenshot_sha256": "561c78fe7da84fb996ea1dcea155cb2f726e5e025bb6e8e736fbc505124e210c",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_trace_icmp",
+      "run_id": "scamper_20261026T013024_75658c4d",
+      "source": "datos/originales/scamper_20261026T013024_75658c4d/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_trace_icmp__scamper_20261026T013024_75658c4d.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_trace_icmp__scamper_20261026T013024_75658c4d.pcapng",
+      "sha256": "0d972b8168e8bbf5c68db493833fba8a03c6ede244896e12bef40590833ffe2c",
+      "screenshot": "capturas/wireshark_scamper_trace_icmp_r1.png",
+      "screenshot_sha256": "34839b09e4acbc4655837794ec54fbd0c204bd8030c25223f2fa046c0f3a206b",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_trace_udp-paris",
+      "run_id": "scamper_20261026T013028_47b80c98",
+      "source": "datos/originales/scamper_20261026T013028_47b80c98/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_trace_udp-paris__scamper_20261026T013028_47b80c98.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_trace_udp-paris__scamper_20261026T013028_47b80c98.pcapng",
+      "sha256": "492860636e55cc07dfd5de520efa3312939659b024a4b9c62e482f26ab489f44",
+      "screenshot": "capturas/wireshark_scamper_trace_udp-paris_r1.png",
+      "screenshot_sha256": "9531f78e799dd2a968efc72a5ab809520106bf96225efe5434ad882ef0240379",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_trace_icmp-paris",
+      "run_id": "scamper_20261026T013033_4c833408",
+      "source": "datos/originales/scamper_20261026T013033_4c833408/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_trace_icmp-paris__scamper_20261026T013033_4c833408.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_trace_icmp-paris__scamper_20261026T013033_4c833408.pcapng",
+      "sha256": "edfd3e61ddad5a5cc2e11c06a734c8e399d8473b1a806069cb53841a24f48d18",
+      "screenshot": "capturas/wireshark_scamper_trace_icmp-paris_r1.png",
+      "screenshot_sha256": "5f113336a5c4496fa1afc7f00fcdc71ccdc5363f6938c37c5b531a79ecc1f38e",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_trace_tcp",
+      "run_id": "scamper_20261026T013037_e5039bc7",
+      "source": "datos/originales/scamper_20261026T013037_e5039bc7/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_trace_tcp__scamper_20261026T013037_e5039bc7.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_trace_tcp__scamper_20261026T013037_e5039bc7.pcapng",
+      "sha256": "27b8d381229be840401a753b9511db3a294ce9cdd2c395e4f7cb3c3e4107a08a",
+      "screenshot": "capturas/wireshark_scamper_trace_tcp_r1.png",
+      "screenshot_sha256": "42c05088a189302648ba803e7163b914503accab5f93001be848e0f5c58a22a3",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_trace_tcp-ack",
+      "run_id": "scamper_20261026T013130_75a5e920",
+      "source": "datos/originales/scamper_20261026T013130_75a5e920/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_trace_tcp-ack__scamper_20261026T013130_75a5e920.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_trace_tcp-ack__scamper_20261026T013130_75a5e920.pcapng",
+      "sha256": "d453eb3cf1e55d177b1a8e1d00f8ac482cad205aa2fa1a94009fe6395c84f59e",
+      "screenshot": "capturas/wireshark_scamper_trace_tcp-ack_r1.png",
+      "screenshot_sha256": "6392a436c902cc54a41c35d6ab37aa4f261cf4a0de1828f02b1ea0f271bba83f",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_tracelb_udp-dport",
+      "run_id": "scamper_20261026T013224_043262b8",
+      "source": "datos/originales/scamper_20261026T013224_043262b8/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_tracelb_udp-dport__scamper_20261026T013224_043262b8.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_tracelb_udp-dport__scamper_20261026T013224_043262b8.pcapng",
+      "sha256": "17a08e945179b35d4188f785541d69e13cd29dc80c291e73cbfede2046d22e5f",
+      "screenshot": "capturas/wireshark_scamper_tracelb_udp-dport_r1.png",
+      "screenshot_sha256": "f586def4ab5ac7cfb4ceba0c481a34c76d91776635bb814cf590f1dbf15dfbad",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_tracelb_icmp-echo",
+      "run_id": "scamper_20261026T013253_1404bb3d",
+      "source": "datos/originales/scamper_20261026T013253_1404bb3d/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_tracelb_icmp-echo__scamper_20261026T013253_1404bb3d.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_tracelb_icmp-echo__scamper_20261026T013253_1404bb3d.pcapng",
+      "sha256": "1590d1fb2d9625fa8b27e780753207768a8f5ef35062c3b6c34015bf4d6c0851",
+      "screenshot": "capturas/wireshark_scamper_tracelb_icmp-echo_r1.png",
+      "screenshot_sha256": "406792e6f7f7524ac36cd411be7b98d729b2a57f91c11252b6c91f58ef80ef2a",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_tracelb_udp-sport",
+      "run_id": "scamper_20261026T013308_5b0758dd",
+      "source": "datos/originales/scamper_20261026T013308_5b0758dd/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_tracelb_udp-sport__scamper_20261026T013308_5b0758dd.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_tracelb_udp-sport__scamper_20261026T013308_5b0758dd.pcapng",
+      "sha256": "84b7b67b73ee12ed06ad7e64c6cbb661cba805a6396bf15999710bd7b10a80f0",
+      "screenshot": "capturas/wireshark_scamper_tracelb_udp-sport_r1.png",
+      "screenshot_sha256": "5b9ed123747c74ec103679f0f9f93cacd838a426031b77ce0f4e2c53c48e86ea",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_tracelb_tcp-sport",
+      "run_id": "scamper_20261026T013622_7586d4fa",
+      "source": "datos/originales/scamper_20261026T013622_7586d4fa/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_tracelb_tcp-sport__scamper_20261026T013622_7586d4fa.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_tracelb_tcp-sport__scamper_20261026T013622_7586d4fa.pcapng",
+      "sha256": "e97aad6926318cbcc0bda88119153871493e01c4a76da618c5ef8e889fd2b5af",
+      "screenshot": "capturas/wireshark_scamper_tracelb_tcp-sport_r1.png",
+      "screenshot_sha256": "6a53e696a13b1f1d9675bbcd50a2e00bfb4bc5048ab80c6d9b1bfe6dcba2b105",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "scamper_tracelb_tcp-ack-sport",
+      "run_id": "scamper_20261026T013937_21ff727f",
+      "source": "datos/originales/scamper_20261026T013937_21ff727f/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/scamper_tracelb_tcp-ack-sport__scamper_20261026T013937_21ff727f.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/scamper_tracelb_tcp-ack-sport__scamper_20261026T013937_21ff727f.pcapng",
+      "sha256": "572f2332adb646a42858fbab5c3bf9a923d5894d7e5eeea6ca43d028078d2b79",
+      "screenshot": "capturas/wireshark_scamper_tracelb_tcp-ack-sport_r1.png",
+      "screenshot_sha256": "a955e2b11b64de56b4963aefe65a287575e422edd2e79c2a73599de97b76c010",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "ripe_traceroute_UDP",
+      "run_id": "ripe_20261026T014155_b6301573",
+      "source": "datos/originales/ripe_20261026T014155_b6301573/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/ripe_traceroute_UDP__ripe_20261026T014155_b6301573.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/ripe_traceroute_UDP__ripe_20261026T014155_b6301573.pcapng",
+      "sha256": "1cb548c52b57c010c9133e6a81109b3f886c891704ce87a9ec6782bf34d87d4c",
+      "screenshot": "capturas/wireshark_ripe_traceroute_UDP_r1.png",
+      "screenshot_sha256": "7f1383c356d48af1dc9beabc54cd4ffe096daf6ece4ef59c22617736a80b22e1",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "ripe_traceroute_ICMP",
+      "run_id": "ripe_20261026T014331_315304bc",
+      "source": "datos/originales/ripe_20261026T014331_315304bc/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/ripe_traceroute_ICMP__ripe_20261026T014331_315304bc.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/ripe_traceroute_ICMP__ripe_20261026T014331_315304bc.pcapng",
+      "sha256": "2a9881a27395cab5669dbddbb793fc3ffc575c4de613ce9caa5ce1b0c409b321",
+      "screenshot": "capturas/wireshark_ripe_traceroute_ICMP_r1.png",
+      "screenshot_sha256": "c3cfde1838c20685266a7957d4ccb26ea71f398c2d0d057ea0378f360db88fa6",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    },
+    {
+      "method": "ripe_traceroute_TCP",
+      "run_id": "ripe_20261026T014357_a505782a",
+      "source": "datos/originales/ripe_20261026T014357_a505782a/capture.pcapng",
+      "copy": "datos/originales/revision_gui_metodos_r1/ripe_traceroute_TCP__ripe_20261026T014357_a505782a.pcapng",
+      "container_path": "/captures/revision_gui_metodos_r1/ripe_traceroute_TCP__ripe_20261026T014357_a505782a.pcapng",
+      "sha256": "58f50e11f67b241593df4f12b0a2792b72947dffc103271e42c3a688d8befa01",
+      "screenshot": "capturas/wireshark_ripe_traceroute_TCP_r1.png",
+      "screenshot_sha256": "33ad50a4910961579d6bb5405d602293b6cd00305fe45ee89fd72f8705acaed3",
+      "scope": "Inspección gráfica representativa de encabezados y bytes en ronda 1; no acredita validación entre rondas."
+    }
+  ],
+  "notes": [
+    "PCAP montados en solo lectura. No se controló la aplicación nativa del host; se utilizó Wireshark gráfico en contenedor Compose.",
+    "Las leyendas No response seen de Echo Request se refieren a Echo Reply y no niegan respuestas ICMP Time Exceeded.",
+    "SYN RIPE de esta captura: 27; los tres RST del sistema no se cuentan como sondas.",
+    "La validación de predicciones exige contrastar rondas posteriores."
+  ]
+}

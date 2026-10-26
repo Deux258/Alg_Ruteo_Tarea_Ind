@@ -1,0 +1,13 @@
+{
+  "run_id": "ripe_20261026T010712_9f985bf1",
+  "requests_count": 0,
+  "icmp_quotes_count": 0,
+  "matched_quotes": 0,
+  "requests": [],
+  "icmp_quotes": [],
+  "reverse_capture_is_partial": true,
+  "udp_ports": [],
+  "limitations": "Correlación por destino, IPID y puertos; NAT puede modificar campos. Una captura inversa local puede no observar sondas remotas.",
+  "export": "resultados/paquetes/ripe_20261026T010712_9f985bf1_20261026T012636_4689d212",
+  "source_manifest_sha256": "0e4212facba2a19b062952d2c8f23b31f61acdd9811271cf03c4907e717d4ca5"
+}

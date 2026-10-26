@@ -1,0 +1,1352 @@
+{
+  "generated_at": "2026-10-26T12:27:41.645811+00:00",
+  "cases": [
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "ICMP",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 27,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "d4dc687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [
+          {
+            "offset": 2,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            25823
+          ],
+          "samples": 27,
+          "base_learned_from_first_packet": 25823,
+          "checked_later_packets": 26,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "ICMP",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 54,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "d4dc687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [
+          {
+            "offset": 2,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            25823
+          ],
+          "samples": 54,
+          "base_learned_from_first_packet": 25823,
+          "checked_later_packets": 53,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "ICMP",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 51,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "d4dc687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [
+          {
+            "offset": 2,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            25823
+          ],
+          "samples": 51,
+          "base_learned_from_first_packet": 25823,
+          "checked_later_packets": 50,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "TCP",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 27,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "687474703a2f2f61746c61732e726970652e6e65742041746c6173207361797320486921000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [
+          {
+            "offset": 0,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": null,
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "TCP",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 60,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "687474703a2f2f61746c61732e726970652e6e65742041746c6173207361797320486921000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [
+          {
+            "offset": 0,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": null,
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "TCP",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 48,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "687474703a2f2f61746c61732e726970652e6e65742041746c6173207361797320486921000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [
+          {
+            "offset": 0,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": null,
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "UDP",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 27,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "0352687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [
+          {
+            "offset": 2,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            54766
+          ],
+          "samples": 27,
+          "base_learned_from_first_packet": 54766,
+          "checked_later_packets": 26,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "UDP",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 57,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "7c7c687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [
+          {
+            "offset": 2,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            20249
+          ],
+          "samples": 57,
+          "base_learned_from_first_packet": 20249,
+          "checked_later_packets": 56,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "ripe",
+      "family": "traceroute",
+      "method": "UDP",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 54,
+        "lengths_bytes": [
+          48
+        ],
+        "first_hex": "1f29687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000",
+        "within_run_variable_offsets": [
+          0,
+          1
+        ],
+        "constant_ascii_segments": [
+          {
+            "offset": 2,
+            "ascii": "http://atlas.ripe.net Atlas says Hi!"
+          }
+        ],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            61893
+          ],
+          "samples": 54,
+          "base_learned_from_first_packet": 61893,
+          "checked_later_packets": 53,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "icmp",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 9,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "00000000000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 9,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "icmp",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 22,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "00000000000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 22,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "icmp",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 22,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "00000000000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 22,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "icmp-paris",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 9,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "f7fc0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 9,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "icmp-paris",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 23,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "f7fc0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 23,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 22,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "icmp-paris",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 23,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "f7fc0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 23,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 22,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "tcp",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 10,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "tcp",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 10,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "tcp",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 10,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "tcp-ack",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 10,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "tcp-ack",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 10,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "tcp-ack",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 10,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 9,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "00000000000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            26959
+          ],
+          "samples": 9,
+          "base_learned_from_first_packet": 26959,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 17,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "00000000000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            57977
+          ],
+          "samples": 17,
+          "base_learned_from_first_packet": 57977,
+          "checked_later_packets": 16,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 22,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "00000000000000000000000000000000",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            34086
+          ],
+          "samples": 22,
+          "base_learned_from_first_packet": 34086,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp-paris",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 10,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "66b10000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            26959
+          ],
+          "samples": 10,
+          "base_learned_from_first_packet": 26959,
+          "checked_later_packets": 9,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp-paris",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 27,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "dfdb0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            57977
+          ],
+          "samples": 27,
+          "base_learned_from_first_packet": 57977,
+          "checked_later_packets": 26,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp-paris",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 23,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "82880000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            34086
+          ],
+          "samples": 23,
+          "base_learned_from_first_packet": 34086,
+          "checked_later_packets": 22,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "icmp-echo",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 44,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "77fd0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 44,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 43,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "icmp-echo",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 101,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "77fd0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 101,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 100,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "icmp-echo",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 112,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "77fd0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "icmp.checksum",
+            "icmp.ident",
+            "icmp.seq"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            63487
+          ],
+          "samples": 112,
+          "base_learned_from_first_packet": 63487,
+          "checked_later_packets": 111,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "tcp-ack-sport",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 27,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "tcp-ack-sport",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 27,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "tcp-ack-sport",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 27,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "tcp-sport",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 38,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "tcp-sport",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 38,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "tcp-sport",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 38,
+        "lengths_bytes": [
+          0
+        ],
+        "first_hex": "",
+        "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": null,
+        "zero_payload": true
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "udp-dport",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 98,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "66b10000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            26959
+          ],
+          "samples": 98,
+          "base_learned_from_first_packet": 26959,
+          "checked_later_packets": 97,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "udp-dport",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 230,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "dfdb0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          0,
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            57977
+          ],
+          "samples": 230,
+          "base_learned_from_first_packet": 57977,
+          "checked_later_packets": 229,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "udp-dport",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 182,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "82880000000000000000000000000000",
+        "within_run_variable_offsets": [
+          0,
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            34086
+          ],
+          "samples": 182,
+          "base_learned_from_first_packet": 34086,
+          "checked_later_packets": 181,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "udp-sport",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 38,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "66b10000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            26959
+          ],
+          "samples": 38,
+          "base_learned_from_first_packet": 26959,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "udp-sport",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 38,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "dfdb0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            57977
+          ],
+          "samples": 38,
+          "base_learned_from_first_packet": 57977,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "tracelb",
+      "method": "udp-sport",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 38,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "82880000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            34086
+          ],
+          "samples": 38,
+          "base_learned_from_first_packet": 34086,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {},
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    }
+  ]
+}

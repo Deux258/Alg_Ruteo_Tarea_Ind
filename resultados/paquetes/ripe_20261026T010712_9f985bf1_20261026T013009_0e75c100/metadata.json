@@ -1,0 +1,14 @@
+{
+  "run_id": "ripe_20261026T010712_9f985bf1",
+  "tool": "ripe",
+  "method": "UDP",
+  "family": "traceroute",
+  "target": "200.14.48.134",
+  "direction": "vuelta",
+  "round": 0,
+  "pilot": true,
+  "packets_captured": 15,
+  "candidate_emitted_packets": 0,
+  "reverse_capture_is_partial": true,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/ripe_20261026T010712_9f985bf1/manifest.json"
+}

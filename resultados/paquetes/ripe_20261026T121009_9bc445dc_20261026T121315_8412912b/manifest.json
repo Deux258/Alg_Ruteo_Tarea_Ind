@@ -1,0 +1,12 @@
+{
+  "kind": "packet_export",
+  "source_run": "ripe_20261026T121009_9bc445dc",
+  "sealed_at": "2026-10-26T12:13:18.575631+00:00",
+  "sha256": {
+    "emitted.tsv": "f576e3236a24e652b46b87906293cd973b5c5686b4e2bfb1e974b80d56dd72ad",
+    "metadata.json": "e1ced19727cf0566bd8b21c24a1660a3df5d298971a0e77f2b168273d9312a3b",
+    "outbound.tsv": "6edfcbbd5bf12f9c5a93a4ac0d5c6ce3a239919a732179932eee24e4cae61556",
+    "packets.tsv": "45453d5306377cae57227fa984d5452385023dc2bc7926cd42e1e3ad3d7fcebe",
+    "packets_full.json": "b0a12551ed08b3bc2739e5764dcea04a88c2c097b401b88cb52ecf92afdf7124"
+  }
+}

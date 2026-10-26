@@ -1,0 +1,7 @@
+{
+  "excluded_runs": [
+    "scamper_20261026T024854_fb1d5630"
+  ],
+  "evidence_path": "datos/originales/incidente_interrupcion_20261026T114921_f34fd3cb",
+  "evidence_manifest_sha256": "26de2d11803d633ec3706ad4256d15e3f5a8edf7c08a57862cfe5d151e644e02"
+}

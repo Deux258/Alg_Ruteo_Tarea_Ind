@@ -1,0 +1,20 @@
+{
+  "folder": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/resultados/analisis_20261026T121332_5bd349cc",
+  "created_at": "2026-10-26T12:13:32.101229+00:00",
+  "valid_measurements": 51,
+  "processed_runs": 51,
+  "expected": 153,
+  "includes_pilots": false,
+  "diagnostic_pilots": false,
+  "invalid": [],
+  "graphs": [
+    "138.204.230.242",
+    "200.14.48.134",
+    "90.150.251.81"
+  ],
+  "excluded_runs": [
+    "scamper_20261026T004306_ac2c6641",
+    "scamper_20261026T024854_fb1d5630"
+  ],
+  "complete_campaign": false
+}

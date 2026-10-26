@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "rounds": 3,
+  "round_gap_seconds": 1800,
+  "scamper_version": "20260902",
+  "scamper_sha256": "a2c5bc636d6351a395f57e121b4d813f46c001e7b831b538fd467b9cbc7625de",
+  "tool_image": "path-discovery-tools:20260902",
+  "pps": 20,
+  "tcp_port": 80,
+  "udp_base_port": null,
+  "local_probe_id": null,
+  "isp_comercial": null,
+  "interface": null,
+  "baf_confirmed": false,
+  "targets": [
+    {
+      "ip": "138.204.230.242",
+      "probe_id": 6652,
+      "label": "Valparaiso"
+    },
+    {
+      "ip": "200.14.48.134",
+      "probe_id": 12734,
+      "label": "Habana"
+    },
+    {
+      "ip": "90.150.251.81",
+      "probe_id": 870,
+      "label": "Rusia"
+    }
+  ]
+}

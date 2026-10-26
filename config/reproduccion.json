@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "rounds": 3,
+  "round_gap_seconds": 1800,
+  "scamper_version": "20260902",
+  "scamper_sha256": "a2c5bc636d6351a395f57e121b4d813f46c001e7b831b538fd467b9cbc7625de",
+  "tool_image": "path-discovery-tools:20260902",
+  "pps": 20,
+  "tcp_port": 80,
+  "udp_base_port": 33435,
+  "local_probe_id": 1018487,
+  "isp_comercial": "WOM",
+  "interface": null,
+  "baf_confirmed": true,
+  "targets": [
+    {
+      "ip": "138.204.230.242",
+      "probe_id": 6652,
+      "label": "Valparaiso"
+    },
+    {
+      "ip": "200.14.48.134",
+      "probe_id": 12734,
+      "label": "Habana"
+    },
+    {
+      "ip": "90.150.251.81",
+      "probe_id": 870,
+      "label": "Rusia"
+    }
+  ],
+  "baf_confirmed_at": "2026-10-26T00:42:39.594987+00:00",
+  "connection_context": "domicilio_confirmado_por_usuario_2026-10-25",
+  "probe_registered_at": "2026-10-26T00:55:22.041106+00:00",
+  "probe_location_description": "Quilicura, Región Metropolitana, Chile (ubicación aproximada)",
+  "ripe_credit_balance_observed": 50000,
+  "ripe_credit_balance_observed_at": "2026-10-26T01:03:39.570407+00:00",
+  "excluded_runs": [
+    "scamper_20261026T004306_ac2c6641"
+  ],
+  "isp_confirmed_at": "2026-10-26T01:16:43.441766+00:00",
+  "target_selection_evidence": "datos/originales/seleccion_sondas_20261026T012504",
+  "russian_target_update_evidence": "datos/originales/actualizacion_rusia_20261026T012854"
+}

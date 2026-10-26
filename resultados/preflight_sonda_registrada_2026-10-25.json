@@ -1,0 +1,41 @@
+{
+  "folder": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/preflight_20261026T005635_69a9b4a4",
+  "created_at": "2026-10-26T00:56:35.210903+00:00",
+  "kind": "preflight",
+  "checks": {
+    "scamper": "scamper version 20260902\n Container path-discovery-tools-run-91ac7aa9265e Creating \n Container path-discovery-tools-run-91ac7aa9265e Created",
+    "tshark": "TShark (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).\n\nCopyright 1998-2024 Gerald Combs <gerald@wireshark.org> and contributors.\nLicensed under the terms of the GNU General Public License (version 2 or later).\nThis is free software; see the file named COPYING in the distribution. There is\nNO WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\nCompiled (64-bit) using GCC 12.2.0, with GLib 2.74.6, with PCRE2, with zlib\n1.2.13, with libpcap, with POSIX capabilities (Linux), with libnl 3, with Lua\n5.2.4, with GnuTLS 3.7.9 and PKCS #11 support, with Gcrypt 1.10.1, with Kerberos\n(MIT), with MaxMind, with nghttp2 1.52.0, with brotli, with LZ4, with Zstandard,\nwith Snappy, with libxml2 2.9.14, with libsmi 0.4.8, with binary plugins.\n\nRunning on Linux 7.3.0-2-cachyos, with AMD Ryzen 5 5500U with Radeon Graphics\n(with SSE4.2), with 5775 MB of physical memory, with GLib 2.74.6, with PCRE2\n10.42 2022-12-11, with zlib 1.2.13, with libpcap 1.10.3 (with TPACKET_V3), with\nc-ares 1.18.1, with GnuTLS 3.7.9, with Gcrypt 1.10.1, with nghttp2 1.52.0, with\nbrotli 1.0.9, with LZ4 1.9.4, with Zstandard 1.5.4, with libsmi 0.4.8, with\nLC_TYPE=C, binary plugins supported.\n Container path-discovery-tools-run-378cc7d37d6c Creating \n Container path-discovery-tools-run-378cc7d37d6c Created \nRunning as user \"root\" and group \"root\". This could be dangerous.",
+    "dumpcap": "Dumpcap (Wireshark) 4.0.17 (Git v4.0.17 packaged as 4.0.17-0+deb12u3).\n\nCopyright 1998-2024 Gerald Combs <gerald@wireshark.org> and contributors.\nLicensed under the terms of the GNU General Public License (version 2 or later).\nThis is free software; see the file named COPYING in the distribution. There is\nNO WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\nCompiled (64-bit) using GCC 12.2.0, with GLib 2.74.6, with PCRE2, with zlib\n1.2.13, with libpcap, with POSIX capabilities (Linux), with libnl 3, with binary\nplugins.\n\nRunning on Linux 7.3.0-2-cachyos, with AMD Ryzen 5 5500U with Radeon Graphics\n(with SSE4.2), with 5775 MB of physical memory, with GLib 2.74.6, with PCRE2\n10.42 2022-12-11, with zlib 1.2.13, with libpcap 1.10.3 (with TPACKET_V3), with\nLC_TYPE=C, binary plugins supported.\n Container path-discovery-tools-run-d8a598356329 Creating \n Container path-discovery-tools-run-d8a598356329 Created \ndumpcap: cap_set_proc() fail return: Operation not permitted\ndumpcap: cap_set_proc() fail return: Operation not permitted"
+  },
+  "blockers": [
+    "Sonda 31416 no conectada: Abandoned",
+    "Sonda 870: IP actual 90.150.251.81 difiere de 37.79.153.66",
+    "Falta validar udp_base_port desde piloto RIPE/PCAP",
+    "Falta RIPE_ATLAS_API_KEY en el entorno local"
+  ],
+  "route": {
+    "dst": "1.1.1.1",
+    "gateway": "192.168.100.1",
+    "dev": "wlan0",
+    "prefsrc": "192.168.100.7",
+    "flags": [],
+    "uid": 1000,
+    "cache": []
+  },
+  "clock_synced": "yes",
+  "proxy_variables_present": [],
+  "egress_observations": {
+    "ipify": "186.189.107.115",
+    "checkip_amazon": "186.189.107.115"
+  },
+  "public_ipv4": "186.189.107.115",
+  "prefix": "186.189.107.0/24",
+  "asns": [
+    "52341"
+  ],
+  "bgp_he_url": "https://bgp.he.net/ip/186.189.107.115",
+  "nat": "posible NAT; CGNAT requiere comprobar la WAN del router",
+  "isp_comercial": null,
+  "cg_nat_confirmado": "pendiente",
+  "baf_confirmada_por_usuario": true
+}

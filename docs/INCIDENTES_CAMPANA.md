@@ -1,0 +1,9 @@
+# Incidentes y límites temporales de la campaña
+
+La ronda 1 comenzó el 26-10-2026 a las 01:30:20 UTC y sufrió dos interrupciones. La primera fue un error de acceso a un servicio externo antes de enviar una solicitud RIPE; se comprobó que no existía POST y se reanudó esa celda sin duplicarla. La segunda produjo un intervalo extendido durante la noche; no se establece su causa a partir de los registros disponibles.
+
+El tracelb UDP-dport ruso `scamper_20261026T024854_fb1d5630` abarcó desde las 02:48:54 hasta las 11:36:02 UTC. Se conserva íntegro y se excluye de la comparación por calidad temporal. El intento TCP-sport `scamper_20261026T114443_ad95de92` perdió su controlador y solo dejó 70 bytes WARTS sin registro final; se conserva como intento interrumpido, no como medición válida. Se detuvo su captura residual antes de reanudar. Las decisiones, estados anterior y posterior y hashes están sellados en `datos/originales/incidente_interrupcion_20261026T114921_f34fd3cb`. Las dos celdas se repiten explícitamente; los otros resultados se conservan.
+
+La ronda 1 no constituye una ventana continua. Las comparaciones que la incorporan deben mostrar sus horas reales y advertir que cambios entre métodos pueden reflejar cambios temporales. Las rondas siguientes se separan al menos treinta minutos desde el cierre efectivo anterior. No se reconstruyen tiempos ni se cambia la fecha de los originales para ocultar esta limitación.
+
+En TCP se observaron respuestas ICMP en PCAP que no fueron incorporadas por Scamper a WARTS. Se contrastan por destino, direcciones, IPID, puertos y tiempo en `resultados/correlacion_tcp_captura.json`. Esta discrepancia de captura y detección impide atribuir automáticamente los ceros de Scamper a un firewall o a ausencia de respuesta en la red. Los resultados de la herramienta y las observaciones de paquetes se presentan por separado.

@@ -1,0 +1,234 @@
+Midiendo 90.150.251.81|scamper|tracelb|udp-dport|ida
+Midiendo 90.150.251.81|scamper|tracelb|tcp-sport|ida
+Midiendo 90.150.251.81|scamper|tracelb|tcp-ack-sport|ida
+Midiendo 90.150.251.81|ripe|traceroute|UDP|ida
+Midiendo 90.150.251.81|ripe|traceroute|UDP|vuelta
+Midiendo 90.150.251.81|ripe|traceroute|ICMP|ida
+Midiendo 90.150.251.81|ripe|traceroute|ICMP|vuelta
+Midiendo 90.150.251.81|ripe|traceroute|TCP|ida
+Midiendo 90.150.251.81|ripe|traceroute|TCP|vuelta
+{
+  "started_at": "2026-10-26T01:30:20.377175+00:00",
+  "jobs": {
+    "138.204.230.242|scamper|trace|udp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013020_07d8e853"
+    },
+    "138.204.230.242|scamper|trace|icmp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013024_75658c4d"
+    },
+    "138.204.230.242|scamper|trace|udp-paris|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013028_47b80c98"
+    },
+    "138.204.230.242|scamper|trace|icmp-paris|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013033_4c833408"
+    },
+    "138.204.230.242|scamper|trace|tcp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013037_e5039bc7"
+    },
+    "138.204.230.242|scamper|trace|tcp-ack|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013130_75a5e920"
+    },
+    "138.204.230.242|scamper|tracelb|udp-dport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013224_043262b8"
+    },
+    "138.204.230.242|scamper|tracelb|icmp-echo|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013253_1404bb3d"
+    },
+    "138.204.230.242|scamper|tracelb|udp-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013308_5b0758dd"
+    },
+    "138.204.230.242|scamper|tracelb|tcp-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013622_7586d4fa"
+    },
+    "138.204.230.242|scamper|tracelb|tcp-ack-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T013937_21ff727f"
+    },
+    "138.204.230.242|ripe|traceroute|UDP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T014155_b6301573"
+    },
+    "138.204.230.242|ripe|traceroute|UDP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T014209_7cc5d284"
+    },
+    "138.204.230.242|ripe|traceroute|ICMP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T014331_315304bc"
+    },
+    "138.204.230.242|ripe|traceroute|ICMP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T014344_66f27640"
+    },
+    "138.204.230.242|ripe|traceroute|TCP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T014357_a505782a"
+    },
+    "138.204.230.242|ripe|traceroute|TCP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T014412_ab5b1731"
+    },
+    "200.14.48.134|scamper|trace|udp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T014535_4d9a17af"
+    },
+    "200.14.48.134|scamper|trace|icmp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T014615_2aed1b2a"
+    },
+    "200.14.48.134|scamper|trace|udp-paris|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T014701_a3f72c3f"
+    },
+    "200.14.48.134|scamper|trace|icmp-paris|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T014806_e8479f71"
+    },
+    "200.14.48.134|scamper|trace|tcp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T014903_8c5b846a"
+    },
+    "200.14.48.134|scamper|trace|tcp-ack|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T014957_7a4eb834"
+    },
+    "200.14.48.134|scamper|tracelb|udp-dport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T015052_3f9a2fa1"
+    },
+    "200.14.48.134|scamper|tracelb|icmp-echo|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T015845_648d15b3"
+    },
+    "200.14.48.134|scamper|tracelb|udp-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T020138_1494c5e5"
+    },
+    "200.14.48.134|scamper|tracelb|tcp-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T020453_9903bd40"
+    },
+    "200.14.48.134|scamper|tracelb|tcp-ack-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T020808_2173dd5d"
+    },
+    "200.14.48.134|ripe|traceroute|UDP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T021026_6532ce9a"
+    },
+    "200.14.48.134|ripe|traceroute|UDP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T021245_70efb74d"
+    },
+    "200.14.48.134|ripe|traceroute|ICMP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T021411_84df000e"
+    },
+    "200.14.48.134|ripe|traceroute|ICMP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T021522_06b776c6"
+    },
+    "200.14.48.134|ripe|traceroute|TCP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T023931_7b1d6c73"
+    },
+    "200.14.48.134|ripe|traceroute|TCP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T024054_a69b6896"
+    },
+    "90.150.251.81|scamper|trace|udp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T024214_547549fb"
+    },
+    "90.150.251.81|scamper|trace|icmp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T024322_8ae73b8f"
+    },
+    "90.150.251.81|scamper|trace|udp-paris|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T024431_23f6f2e9"
+    },
+    "90.150.251.81|scamper|trace|icmp-paris|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T024548_0e900588"
+    },
+    "90.150.251.81|scamper|trace|tcp|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T024705_75e90fb5"
+    },
+    "90.150.251.81|scamper|trace|tcp-ack|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T024759_81670f10"
+    },
+    "90.150.251.81|scamper|tracelb|icmp-echo|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T113602_7a50f06b"
+    },
+    "90.150.251.81|scamper|tracelb|udp-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T114128_ea432b5f"
+    },
+    "90.150.251.81|scamper|tracelb|udp-dport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T114959_01ea63dc"
+    },
+    "90.150.251.81|scamper|tracelb|tcp-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T115638_93f2cbad"
+    },
+    "90.150.251.81|scamper|tracelb|tcp-ack-sport|ida": {
+      "status": "completed",
+      "run_id": "scamper_20261026T115953_fa9fd1fd"
+    },
+    "90.150.251.81|ripe|traceroute|UDP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T120212_394d85f8"
+    },
+    "90.150.251.81|ripe|traceroute|UDP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T120440_3f6042b4"
+    },
+    "90.150.251.81|ripe|traceroute|ICMP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T120616_57773c40"
+    },
+    "90.150.251.81|ripe|traceroute|ICMP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T120807_068f5c95"
+    },
+    "90.150.251.81|ripe|traceroute|TCP|ida": {
+      "status": "completed",
+      "run_id": "ripe_20261026T120828_891a5506"
+    },
+    "90.150.251.81|ripe|traceroute|TCP|vuelta": {
+      "status": "completed",
+      "run_id": "ripe_20261026T121009_9bc445dc"
+    }
+  },
+  "finished_at": "2026-10-26T12:12:06.196490+00:00"
+}
+Esperando el cierre de la ronda 1 que ya está ejecutándose.
+Ronda 1 terminada. Exportando paquetes y análisis.
+Control adicional de recepción TCP durante la separación entre rondas.
+Esperando separación de ronda 2: hasta 2026-10-26T12:42:06.196490+00:00 UTC.
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import subprocess,sys; r=subprocess.run(['./main','campaign','--round','1']); sys.exit(r.returncode) if r.returncode else None; subprocess.run([sys.executable,'-u','scripts/continuar_campana.py'],check=True)
+                                                                                                                                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/usr/bin/python3', '-u', 'scripts/continuar_campana.py']' returned non-zero exit status 143.
+Comprobando control adicional de recepción TCP.
+Esperando separación de ronda 2: hasta 2026-10-26T12:42:06.196490+00:00 UTC.
+Iniciando ronda 2.

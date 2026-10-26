@@ -1,0 +1,14 @@
+{
+  "verified_package_files": 1253,
+  "offline_valid_measurements": 51,
+  "compared": {
+    "responses.csv": "idéntico",
+    "rankings.json": "idéntico",
+    "tracelb_additional.json": "idéntico",
+    "symmetry.json": "idéntico",
+    "grafos/138.204.230.242.cx2.json": "idéntico",
+    "grafos/200.14.48.134.cx2.json": "idéntico",
+    "grafos/90.150.251.81.cx2.json": "idéntico"
+  },
+  "credential_files_present": false
+}

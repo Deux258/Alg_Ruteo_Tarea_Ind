@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+  <meta charset="utf-8" /><title>ripe traceroute / UDP</title
+  ><style>
+    body {
+      font:
+        15px Arial,
+        sans-serif;
+      color: #182b42;
+      background: #f6f8fb;
+      margin: 28px 36px;
+      max-width: 1240px;
+    }
+    h1 {
+      font-size: 26px;
+      margin: 0 0 8px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 16px 0 8px;
+    }
+    .sub {
+      color: #43556b;
+    }
+    .note {
+      padding: 10px;
+      border-left: 4px solid #137c82;
+      background: #e4f3f3;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font: 13px monospace;
+      background: white;
+    }
+    th,
+    td {
+      padding: 5px 9px;
+      border: 1px solid #d5dfe9;
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+    th {
+      background: #173d5c;
+      color: white;
+    }
+    p {
+      line-height: 1.5;
+    }
+    .payload {
+      font-size: 12px;
+      margin: 6px 0;
+      overflow-wrap: anywhere;
+    }
+    .foot {
+      font-size: 12px;
+      color: #43556b;
+    }
+    code {
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+  </style>
+  <h1>ripe traceroute / UDP</h1>
+  <p class="sub">
+    Ronda 1 · ida · destino 138.204.230.242 · 2026-10-26T01:41:55.746142+00:00
+  </p>
+  <div class="note">
+    Vista local de datos procesados con TShark (Wireshark). No es una captura de
+    la interfaz gráfica de Wireshark.
+  </div>
+  <p>
+    <b>Original:</b> ripe_20261026T014155_b6301573<br /><b>PCAPNG SHA-256:</b>
+    <code>1cb548c52b57c010c9133e6a81109b3f886c891704ce87a9ec6782bf34d87d4c</code
+    ><br /><b>ID RIPE:</b> 227487299 · <b>Solicitudes observadas:</b> 27
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Paquete 26</th>
+        <th>Paquete 29</th>
+        <th>Paquete 32</th>
+        <th>Paquete 35</th>
+        <th>Paquete 98</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>frame.number</td>
+        <td>26</td>
+        <td>29</td>
+        <td>32</td>
+        <td>35</td>
+        <td>98</td>
+      </tr>
+      <tr>
+        <td>ip.ttl</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>2</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>ip.id</td>
+        <td>0xe15a</td>
+        <td>0xe165</td>
+        <td>0xe16b</td>
+        <td>0xe175</td>
+        <td>0xe253</td>
+      </tr>
+      <tr>
+        <td>ip.len</td>
+        <td>76</td>
+        <td>76</td>
+        <td>76</td>
+        <td>76</td>
+        <td>76</td>
+      </tr>
+      <tr>
+        <td>ip.proto</td>
+        <td>17</td>
+        <td>17</td>
+        <td>17</td>
+        <td>17</td>
+        <td>17</td>
+      </tr>
+      <tr>
+        <td>udp.srcport</td>
+        <td>20480</td>
+        <td>20480</td>
+        <td>20480</td>
+        <td>20480</td>
+        <td>20480</td>
+      </tr>
+      <tr>
+        <td>udp.dstport</td>
+        <td>33435</td>
+        <td>33435</td>
+        <td>33435</td>
+        <td>33435</td>
+        <td>33435</td>
+      </tr>
+      <tr>
+        <td>udp.checksum</td>
+        <td>0x0001</td>
+        <td>0x0002</td>
+        <td>0x0003</td>
+        <td>0x0004</td>
+        <td>0x001b</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2>Payload hexadecimal de las solicitudes</h2>
+  <p class="payload">
+    <b>Frame 26:</b>
+    <code
+      >0352687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000</code
+    >
+  </p>
+  <p class="payload">
+    <b>Frame 29:</b>
+    <code
+      >0351687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000</code
+    >
+  </p>
+  <p class="payload">
+    <b>Frame 98:</b>
+    <code
+      >0338687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000</code
+    >
+  </p>
+  <p>
+    <b>Respuestas ICMP que citan el destino:</b> 27 · Ejemplos (frame, origen,
+    tipo, código): [(&#x27;28&#x27;, &#x27;192.168.100.1&#x27;, &#x27;11&#x27;,
+    &#x27;0&#x27;), (&#x27;31&#x27;, &#x27;192.168.100.1&#x27;, &#x27;11&#x27;,
+    &#x27;0&#x27;), (&#x27;33&#x27;, &#x27;192.168.100.1&#x27;, &#x27;11&#x27;,
+    &#x27;0&#x27;)]
+  </p>
+  <p class="foot">
+    Se muestran las primeras cuatro solicitudes y la última. Los TSV y JSON
+    completos conservan todos los paquetes, encabezados citados y bytes. Esta
+    muestra no acredita estabilidad entre rondas.
+  </p>
+</html>

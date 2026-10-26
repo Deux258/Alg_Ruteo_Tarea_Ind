@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "run_id": "scamper_20261026T024548_0e900588",
+  "tool": "scamper",
+  "method": "icmp-paris",
+  "family": "trace",
+  "target": "90.150.251.81",
+  "direction": "ida",
+  "round": 1,
+  "pilot": false,
+  "packets_captured": 212,
+  "candidate_emitted_packets": 23,
+  "outbound_transport_packets": 23,
+  "outbound_nonprobe_packets": 0,
+  "reverse_capture_is_partial": false,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/scamper_20261026T024548_0e900588/manifest.json",
+  "source_manifest_sha256": "932a0991bb0ef7423d5cb3ff48d5196b49a0a310f8f7d1e213cde70dda1e0137"
+}

@@ -1,0 +1,15 @@
+[
+  {
+    "target": "200.14.48.134",
+    "tool": "scamper",
+    "family": "trace",
+    "direction": "ida",
+    "method": "udp",
+    "rounds": 1,
+    "median_unique_ips": 16,
+    "provisional": true,
+    "median_coverage": 0.7619047619047619,
+    "stability_jaccard": null,
+    "destination_observed_runs": 1
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "run_id": "scamper_20261026T013308_5b0758dd",
+  "tool": "scamper",
+  "method": "udp-sport",
+  "family": "tracelb",
+  "target": "138.204.230.242",
+  "direction": "ida",
+  "round": 1,
+  "pilot": false,
+  "packets_captured": 180,
+  "candidate_emitted_packets": 38,
+  "outbound_transport_packets": 38,
+  "outbound_nonprobe_packets": 0,
+  "reverse_capture_is_partial": false,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/scamper_20261026T013308_5b0758dd/manifest.json",
+  "source_manifest_sha256": "eb6b8a0c627e0dd9e3a66eee1a0718300bcb7df8ed2edb5c8c29969cf5796bb5"
+}

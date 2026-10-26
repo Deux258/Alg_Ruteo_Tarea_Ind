@@ -1,0 +1,14 @@
+{
+  "run_id": "scamper_20261026T013253_1404bb3d",
+  "tool": "scamper",
+  "method": "icmp-echo",
+  "family": "tracelb",
+  "target": "138.204.230.242",
+  "direction": "ida",
+  "round": 1,
+  "pilot": false,
+  "packets_captured": 88,
+  "candidate_emitted_packets": 44,
+  "reverse_capture_is_partial": false,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/scamper_20261026T013253_1404bb3d/manifest.json"
+}

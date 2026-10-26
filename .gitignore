@@ -1,0 +1,13 @@
+.env
+.venv/
+.tools/
+.state/
+__pycache__/
+*.pyc
+*.key
+probe_key*
+datos/originales/
+capturas/
+entrega/
+*.tar.gz
+config/local.json

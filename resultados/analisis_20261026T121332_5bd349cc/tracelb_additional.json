@@ -1,0 +1,173 @@
+[
+  {
+    "run_id": "scamper_20261026T013224_043262b8",
+    "target": "138.204.230.242",
+    "round": 1,
+    "method": "udp-dport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 98,
+    "reference_probes_sent": 57
+  },
+  {
+    "run_id": "scamper_20261026T013253_1404bb3d",
+    "target": "138.204.230.242",
+    "round": 1,
+    "method": "icmp-echo",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 44,
+    "reference_probes_sent": 57
+  },
+  {
+    "run_id": "scamper_20261026T013308_5b0758dd",
+    "target": "138.204.230.242",
+    "round": 1,
+    "method": "udp-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 38,
+    "reference_probes_sent": 57
+  },
+  {
+    "run_id": "scamper_20261026T013622_7586d4fa",
+    "target": "138.204.230.242",
+    "round": 1,
+    "method": "tcp-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 38,
+    "reference_probes_sent": 57
+  },
+  {
+    "run_id": "scamper_20261026T013937_21ff727f",
+    "target": "138.204.230.242",
+    "round": 1,
+    "method": "tcp-ack-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 27,
+    "reference_probes_sent": 57
+  },
+  {
+    "run_id": "scamper_20261026T015052_3f9a2fa1",
+    "target": "200.14.48.134",
+    "round": 1,
+    "method": "udp-dport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [
+      "69.79.104.1"
+    ],
+    "probes_sent": 230,
+    "reference_probes_sent": 109
+  },
+  {
+    "run_id": "scamper_20261026T015845_648d15b3",
+    "target": "200.14.48.134",
+    "round": 1,
+    "method": "icmp-echo",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 101,
+    "reference_probes_sent": 109
+  },
+  {
+    "run_id": "scamper_20261026T020138_1494c5e5",
+    "target": "200.14.48.134",
+    "round": 1,
+    "method": "udp-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 38,
+    "reference_probes_sent": 109
+  },
+  {
+    "run_id": "scamper_20261026T020453_9903bd40",
+    "target": "200.14.48.134",
+    "round": 1,
+    "method": "tcp-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 38,
+    "reference_probes_sent": 109
+  },
+  {
+    "run_id": "scamper_20261026T020808_2173dd5d",
+    "target": "200.14.48.134",
+    "round": 1,
+    "method": "tcp-ack-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 27,
+    "reference_probes_sent": 109
+  },
+  {
+    "run_id": "scamper_20261026T113602_7a50f06b",
+    "target": "90.150.251.81",
+    "round": 1,
+    "method": "icmp-echo",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 112,
+    "reference_probes_sent": 110
+  },
+  {
+    "run_id": "scamper_20261026T114128_ea432b5f",
+    "target": "90.150.251.81",
+    "round": 1,
+    "method": "udp-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 38,
+    "reference_probes_sent": 110
+  },
+  {
+    "run_id": "scamper_20261026T114959_01ea63dc",
+    "target": "90.150.251.81",
+    "round": 1,
+    "method": "udp-dport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [
+      "154.54.3.29"
+    ],
+    "probes_sent": 182,
+    "reference_probes_sent": 110
+  },
+  {
+    "run_id": "scamper_20261026T115638_93f2cbad",
+    "target": "90.150.251.81",
+    "round": 1,
+    "method": "tcp-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [],
+    "probes_sent": 38,
+    "reference_probes_sent": 110
+  },
+  {
+    "run_id": "scamper_20261026T115953_fa9fd1fd",
+    "target": "90.150.251.81",
+    "round": 1,
+    "method": "tcp-ack-sport",
+    "reference_methods": 6,
+    "complete_reference": true,
+    "additional_ips": [
+      "90.150.251.81"
+    ],
+    "probes_sent": 27,
+    "reference_probes_sent": 110
+  }
+]
