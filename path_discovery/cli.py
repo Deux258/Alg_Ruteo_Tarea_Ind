@@ -11,7 +11,7 @@ from pathlib import Path
 
 from .acquire import (fetch_ripe, init_probe, measure_ripe, measure_scamper,
                       plan_jobs, preflight)
-from .analysis import analyze, collect
+from .analysis import analyze, collect, load_dataset
 from .common import (ROOT, TRACE_METHODS, LB_METHODS, RIPE_METHODS, campaign_lock,
                      clone_sources, command, config, identifier, json_write,
                      public_ip, save_manifest, sha256, utc, verify_manifest)
@@ -172,12 +172,17 @@ def recover_ripe(name):
     return {"run_id": new.name, "status": result["status"]}
 
 
-def status():
-    rows, runs, invalid = collect()
+def status(dataset=None):
+    rows, runs, invalid = collect(dataset=dataset)
     pilots, rr, _ = collect(include_pilots=True)
     missing = []
     keys = {tuple(r[k] for k in ("round", "target", "tool", "family", "method", "direction")) for r in runs}
-    for job in plan_jobs(config()):
+    cfg = config()
+    if dataset:
+        cfg = {**cfg, "targets": load_dataset(dataset)["targets"]}
+    jobs = plan_jobs(cfg)
+    expected_keys = {tuple(job[k] for k in ("round", "target", "tool", "family", "method", "direction")) for job in jobs}
+    for job in jobs:
         if tuple(job[k] for k in ("round", "target", "tool", "family", "method", "direction")) not in keys:
             missing.append(job)
     publications = []
@@ -188,14 +193,16 @@ def status():
         if len(ids) == 2 and ids <= current_ripe_ids:
             publications.append(publication)
     return {"expected": 153, "completed": len(keys), "valid_runs": len(runs), "pilots": sum(r.get("pilot", False) for r in rr), "missing": missing, "invalid": invalid,
-            "public_graphs": publications, "scientific_results_complete": not missing and len({p["target"] for p in publications}) == 3}
+            "public_graphs": publications, "scientific_results_complete": not invalid and keys == expected_keys and len(runs) == len(expected_keys) and len({p["target"] for p in publications}) == len(cfg["targets"])}
 
 
 def build_parser():
     parser = argparse.ArgumentParser(description="Tarea Path Discovery — mediciones, originales y análisis reproducible")
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name in ("plan", "preflight", "probe-init", "sources", "status", "patterns", "report", "verify"):
+    for name in ("plan", "preflight", "probe-init", "sources", "report", "verify"):
         sub.add_parser(name)
+    for name in ("status", "patterns"):
+        sub.add_parser(name).add_argument("--dataset")
     p = sub.add_parser("pilot")
     p.add_argument("--target", default="200.14.48.134")
     p.add_argument("--tool", choices=("scamper", "ripe"), default="scamper")
@@ -215,6 +222,7 @@ def build_parser():
     p = sub.add_parser("analyze")
     p.add_argument("--online-asn", action="store_true")
     p.add_argument("--session-ip", help="Analizar explícitamente una sesión IPv4 histórica")
+    p.add_argument("--dataset", help="Selección explícita de originales aceptados dentro de config")
     p.add_argument("--include-pilots", action="store_true")
     p.add_argument("--diagnostic-pilots", action="store_true")
     sub.add_parser("publish").add_argument("cx2")
@@ -259,12 +267,12 @@ def execute(args):
         with campaign_lock():
             return recover_ripe(args.run)
     if args.cmd == "analyze":
-        folder, result = analyze(online=args.online_asn, include_pilots=args.include_pilots, diagnostic_pilots=args.diagnostic_pilots, session_ip=args.session_ip)
+        folder, result = analyze(online=args.online_asn, include_pilots=args.include_pilots, diagnostic_pilots=args.diagnostic_pilots, session_ip=args.session_ip, dataset=args.dataset)
         return {"folder": str(folder), **result}
     if args.cmd == "packet-export":
         return {"folder": str(export_packets(resolve_run(args.run)))}
     if args.cmd == "patterns":
-        return {"folder": str(patterns())}
+        return {"folder": str(patterns(dataset=args.dataset))}
     if args.cmd == "publish":
         return publish(args.cx2)
     if args.cmd == "publish-receipt":
@@ -279,7 +287,7 @@ def execute(args):
     if args.cmd == "report":
         from .report import generate_report
         return generate_report(status())
-    return status()
+    return status(dataset=getattr(args, "dataset", None))
 
 
 def main():

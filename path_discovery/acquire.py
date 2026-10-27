@@ -31,8 +31,8 @@ def probe_issues(cfg, probes):
     return issues
 
 
-def preflight():
-    cfg = config()
+def preflight(cfg=None):
+    cfg = cfg or config()
     folder = ROOT / "datos/originales" / ("preflight_" + identifier())
     folder.mkdir(parents=True)
     evidence = {"created_at": utc(), "kind": "preflight", "checks": {}, "blockers": []}
@@ -153,6 +153,10 @@ def scamper_args(cfg, family, method, dest, output):
     elif method.startswith("udp") and cfg["udp_base_port"] is not None:
         spec += ["-d", str(int(cfg["udp_base_port"]))]
     raw_options = ["-O", "rawtcp"] if cfg.get("diagnostic_raw_tcp") and method.startswith("tcp") else []
+    if cfg.get("diagnostic_icmp_rxerr"):
+        if family != "trace":
+            raise ValueError("ICMP-rxerr solo está documentado para trace")
+        raw_options += ["-O", "ICMP-rxerr"]
     return [*raw_options, "-p", str(cfg["pps"]), "-w", "1", "-O", "warts", "-o", "-" if str(output) == "-" else work_path(output), "-c", " ".join(spec), "-i", dest]
 
 
@@ -179,6 +183,13 @@ def assert_session_ip(cfg, observed):
     expected = cfg.get("session_public_ipv4")
     if expected and observed != expected:
         raise RuntimeError(f"IPv4 de sesión cambió: {observed}; esperada {expected}. No se enviaron nuevas sondas.")
+
+
+def validate_scamper_result(original, family, target):
+    if len(original) != 1 or original[0].get("type") != family or original[0].get("dst") != target:
+        raise RuntimeError("WARTS no contiene exactamente la medición pedida")
+    if original[0].get("stop_reason") == "ERROR":
+        raise RuntimeError("Scamper informó stop_reason ERROR en WARTS")
 
 
 def measure_scamper(cfg, target, family, method, round_no, *, pilot=False, kind="measurement"):
@@ -210,10 +221,9 @@ def measure_scamper(cfg, target, family, method, round_no, *, pilot=False, kind=
         result = command(tool_command("sc_warts2json", [work_path(folder / "result.warts")], cfg=cfg))
         (folder / "result.jsonl").write_text(result.stdout)
         original = [x for x in records(folder / "result.jsonl") if x.get("type") == family]
-        if len(original) != 1 or original[0].get("dst") != target["ip"]:
-            raise RuntimeError("WARTS no contiene exactamente la medición pedida")
-        meta["status"] = "completed"
+        validate_scamper_result(original, family, target["ip"])
         meta["stop_reason"] = original[0].get("stop_reason")
+        meta["status"] = "completed"
         meta["public_ipv4_after"] = public_ip()
         if meta["public_ipv4_after"] != meta["public_ipv4"]:
             meta["status"] = "invalid_public_ip_changed"

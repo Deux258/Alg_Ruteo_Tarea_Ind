@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Comprobar checksum IPv4 y TCP de las solicitudes capturadas, sin emitir tráfico."""
 from pathlib import Path
-import json, struct, sys
+import argparse, json, struct, sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from path_discovery.analysis import collect
 
@@ -17,9 +17,12 @@ def folded(data):
     return value
 
 
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--dataset")
+args = parser.parse_args()
 index = json.loads((ROOT / "resultados/exportaciones_paquetes.json").read_text())
 records = []
-accepted = {r["run_id"] for r in collect()[1]}
+accepted = {r["run_id"] for r in collect(dataset=args.dataset)[1]}
 for rid, export in index.items():
     if rid not in accepted:
         continue

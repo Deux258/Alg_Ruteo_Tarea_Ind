@@ -76,7 +76,10 @@ def main():
         original_summary=json.loads((source/'summary.json').read_text())
         shutil.copyfile(root/'config/reproduccion.json',root/'config/local.json')
         verified=offline_cli(root,'verify')
-        replay=offline_cli(root,'analyze')
+        analyze_args = ['analyze']
+        if original_summary.get('dataset_manifest'):
+            analyze_args += ['--dataset', original_summary['dataset_manifest']]
+        replay=offline_cli(root,*analyze_args)
         generated=Path(replay['folder'])
         if not generated.is_relative_to(root/'resultados'):raise ValueError('Análisis regenerado fuera de resultados')
         files=[source/name for name in ('responses.json','responses.csv','runs.json','invalid.json','rankings.json','tracelb_additional.json','selective_candidates.json','symmetry.json')]

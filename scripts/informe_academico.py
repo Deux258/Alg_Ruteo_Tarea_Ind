@@ -38,9 +38,11 @@ def main():
     additions = json.loads((analysis / "tracelb_additional.json").read_text())
     symmetry = json.loads((analysis / "symmetry.json").read_text())
     cfg = config()
+    if summary.get("targets"):
+        cfg = {**cfg, "targets": summary["targets"]}
     if cfg.get("session_public_ipv4") and any(r.get("public_ipv4") != cfg["session_public_ipv4"] for r in runs):
         raise ValueError("El análisis pertenece a otra sesión; no combinar con el entorno y las capturas actuales")
-    state = status()
+    state = status(dataset=summary.get("dataset_manifest"))
     out = ROOT / "informe/path_discovery"
     out.mkdir(parents=True, exist_ok=True)
     blocks = []
@@ -83,28 +85,10 @@ def main():
     para(
         "La presencia de 100.88.0.1 y direcciones privadas en el recorrido es compatible con NAT del operador. No se verificó la dirección WAN del router y no se confirma CGNAT. La falta de respuesta inversa no permite atribuir una causa por sí sola."
     )
-    table(
-        ["Caso", "IP del enunciado / sonda", "IP activa / sonda"],
-        [
-            ["Valparaíso", "138.204.228.2 / 31416", "138.204.230.242 / 6652"],
-            ["Habana", "200.14.48.134 / 12734", "200.14.48.134 / 12734"],
-            [
-                "Rusia",
-                "37.79.153.66 / 870",
-                next(t["ip"] for t in cfg["targets"] if t["probe_id"] == 870)
-                + " / 870",
-            ],
-        ],
-    )
-    para(
-        "El estudiante autorizó reemplazar 31416, cuyo estado público es Abandoned desde 2025-12-14. Se eligió 6652, conectada y del mismo AS61506, con ubicación declarada en Valparaíso a aproximadamente 0,29 km de la original. Cambia el extremo y el prefijo; no se afirma que sean el mismo equipo o edificio. No se atribuye esta decisión al docente ni se interpreta la indisponibilidad como un fallo de RIPE o del ISP."
-    )
-    para(
-        "Para Rusia se autorizó actualizar la IPv4 de la misma sonda 870. La API se consulta antes de medir para evitar pares incoherentes. Los cambios están documentados en docs/CAMBIOS_DESTINOS.md y la configuración original permanece en config/campana_enunciado.json."
-    )
-    para(
-        "Se trabajan tres destinos, conforme a la tabla del enunciado. Las menciones a cuatro IP y al punto 4 como origen de los pares se interpretan como errores de edición. Las motivaciones sobre velocidad y censura no son hipótesis demostradas por estos traceroutes."
-    )
+    table(["Destino", "IPv4", "Sonda RIPE Atlas"],
+          [[t["label"], t["ip"], t["probe_id"]] for t in cfg["targets"]])
+    para("Se aplican los destinos del enunciado actualizado. Las mediciones anteriores para 90.150.251.81 / 870 se conservan como antecedente histórico, fuera de la selección vigente. Las mediciones de Valparaíso y Habana se reutilizan con manifiestos verificados; Rusia se mide para 37.79.226.46 / 3959.")
+    para("Las rondas rusas se realizaron en una campaña posterior a las de los otros dos destinos; la comparación temporal debe interpretarse dentro de cada destino y no como una instantánea simultánea de todos ellos.")
     gui_review = ROOT / "resultados/revision_wireshark_gui.json"
     if gui_review.exists():
         reviewed = json.loads(gui_review.read_text())
@@ -130,7 +114,7 @@ def main():
         "Scamper 20260902 se construyó con verificación SHA-256. Las herramientas y la sonda se gestionan con Docker Compose; la imagen de la sonda está fijada por digest, con red del host e identidad persistente. La sonda local es 1018487. Se habilitaron créditos y una API key de permiso limitado, almacenada fuera de Git y de la entrega."
     )
     para(
-        "La validación del piloto incluyó WARTS, JSON, PCAPNG, puertos, citas ICMP y correlación temporal. La inspección reproducible se realizó con TShark, componente de Wireshark; no se declaró revisión de su interfaz gráfica. Se conservan los intentos fallidos e inválidos y no cuentan como campaña."
+        "La validación del piloto incluyó WARTS, JSON, PCAPNG, puertos, citas ICMP y correlación temporal. La inspección reproducible se realizó con TShark y se complementó con capturas de la interfaz gráfica de Wireshark, vinculadas a ejecuciones seleccionadas. Se conservan los intentos fallidos e inválidos y no cuentan como campaña."
     )
     for round_no in range(1, 4):
         group = [r for r in runs if r["round"] == round_no]
@@ -402,12 +386,15 @@ def main():
     para(
         f"Candidatos de respuesta selectiva detectados: {len(candidates)}. La ausencia de una IP en un método no demuestra una regla de firewall: puede deberse a carga, balanceo, pérdida o rutas diferentes. Se requiere corroboración entre rondas y pruebas dirigidas acotadas para cada herramienta."
     )
-    validation = ROOT / "resultados/respuesta_selectiva_validacion.json"
+    validation = ROOT / ("resultados/respuesta_selectiva_revision.json" if summary.get("dataset_id") and (ROOT / "resultados/respuesta_selectiva_revision.json").exists() else "resultados/respuesta_selectiva_validacion.json")
     if validation.exists():
         validation_result = json.loads(validation.read_text())
         for case in validation_result.get("cases", []):
             heading("Corroboración adicional - " + case["tool"])
             candidate = case.get("candidate")
+            if candidate and not set(candidate.get("evidence_runs", [])) <= {r["run_id"] for r in runs}:
+                para("El candidato histórico no pertenece íntegramente a la selección vigente; requiere una nueva corroboración.")
+                continue
             if not candidate:
                 para(case.get("limitation", "Sin caso reproducible disponible."))
                 continue
@@ -571,6 +558,22 @@ def main():
         image_index.get(str(p.relative_to(ROOT)), {}).get("superseded_progress_snapshot") or
         image_index.get(str(p.relative_to(ROOT)), {}).get("session_public_ipv4") not in (None, session_ip)
     )]
+    if summary.get("dataset_id"):
+        # Evitar capturas históricas del antiguo destino ruso o del progreso del conjunto anterior.
+        current_ids = {str(r["measurement_id"]) for r in runs if r.get("measurement_id")}
+        accepted = {r["run_id"] for r in runs}
+        review_data = json.loads(gui_review.read_text()) if gui_review.exists() else {}
+        current_gui = {entry.get("screenshot") for entry in review_data.get("reviewed_runs", []) if entry.get("run_id") in accepted}
+        def current_image(path):
+            name = path.name.lower()
+            if name.startswith("campana_"):
+                return False
+            if name.startswith("wireshark_"):
+                return str(path.relative_to(ROOT)) in current_gui
+            if name.startswith("ripe_"):
+                return any(mid in name for mid in current_ids)
+            return True
+        images = [p for p in images if current_image(p)]
     gui_available = any(p.name.startswith("wireshark_") for p in images)
     for image in images:
         if image.stem in ("ndex_acceso_inicial", "propuesta_api_key"):

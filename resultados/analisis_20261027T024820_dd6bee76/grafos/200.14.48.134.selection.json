@@ -1,0 +1,12 @@
+{
+  "ids": [
+    227953132,
+    227953345
+  ],
+  "runs": [
+    "ripe_20261026T233005_446893c5",
+    "ripe_20261026T233134_79caaea9"
+  ],
+  "criterion": "max IP union; min gaps; min temporal distance",
+  "target": "200.14.48.134"
+}

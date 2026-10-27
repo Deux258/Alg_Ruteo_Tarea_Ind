@@ -179,6 +179,35 @@ class SessionTests(unittest.TestCase):
                 self.assertEqual([r["run_id"] for r in collect(session_ip="1.1.1.1")[1]], ["old"])
 
 
+class SelectedDatasetTests(unittest.TestCase):
+    def test_explicit_selection_reuses_only_named_originals_and_detects_tampering(self):
+        from path_discovery.analysis import collect
+        from path_discovery.common import json_write
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);(root/"config").mkdir()
+            for name in ("kept", "old_russia"):
+                folder=root/"datos/originales"/name;folder.mkdir(parents=True)
+                json_write(folder/"metadata.json", {"kind":"measurement","tool":"scamper","family":"trace","method":"udp","round":1,"direction":"ida","target":"8.8.8.8","destination":"8.8.8.8","public_ipv4":"1.1.1.1","status":"completed"})
+                json_write(folder/"result.jsonl", {"type":"trace","dst":"8.8.8.8","hop_count":1,"probe_count":1,"hops":[{"probe_ttl":1,"addr":"8.8.8.8"}]})
+                save_manifest(folder,{})
+            selected=root/"datos/originales/kept/manifest.json"
+            json_write(root/"config/selection.json", {"schema_version":1,"dataset_id":"test","accepted_runs":[{"run_id":"kept","manifest_sha256":sha256(selected)}]})
+            with patch("path_discovery.analysis.ROOT",root), patch("path_discovery.analysis.config",return_value={"session_public_ipv4":"9.9.9.9"}):
+                rows,runs,invalid=collect(dataset="config/selection.json")
+                self.assertEqual([r["run_id"] for r in runs],["kept"]);self.assertFalse(invalid)
+                selected.write_text(selected.read_text()+" ")
+                _, tampered_runs, tampered_invalid = collect(dataset="config/selection.json")
+                self.assertTrue(tampered_invalid)
+                self.assertFalse(tampered_runs)
+
+    def test_duplicate_selected_run_is_rejected(self):
+        from path_discovery.analysis import load_dataset
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);(root/"config").mkdir();p=root/"config/selection.json"
+            p.write_text(json.dumps({"schema_version":1,"dataset_id":"test","accepted_runs":[{"run_id":"a"},{"run_id":"a"}]}))
+            with patch("path_discovery.analysis.ROOT",root), self.assertRaises(ValueError):load_dataset(p)
+
+
 class DeliverySessionTests(unittest.TestCase):
     def test_historical_gui_methods_do_not_satisfy_current_review(self):
         from path_discovery.delivery import delivery_checks
@@ -324,3 +353,11 @@ class GraphGapEvidenceTests(unittest.TestCase):
         gap_edges=[e for e in graph['edges'] if kinds[e['s']]!='ip_interface' or kinds[e['t']]!='ip_interface']
         self.assertEqual(len(gap_edges),2)
         self.assertTrue(all(e['v']['evidence']=='hop_layer_order_only' for e in gap_edges))
+
+
+class ScamperResultValidationTests(unittest.TestCase):
+    def test_warts_error_is_not_valid_even_when_process_exit_is_zero(self):
+        from path_discovery.acquire import validate_scamper_result
+        with self.assertRaisesRegex(RuntimeError, "stop_reason ERROR"):
+            validate_scamper_result([{"type":"trace", "dst":"8.8.8.8", "stop_reason":"ERROR"}], "trace", "8.8.8.8")
+        validate_scamper_result([{"type":"trace", "dst":"8.8.8.8", "stop_reason":"GAPLIMIT"}], "trace", "8.8.8.8")

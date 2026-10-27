@@ -119,13 +119,46 @@ def excluded_runs():
     return excluded
 
 
-def collect(*, include_pilots=False, diagnostic_pilots=False, session_ip=None):
+def load_dataset(dataset):
+    path = Path(dataset)
+    if not path.is_absolute():
+        path = ROOT / path
+    path = path.resolve()
+    if not path.is_relative_to((ROOT / "config").resolve()) or not path.is_file():
+        raise ValueError("La selección debe ser un archivo dentro de config")
+    value = json.loads(path.read_text())
+    if value.get("schema_version") != 1 or not value.get("dataset_id"):
+        raise ValueError("Selección de evidencia inválida")
+    entries = value.get("accepted_runs", [])
+    ids = [e.get("run_id") for e in entries]
+    if not all(isinstance(x, str) and x and Path(x).name == x for x in ids) or len(ids) != len(set(ids)):
+        raise ValueError("IDs duplicados o inválidos en la selección")
+    return value
+
+
+def collect(*, include_pilots=False, diagnostic_pilots=False, session_ip=None, dataset=None):
     rows, runs, invalid = [], [], []
-    session_ip = session_ip or config().get("session_public_ipv4")
+    selection = load_dataset(dataset) if dataset else None
+    selected = {e["run_id"]: e["manifest_sha256"] for e in selection["accepted_runs"]} if selection else None
+    if selection and (include_pilots or diagnostic_pilots):
+        raise ValueError("La selección académica no incluye pilotos")
+    session_ip = session_ip or (None if selection else config().get("session_public_ipv4"))
     excluded = excluded_runs()
     export_index = ROOT / "resultados/exportaciones_paquetes.json"
     exports = json.loads(export_index.read_text()) if export_index.exists() else {}
+    if selected is not None:
+        for name, digest in selected.items():
+            folder = ROOT / "datos/originales" / name
+            if (not folder.is_dir() or not (folder / "manifest.json").is_file()
+                    or not (folder / "metadata.json").is_file() or sha256(folder / "manifest.json") != digest
+                    or name in excluded):
+                invalid.append({"run_id": name, "reason": "original seleccionado ausente, excluido o manifiesto distinto"})
+    rejected = {entry["run_id"] for entry in invalid}
     for folder in sorted((ROOT / "datos/originales").glob("*")):
+        if folder.name in rejected:
+            continue
+        if selected is not None and folder.name not in selected:
+            continue
         if folder.name in excluded:
             continue
         if not (folder / "metadata.json").exists():
@@ -230,8 +263,8 @@ def hop_cells(rows):
     return {ttl: "; ".join(sorted(values)) for ttl, values in hops.items()}
 
 
-def tables(rows, runs, out):
-    for target in config()["targets"]:
+def tables(rows, runs, out, *, targets=None):
+    for target in (targets if targets is not None else config()["targets"]):
         dest = target["ip"]
         for round_no in range(1, 4):
             rr = [r for r in rows if r["target"] == dest and r["round"] == round_no]
@@ -422,6 +455,7 @@ def cx2_graph(pair, rows):
             {"networkAttributes": [{"name": "Path Discovery " + a["target"], "description": description}]},
             {"nodes": nodes}, {"edges": edges},
             {"visualProperties": [{"default": {
+                "network": {"NETWORK_BACKGROUND_COLOR": "#FFFFFF"},
                 "node": {"NODE_WIDTH": 135, "NODE_HEIGHT": 44, "NODE_SHAPE": "round-rectangle", "NODE_BACKGROUND_COLOR": "#DCEEF2", "NODE_BORDER_COLOR": "#173D5C", "NODE_BORDER_WIDTH": 1.2, "NODE_LABEL_COLOR": "#173D5C", "NODE_LABEL_FONT_SIZE": 10},
                 "edge": {"EDGE_WIDTH": 2.0, "EDGE_LINE_COLOR": "#137C82", "EDGE_TARGET_ARROW_SHAPE": "triangle", "EDGE_TARGET_ARROW_COLOR": "#137C82", "EDGE_CURVE_STYLE": "bezier"}},
                 "nodeMapping": {"NODE_LABEL": {"type": "PASSTHROUGH", "definition": {"attribute": "label"}}, "NODE_BACKGROUND_COLOR": {"type": "DISCRETE", "definition": {"attribute": "kind", "map": [{"v": "ip_interface", "vp": "#DCEEF2"}, {"v": "gap", "vp": "#E5E7EB"}, {"v": "ambiguous_hop", "vp": "#FDE6AD"}]}}},
@@ -430,8 +464,9 @@ def cx2_graph(pair, rows):
             {"status": [{"success": True}]}]
 
 
-def analyze(*, online=False, include_pilots=False, diagnostic_pilots=False, session_ip=None):
-    rows, runs, invalid = collect(include_pilots=include_pilots or diagnostic_pilots, diagnostic_pilots=diagnostic_pilots, session_ip=session_ip)
+def analyze(*, online=False, include_pilots=False, diagnostic_pilots=False, session_ip=None, dataset=None):
+    selection = load_dataset(dataset) if dataset else None
+    rows, runs, invalid = collect(include_pilots=include_pilots or diagnostic_pilots, diagnostic_pilots=diagnostic_pilots, session_ip=session_ip, dataset=dataset)
     cells = defaultdict(list)
     for r in runs:
         cells[tuple(r[k] for k in ("tool", "family", "method", "round", "direction", "target"))].append(r["run_id"])
@@ -449,7 +484,7 @@ def analyze(*, online=False, include_pilots=False, diagnostic_pilots=False, sess
     json_write(out / "tracelb_additional.json", additional_ips(runs))
     json_write(out / "selective_candidates.json", selective_candidates(rows, runs))
     json_write(out / "symmetry.json", symmetry(rows, runs))
-    tables(rows, runs, out / "tablas")
+    tables(rows, runs, out / "tablas", targets=selection["targets"] if selection else None)
     pairs = choose_pairs(runs)
     for target, pair in pairs.items():
         json_write(out / "grafos" / f"{target}.cx2.json", cx2_graph(pair, rows))
@@ -457,6 +492,16 @@ def analyze(*, online=False, include_pilots=False, diagnostic_pilots=False, sess
     summary = {"session_public_ipv4": session_ip or config().get("session_public_ipv4"), "created_at": utc(), "valid_measurements": sum(r.get("status") == "completed" and not r.get("pilot") for r in runs), "processed_runs": len(runs), "expected": 153,
                "includes_pilots": include_pilots or diagnostic_pilots, "diagnostic_pilots": diagnostic_pilots, "invalid": invalid, "graphs": list(pairs), "excluded_runs": sorted(excluded_runs()),
                "complete_campaign": len(runs) == 153 and not include_pilots and not diagnostic_pilots and not invalid}
+    if selection:
+        from .acquire import plan_jobs
+        expected_cfg = {**config(), "targets": selection["targets"]}
+        expected = {tuple(j[k] for k in ("tool", "family", "method", "round", "direction", "target")) for j in plan_jobs(expected_cfg)}
+        observed = set(cells)
+        summary.update(dataset_id=selection["dataset_id"], dataset_manifest=str(Path(dataset).relative_to(ROOT)) if Path(dataset).is_absolute() else str(dataset),
+                       dataset_manifest_sha256=sha256(Path(dataset) if Path(dataset).is_absolute() else ROOT / dataset), targets=selection["targets"],
+                       missing_cells=len(expected - observed), unexpected_cells=len(observed - expected),
+                       complete_campaign=(observed == expected and not invalid and len(runs) == len(expected)))
+        json_write(out / "dataset.json", selection)
     json_write(out / "summary.json", summary)
     save_manifest(out, {"kind": "analysis", **summary})
     return out, summary

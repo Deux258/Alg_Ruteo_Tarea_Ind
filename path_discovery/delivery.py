@@ -127,12 +127,19 @@ def delivery_checks(analysis):
         shot = (ROOT / entry.get("screenshot", "")).resolve()
         if entry.get("method") == expected_method and capture.exists() and entry.get("sha256") == sha256(capture) and shot.is_relative_to(ROOT / "capturas") and shot.is_file() and entry.get("screenshot_sha256") == sha256(shot):
             reviewed_methods.add(expected_method)
-    selective_path = ROOT / "resultados/respuesta_selectiva_validacion.json"
+    selective_path = ROOT / ("resultados/respuesta_selectiva_revision.json" if summary.get("dataset_id") and (ROOT / "resultados/respuesta_selectiva_revision.json").exists() else "resultados/respuesta_selectiva_validacion.json")
     selective = json.loads(selective_path.read_text()) if selective_path.exists() else {}
+    valid_selective = set()
+    for case in selective.get("cases", []):
+        candidate = case.get("candidate") or {}
+        evidence = candidate.get("evidence_runs", [])
+        if (case.get("status") == "corroborated_observation" and evidence
+                and set(evidence) <= set(current_runs)):
+            valid_selective.add(case.get("tool"))
     report_path = ROOT / "informe/path_discovery/fuentes.json"
     report = json.loads(report_path.read_text()) if report_path.exists() else {}
     report_current = report.get("analysis") == str(analysis.resolve()) and report.get("campaign_status", {}).get("completed") == 153 and len({p.get("target") for p in report.get("campaign_status", {}).get("public_graphs", [])}) == 3
-    return {"campaign_153_complete": bool(summary.get("complete_campaign")), "three_current_graphs_public": len(graph_targets) == 3 and published == graph_targets, "fourteen_gui_methods_reviewed": expected_methods <= reviewed_methods, "selective_cases_corroborated": bool(selective.get("requirements_corroborated")), "report_uses_current_complete_evidence": report_current and (ROOT / "informe/path_discovery/informe.pdf").exists()}
+    return {"campaign_153_complete": bool(summary.get("complete_campaign")), "three_current_graphs_public": len(graph_targets) == 3 and published == graph_targets, "fourteen_gui_methods_reviewed": expected_methods <= reviewed_methods, "selective_cases_corroborated": {"scamper", "ripe"} <= valid_selective, "report_uses_current_complete_evidence": report_current and (ROOT / "informe/path_discovery/informe.pdf").exists()}
 
 
 def bundle(analysis):
@@ -142,9 +149,9 @@ def bundle(analysis):
     verify_manifest(analysis)
     folder = ROOT / "entrega" / identifier()
     folder.mkdir(parents=True)
-    roots = [ROOT / p for p in ("path_discovery", "config/campana.json", "config/campana_enunciado.json", "config/exclusiones_calidad.json", "config/reproduccion.json", "config/wireshark-image.env.example", "scripts", "docs", "informe", "tests", "docker", "compose.yaml", "compose.wireshark.yaml", "README.md", "main", "pyproject.toml", ".env.example")]
+    roots = [ROOT / p for p in ("path_discovery", "config/campana.json", "config/campana_enunciado.json", "config/exclusiones_calidad.json", "config/reproduccion.json", "config/seleccion_revision.json", "config/wireshark-image.env.example", "scripts", "docs", "informe", "tests", "docker", "compose.yaml", "compose.wireshark.yaml", "README.md", "main", "pyproject.toml", ".env.example")]
     roots += [analysis, ROOT / "datos/originales", ROOT / "grafos", ROOT / "capturas", ROOT / "resultados/paquetes", ROOT / "resultados/registro_ripe_1018487"]
-    roots += [ROOT / "resultados" / p for p in ("preflight_campana.json", "revision_wireshark_gui.json", "correlacion_tcp_captura.json", "estructura_payload.json", "checksums_tcp.json", "diagnostico_recepcion_tcp.json", "exportaciones_paquetes.json", "respuesta_selectiva_validacion.json", "fichas_paquetes/index.json", "revision_familias.json", "revision_pdf_sesion_activa.json", "revision_vuelta_domicilio.json")]
+    roots += [ROOT / "resultados" / p for p in ("preflight_campana.json", "revision_wireshark_gui.json", "correlacion_tcp_captura.json", "estructura_payload.json", "auditoria_patrones_revision.json", "checksums_tcp.json", "diagnostico_recepcion_tcp.json", "diagnostico_tcp_rxerr_revision.json", "exportaciones_paquetes.json", "respuesta_selectiva_validacion.json", "respuesta_selectiva_revision.json", "fichas_paquetes/index.json", "revision_familias.json", "revision_pdf_sesion_activa.json", "revision_vuelta_domicilio.json")]
     roots += sorted((ROOT / "resultados").glob("reproduccion_ronda_*.json"))
     roots += sorted((ROOT / "resultados/fichas_paquetes").glob("progreso*.html"))
     roots += sorted((ROOT / "resultados").glob("revision_piloto_*"))

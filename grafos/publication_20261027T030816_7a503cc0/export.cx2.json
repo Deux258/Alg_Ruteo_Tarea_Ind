@@ -1,0 +1,570 @@
+[
+  {
+    "CXVersion": "2.0",
+    "hasFragments": false
+  },
+  {
+    "metaData": [
+      {
+        "name": "nodes",
+        "elementCount": 16
+      },
+      {
+        "name": "networkAttributes",
+        "elementCount": 1
+      },
+      {
+        "name": "attributeDeclarations",
+        "elementCount": 1
+      },
+      {
+        "name": "edges",
+        "elementCount": 16
+      },
+      {
+        "name": "visualProperties",
+        "elementCount": 1
+      },
+      {
+        "name": "visualEditorProperties",
+        "elementCount": 1
+      }
+    ]
+  },
+  {
+    "attributeDeclarations": [
+      {
+        "nodes": {
+          "name": {
+            "d": "string"
+          },
+          "label": {
+            "d": "string"
+          },
+          "kind": {
+            "d": "string"
+          },
+          "asns": {
+            "d": "string"
+          },
+          "ttl": {
+            "d": "integer"
+          }
+        },
+        "networkAttributes": {
+          "name": {
+            "d": "string"
+          },
+          "description": {
+            "d": "string"
+          }
+        },
+        "edges": {
+          "direction": {
+            "d": "string"
+          },
+          "protocol": {
+            "d": "string"
+          },
+          "ttl": {
+            "d": "integer"
+          },
+          "measurement_id": {
+            "d": "string"
+          },
+          "evidence": {
+            "d": "string"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "networkAttributes": [
+      {
+        "name": "Path Discovery 138.204.230.242",
+        "description": "Path Discovery 138.204.230.242. Ida msm_id=227979504; vuelta msm_id=227979545. ICMP, ronda 3. Ida azul/verde; vuelta naranja; flechas indican sentido. Huecos grises y capas ambiguas amarillas. Adyacencias inferidas; IPs no equivalen necesariamente a routers; huecos y saltos ambiguos explícitos. TTL no consecutivos sin enlace entre sí."
+      }
+    ]
+  },
+  {
+    "nodes": [
+      {
+        "id": 0,
+        "x": 0.0,
+        "y": 0.0,
+        "v": {
+          "name": "192.168.100.7",
+          "label": "192.168.100.7\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 1,
+        "x": 160.0,
+        "y": 0.0,
+        "v": {
+          "name": "192.168.100.1",
+          "label": "192.168.100.1\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 2,
+        "x": 320.0,
+        "y": 0.0,
+        "v": {
+          "name": "100.88.0.1",
+          "label": "100.88.0.1\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 3,
+        "x": 480.0,
+        "y": 0.0,
+        "v": {
+          "name": "10.87.0.2",
+          "label": "10.87.0.2\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 4,
+        "x": 640.0,
+        "y": 0.0,
+        "v": {
+          "name": "10.87.0.46",
+          "label": "10.87.0.46\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 5,
+        "x": 800.0,
+        "y": 0.0,
+        "v": {
+          "name": "45.68.16.129",
+          "label": "45.68.16.129\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 6,
+        "x": 960.0,
+        "y": 0.0,
+        "v": {
+          "name": "10.100.154.1",
+          "label": "10.100.154.1\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 7,
+        "x": 1120.0,
+        "y": 0.0,
+        "v": {
+          "name": "138.204.228.164",
+          "label": "138.204.228.164\nAS61506",
+          "kind": "ip_interface",
+          "asns": "61506"
+        }
+      },
+      {
+        "id": 8,
+        "x": 1280.0,
+        "y": 0.0,
+        "v": {
+          "name": "138.204.228.162",
+          "label": "138.204.228.162\nAS61506",
+          "kind": "ip_interface",
+          "asns": "61506"
+        }
+      },
+      {
+        "id": 9,
+        "x": 1440.0,
+        "y": 0.0,
+        "v": {
+          "name": "138.204.230.242",
+          "label": "138.204.230.242\nAS61506",
+          "kind": "ip_interface",
+          "asns": "61506"
+        }
+      },
+      {
+        "id": 10,
+        "x": 1280.0,
+        "y": 230.0,
+        "v": {
+          "name": "138.204.230.193",
+          "label": "138.204.230.193\nAS61506",
+          "kind": "ip_interface",
+          "asns": "61506"
+        }
+      },
+      {
+        "id": 11,
+        "x": 960.0,
+        "y": 230.0,
+        "v": {
+          "name": "10.100.163.1",
+          "label": "10.100.163.1\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 12,
+        "x": 800.0,
+        "y": 230.0,
+        "v": {
+          "name": "10.100.154.2",
+          "label": "10.100.154.2\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 13,
+        "x": 640.0,
+        "y": 230.0,
+        "v": {
+          "name": "45.68.16.231",
+          "label": "45.68.16.231\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 14,
+        "x": 480.0,
+        "y": 230.0,
+        "v": {
+          "name": "192.168.113.5",
+          "label": "192.168.113.5\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 15,
+        "x": 320.0,
+        "y": 230.0,
+        "v": {
+          "name": "186.189.89.115",
+          "label": "186.189.89.115\nAS52341",
+          "kind": "ip_interface",
+          "asns": "52341"
+        }
+      }
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": 0,
+        "s": 0,
+        "t": 1,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 1,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 1,
+        "s": 1,
+        "t": 2,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 2,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 2,
+        "s": 2,
+        "t": 3,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 3,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 3,
+        "s": 3,
+        "t": 4,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 4,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 4,
+        "s": 4,
+        "t": 5,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 5,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 5,
+        "s": 5,
+        "t": 6,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 6,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 6,
+        "s": 6,
+        "t": 7,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 7,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 7,
+        "s": 7,
+        "t": 8,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 8,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 8,
+        "s": 8,
+        "t": 9,
+        "v": {
+          "direction": "ida",
+          "protocol": "ICMP",
+          "ttl": 9,
+          "measurement_id": "227979504",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 9,
+        "s": 9,
+        "t": 10,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "ICMP",
+          "ttl": 1,
+          "measurement_id": "227979545",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 10,
+        "s": 10,
+        "t": 7,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "ICMP",
+          "ttl": 2,
+          "measurement_id": "227979545",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 11,
+        "s": 7,
+        "t": 11,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "ICMP",
+          "ttl": 3,
+          "measurement_id": "227979545",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 12,
+        "s": 11,
+        "t": 12,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "ICMP",
+          "ttl": 4,
+          "measurement_id": "227979545",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 13,
+        "s": 12,
+        "t": 13,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "ICMP",
+          "ttl": 5,
+          "measurement_id": "227979545",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 14,
+        "s": 13,
+        "t": 14,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "ICMP",
+          "ttl": 6,
+          "measurement_id": "227979545",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 15,
+        "s": 14,
+        "t": 15,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "ICMP",
+          "ttl": 7,
+          "measurement_id": "227979545",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      }
+    ]
+  },
+  {
+    "visualProperties": [
+      {
+        "default": {
+          "edge": {
+            "EDGE_TARGET_ARROW_SHAPE": "triangle",
+            "EDGE_CURVE_STYLE": "bezier",
+            "EDGE_WIDTH": 2,
+            "EDGE_LINE_COLOR": "#137C82",
+            "EDGE_TARGET_ARROW_COLOR": "#137C82"
+          },
+          "network": {
+            "NETWORK_BACKGROUND_COLOR": "#FFFFFF"
+          },
+          "node": {
+            "NODE_BORDER_WIDTH": 1.2,
+            "NODE_LABEL_COLOR": "#173D5C",
+            "NODE_BORDER_COLOR": "#173D5C",
+            "NODE_HEIGHT": 44,
+            "NODE_SHAPE": "round-rectangle",
+            "NODE_BACKGROUND_COLOR": "#DCEEF2",
+            "NODE_LABEL_FONT_SIZE": 10,
+            "NODE_WIDTH": 135
+          }
+        },
+        "edgeMapping": {
+          "EDGE_LINE_COLOR": {
+            "type": "DISCRETE",
+            "definition": {
+              "map": [
+                {
+                  "v": "ida",
+                  "vp": "#137C82"
+                },
+                {
+                  "v": "vuelta",
+                  "vp": "#CC641D"
+                }
+              ],
+              "attribute": "direction"
+            }
+          },
+          "EDGE_TARGET_ARROW_COLOR": {
+            "type": "DISCRETE",
+            "definition": {
+              "map": [
+                {
+                  "v": "ida",
+                  "vp": "#137C82"
+                },
+                {
+                  "v": "vuelta",
+                  "vp": "#CC641D"
+                }
+              ],
+              "attribute": "direction"
+            }
+          }
+        },
+        "nodeMapping": {
+          "NODE_LABEL": {
+            "type": "PASSTHROUGH",
+            "definition": {
+              "attribute": "label"
+            }
+          },
+          "NODE_BACKGROUND_COLOR": {
+            "type": "DISCRETE",
+            "definition": {
+              "map": [
+                {
+                  "v": "ip_interface",
+                  "vp": "#DCEEF2"
+                },
+                {
+                  "v": "gap",
+                  "vp": "#E5E7EB"
+                },
+                {
+                  "v": "ambiguous_hop",
+                  "vp": "#FDE6AD"
+                }
+              ],
+              "attribute": "kind"
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "visualEditorProperties": [
+      {
+        "properties": {}
+      }
+    ]
+  },
+  {
+    "status": [
+      {
+        "success": true
+      }
+    ]
+  }
+]

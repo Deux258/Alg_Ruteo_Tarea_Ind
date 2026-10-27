@@ -14,8 +14,12 @@ from path_discovery.common import (
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset")
+    args = parser.parse_args()
     from path_discovery.analysis import collect
-    accepted = {r["run_id"]: r for r in collect()[1]}
+    accepted = {r["run_id"]: r for r in collect(dataset=args.dataset)[1]}
     index = json.loads((ROOT / "resultados/exportaciones_paquetes.json").read_text())
     reviews = []
     for rid, export_rel in index.items():

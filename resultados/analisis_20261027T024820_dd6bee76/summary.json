@@ -1,0 +1,41 @@
+{
+  "session_public_ipv4": "186.189.89.115",
+  "created_at": "2026-10-27T02:48:20.975962+00:00",
+  "valid_measurements": 102,
+  "processed_runs": 102,
+  "expected": 153,
+  "includes_pilots": false,
+  "diagnostic_pilots": false,
+  "invalid": [],
+  "graphs": [
+    "138.204.230.242",
+    "200.14.48.134"
+  ],
+  "excluded_runs": [
+    "scamper_20261026T004306_ac2c6641",
+    "scamper_20261026T024854_fb1d5630"
+  ],
+  "complete_campaign": false,
+  "dataset_id": "rubrica_20261026_revision1",
+  "dataset_manifest": "config/seleccion_revision.json",
+  "dataset_manifest_sha256": "4b013046ae2cc63c7f4c4c4b537926abe1f0a801baf598b7330c3125efb0c1f1",
+  "targets": [
+    {
+      "ip": "138.204.230.242",
+      "probe_id": 6652,
+      "label": "Valparaiso"
+    },
+    {
+      "ip": "200.14.48.134",
+      "probe_id": 12734,
+      "label": "Habana"
+    },
+    {
+      "ip": "37.79.226.46",
+      "probe_id": 3959,
+      "label": "Rusia"
+    }
+  ],
+  "missing_cells": 51,
+  "unexpected_cells": 0
+}

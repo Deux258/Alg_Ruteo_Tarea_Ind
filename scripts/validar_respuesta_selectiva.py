@@ -17,7 +17,7 @@ from path_discovery.common import (
     sha256,
     utc,
 )
-from path_discovery.analysis import collect, normalize_trace, normalize_ripe
+from path_discovery.analysis import collect, load_dataset, normalize_trace, normalize_ripe
 from path_discovery.acquire import measure_scamper, measure_ripe
 from path_discovery.packets import export_packets
 
@@ -99,21 +99,28 @@ def candidates(rows, runs, tool):
 
 
 def main():
-    output = ROOT / "resultados/respuesta_selectiva_validacion.json"
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset")
+    args = parser.parse_args()
+    selection = load_dataset(args.dataset) if args.dataset else None
+    output = ROOT / ("resultados/respuesta_selectiva_revision.json" if selection else "resultados/respuesta_selectiva_validacion.json")
     if output.exists():
         print("Validación ya conservada; no se repite.")
         return
-    if any(json.loads(p.read_text()).get("session_id") == config().get("session_id") for p in (ROOT / "datos/originales").glob("validacion_selectiva_*/intent.json")):
+    if any((lambda intent: intent.get("session_id") == config().get("session_id") and intent.get("dataset_id") == (selection.get("dataset_id") if selection else None))(json.loads(p.read_text())) for p in (ROOT / "datos/originales").glob("validacion_selectiva_*/intent.json")):
         raise RuntimeError(
             "Hay validación iniciada sin cierre; revisar antes de repetir cualquier POST."
         )
-    rows, runs, invalid = collect()
+    rows, runs, invalid = collect(dataset=args.dataset)
     if len(runs) != 153 or invalid:
         raise RuntimeError(
             "Completar y validar las 153 ejecuciones principales antes de estas pruebas adicionales."
         )
     load_credentials()
     cfg = config()
+    if selection:
+        cfg = {**cfg, "targets": selection["targets"]}
     folder = ROOT / "datos/originales" / ("validacion_selectiva_" + identifier())
     folder.mkdir()
     chosen = {t: (candidates(rows, runs, t) or [None])[0] for t in ("scamper", "ripe")}
@@ -121,6 +128,7 @@ def main():
         folder / "intent.json",
         {
             "session_id": cfg.get("session_id"),
+            "dataset_id": selection.get("dataset_id") if selection else None,
             "started_at": utc(),
             "selected": chosen,
             "maximum_additional_runs": 8,
@@ -199,6 +207,7 @@ def main():
             )
     result = {
         "session_id": cfg.get("session_id"),
+        "dataset_id": selection.get("dataset_id") if selection else None,
         "session_public_ipv4": cfg.get("session_public_ipv4"),
         "performed_at": utc(),
         "evidence": str(folder.relative_to(ROOT)),

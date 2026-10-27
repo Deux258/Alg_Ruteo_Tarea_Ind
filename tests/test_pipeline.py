@@ -281,6 +281,7 @@ class AnalysisTests(unittest.TestCase):
         self.assertEqual(sum(n["v"]["kind"] == "ambiguous_hop" for n in cx["nodes"]), 1)
         self.assertEqual(sum(n["v"]["kind"] == "gap" for n in cx["nodes"]), 1)
         self.assertEqual(len(cx["edges"]), 3)
+        self.assertEqual(cx["visualProperties"][0]["default"]["network"]["NETWORK_BACKGROUND_COLOR"], "#FFFFFF")
         self.assertIn("123", cx["networkAttributes"][0]["description"])
         self.assertIn("124", cx["networkAttributes"][0]["description"])
 

@@ -86,8 +86,12 @@ def structure(rows):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset")
+    args = parser.parse_args()
     cases = []
-    for key, rounds in sorted(pattern_groups().items()):
+    for key, rounds in sorted(pattern_groups(dataset=args.dataset).items()):
         if 1 not in rounds:
             continue
         training = structure(rounds[1][1])

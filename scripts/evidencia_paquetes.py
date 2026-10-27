@@ -116,13 +116,12 @@ def build_page(original, export, out):
 def main():
     index_path = ROOT / "resultados/exportaciones_paquetes.json"
     index = json.loads(index_path.read_text()) if index_path.exists() else {}
-    state = json.loads((ROOT / ".state/campaign.json").read_text())
-    runs = [
-        j["run_id"]
-        for rd in state["rounds"].values()
-        for j in rd.get("jobs", {}).values()
-        if j["status"] == "completed"
-    ]
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset")
+    args = parser.parse_args()
+    from path_discovery.analysis import collect
+    runs = [r["run_id"] for r in collect(dataset=args.dataset)[1]]
     examples = {}
     for rid in runs:
         original = ROOT / "datos/originales" / rid
@@ -155,7 +154,7 @@ def main():
     import subprocess
 
     subprocess.run(
-        [sys.executable, str(ROOT / "scripts/estructura_payload.py")], check=True
+        [sys.executable, str(ROOT / "scripts/estructura_payload.py"), *(["--dataset", args.dataset] if args.dataset else [])], check=True
     )
     print(
         json.dumps(

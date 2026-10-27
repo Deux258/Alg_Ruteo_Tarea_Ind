@@ -175,9 +175,9 @@ def validate_rule(rule, values):
     return {"status": "passed" if failures == 0 else "failed", "checked": len(values), "failures": failures}
 
 
-def pattern_groups():
+def pattern_groups(dataset=None):
     from .analysis import collect
-    accepted = {r["run_id"] for r in collect()[1]}
+    accepted = {r["run_id"] for r in collect(dataset=dataset)[1]}
     path = ROOT / "resultados/exportaciones_paquetes.json"
     index = json.loads(path.read_text()) if path.exists() else {}
     groups = defaultdict(dict)
@@ -200,8 +200,8 @@ def pattern_groups():
     return groups
 
 
-def patterns():
-    groups = pattern_groups()
+def patterns(dataset=None):
+    groups = pattern_groups(dataset=dataset)
     out = ROOT / "resultados" / ("patrones_" + identifier())
     out.mkdir(parents=True)
     allrules = []
