@@ -1,5 +1,7 @@
 {
-  "generated_at": "2026-10-26T12:27:41.645811+00:00",
+  "session_public_ipv4": "186.189.89.115",
+  "session_id": "casa_20261026T204144_f8fa5b43",
+  "generated_at": "2026-10-27T02:07:18.404551+00:00",
   "cases": [
     {
       "tool": "ripe",
@@ -41,7 +43,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 25823,
+          "checked_later_packets": 26,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 25823,
+          "checked_later_packets": 26,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -50,7 +71,7 @@
       "method": "ICMP",
       "target": "200.14.48.134",
       "training": {
-        "samples": 54,
+        "samples": 51,
         "lengths_bytes": [
           48
         ],
@@ -76,15 +97,34 @@
           "observed_bases": [
             25823
           ],
-          "samples": 54,
+          "samples": 51,
           "base_learned_from_first_packet": 25823,
-          "checked_later_packets": 53,
+          "checked_later_packets": 50,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 51,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 25823,
+          "checked_later_packets": 50,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 51,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 25823,
+          "checked_later_packets": 50,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -127,7 +167,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 51,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 25823,
+          "checked_later_packets": 50,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 51,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 25823,
+          "checked_later_packets": 50,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -151,7 +210,26 @@
         "word_constraint": null,
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -160,7 +238,7 @@
       "method": "TCP",
       "target": "200.14.48.134",
       "training": {
-        "samples": 60,
+        "samples": 51,
         "lengths_bytes": [
           48
         ],
@@ -175,7 +253,26 @@
         "word_constraint": null,
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 60,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 57,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -184,7 +281,7 @@
       "method": "TCP",
       "target": "90.150.251.81",
       "training": {
-        "samples": 48,
+        "samples": 51,
         "lengths_bytes": [
           48
         ],
@@ -199,7 +296,26 @@
         "word_constraint": null,
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 48,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 48,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -242,7 +358,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 54766,
+          "checked_later_packets": 26,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 54766,
+          "checked_later_packets": 26,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -251,7 +386,7 @@
       "method": "UDP",
       "target": "200.14.48.134",
       "training": {
-        "samples": 57,
+        "samples": 54,
         "lengths_bytes": [
           48
         ],
@@ -277,15 +412,34 @@
           "observed_bases": [
             20249
           ],
-          "samples": 57,
+          "samples": 54,
           "base_learned_from_first_packet": 20249,
-          "checked_later_packets": 56,
+          "checked_later_packets": 53,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 60,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 20249,
+          "checked_later_packets": 59,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 54,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 20249,
+          "checked_later_packets": 53,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -329,7 +483,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 54,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 61893,
+          "checked_later_packets": 53,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 54,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 61893,
+          "checked_later_packets": 53,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -365,7 +538,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 9,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 9,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -401,7 +593,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -437,7 +648,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 23,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 22,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -475,7 +705,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 9,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 9,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -513,7 +762,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -522,7 +790,7 @@
       "method": "icmp-paris",
       "target": "90.150.251.81",
       "training": {
-        "samples": 23,
+        "samples": 24,
         "lengths_bytes": [
           16
         ],
@@ -543,15 +811,34 @@
           "observed_bases": [
             63487
           ],
-          "samples": 23,
+          "samples": 24,
           "base_learned_from_first_packet": 63487,
-          "checked_later_packets": 22,
+          "checked_later_packets": 23,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -570,7 +857,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -589,7 +895,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -608,7 +933,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -627,7 +971,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -646,7 +1009,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -665,7 +1047,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -701,7 +1102,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 9,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 26959,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 7,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 26959,
+          "checked_later_packets": 6,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -737,7 +1157,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 20,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 57977,
+          "checked_later_packets": 19,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 24,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 57977,
+          "checked_later_packets": 23,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -746,12 +1185,183 @@
       "method": "udp",
       "target": "90.150.251.81",
       "training": {
-        "samples": 22,
+        "samples": 21,
         "lengths_bytes": [
           16
         ],
         "first_hex": "00000000000000000000000000000000",
         "within_run_variable_offsets": [],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            34086
+          ],
+          "samples": 21,
+          "base_learned_from_first_packet": 34086,
+          "checked_later_packets": 20,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 34086,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 34086,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
+        }
+      },
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp-paris",
+      "target": "138.204.230.242",
+      "training": {
+        "samples": 9,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "66b10000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            26959
+          ],
+          "samples": 9,
+          "base_learned_from_first_packet": 26959,
+          "checked_later_packets": 8,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 26959,
+          "checked_later_packets": 9,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 10,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 26959,
+          "checked_later_packets": 9,
+          "failed_later_packets": 0
+        }
+      },
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp-paris",
+      "target": "200.14.48.134",
+      "training": {
+        "samples": 28,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "dfdb0000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
+        "constant_ascii_segments": [],
+        "word_constraint": {
+          "fields": [
+            "payload_word0_BE",
+            "udp.checksum",
+            "udp.srcport",
+            "udp.dstport"
+          ],
+          "modulus": 65535,
+          "stable_within_run": true,
+          "observed_bases": [
+            57977
+          ],
+          "samples": 28,
+          "base_learned_from_first_packet": 57977,
+          "checked_later_packets": 27,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 24,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 57977,
+          "checked_later_packets": 23,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 24,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 57977,
+          "checked_later_packets": 23,
+          "failed_later_packets": 0
+        }
+      },
+      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
+    },
+    {
+      "tool": "scamper",
+      "family": "trace",
+      "method": "udp-paris",
+      "target": "90.150.251.81",
+      "training": {
+        "samples": 22,
+        "lengths_bytes": [
+          16
+        ],
+        "first_hex": "82880000000000000000000000000000",
+        "within_run_variable_offsets": [
+          1
+        ],
         "constant_ascii_segments": [],
         "word_constraint": {
           "fields": [
@@ -773,121 +1383,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
-      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
-    },
-    {
-      "tool": "scamper",
-      "family": "trace",
-      "method": "udp-paris",
-      "target": "138.204.230.242",
-      "training": {
-        "samples": 10,
-        "lengths_bytes": [
-          16
-        ],
-        "first_hex": "66b10000000000000000000000000000",
-        "within_run_variable_offsets": [
-          1
-        ],
-        "constant_ascii_segments": [],
-        "word_constraint": {
-          "fields": [
-            "payload_word0_BE",
-            "udp.checksum",
-            "udp.srcport",
-            "udp.dstport"
-          ],
-          "modulus": 65535,
-          "stable_within_run": true,
-          "observed_bases": [
-            26959
-          ],
-          "samples": 10,
-          "base_learned_from_first_packet": 26959,
-          "checked_later_packets": 9,
-          "failed_later_packets": 0,
-          "base_is_execution_specific": true
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 22,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 34086,
+          "checked_later_packets": 21,
+          "failed_later_packets": 0
         },
-        "zero_payload": false
-      },
-      "validation": {},
-      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
-    },
-    {
-      "tool": "scamper",
-      "family": "trace",
-      "method": "udp-paris",
-      "target": "200.14.48.134",
-      "training": {
-        "samples": 27,
-        "lengths_bytes": [
-          16
-        ],
-        "first_hex": "dfdb0000000000000000000000000000",
-        "within_run_variable_offsets": [
-          1
-        ],
-        "constant_ascii_segments": [],
-        "word_constraint": {
-          "fields": [
-            "payload_word0_BE",
-            "udp.checksum",
-            "udp.srcport",
-            "udp.dstport"
-          ],
-          "modulus": 65535,
-          "stable_within_run": true,
-          "observed_bases": [
-            57977
-          ],
-          "samples": 27,
-          "base_learned_from_first_packet": 57977,
-          "checked_later_packets": 26,
-          "failed_later_packets": 0,
-          "base_is_execution_specific": true
-        },
-        "zero_payload": false
-      },
-      "validation": {},
-      "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
-    },
-    {
-      "tool": "scamper",
-      "family": "trace",
-      "method": "udp-paris",
-      "target": "90.150.251.81",
-      "training": {
-        "samples": 23,
-        "lengths_bytes": [
-          16
-        ],
-        "first_hex": "82880000000000000000000000000000",
-        "within_run_variable_offsets": [
-          1
-        ],
-        "constant_ascii_segments": [],
-        "word_constraint": {
-          "fields": [
-            "payload_word0_BE",
-            "udp.checksum",
-            "udp.srcport",
-            "udp.dstport"
-          ],
-          "modulus": 65535,
-          "stable_within_run": true,
-          "observed_bases": [
-            34086
-          ],
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
           "samples": 23,
-          "base_learned_from_first_packet": 34086,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 34086,
           "checked_later_packets": 22,
-          "failed_later_packets": 0,
-          "base_is_execution_specific": true
-        },
-        "zero_payload": false
+          "failed_later_packets": 0
+        }
       },
-      "validation": {},
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -925,7 +1440,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 44,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 43,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 44,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 43,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -934,7 +1468,7 @@
       "method": "icmp-echo",
       "target": "200.14.48.134",
       "training": {
-        "samples": 101,
+        "samples": 118,
         "lengths_bytes": [
           16
         ],
@@ -955,15 +1489,34 @@
           "observed_bases": [
             63487
           ],
-          "samples": 101,
+          "samples": 118,
           "base_learned_from_first_packet": 63487,
-          "checked_later_packets": 100,
+          "checked_later_packets": 117,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 118,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 117,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 116,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 115,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -972,7 +1525,7 @@
       "method": "icmp-echo",
       "target": "90.150.251.81",
       "training": {
-        "samples": 112,
+        "samples": 100,
         "lengths_bytes": [
           16
         ],
@@ -993,15 +1546,34 @@
           "observed_bases": [
             63487
           ],
-          "samples": 112,
+          "samples": 100,
           "base_learned_from_first_packet": 63487,
-          "checked_later_packets": 111,
+          "checked_later_packets": 99,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 111,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 110,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 108,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 63487,
+          "checked_later_packets": 107,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1020,7 +1592,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1039,7 +1630,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1058,7 +1668,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 27,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1077,7 +1706,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1096,7 +1744,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1115,7 +1782,26 @@
         "word_constraint": null,
         "zero_payload": true
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": null,
+          "new_execution_base": null,
+          "checked_later_packets": 0,
+          "failed_later_packets": null
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1124,7 +1810,7 @@
       "method": "udp-dport",
       "target": "138.204.230.242",
       "training": {
-        "samples": 98,
+        "samples": 93,
         "lengths_bytes": [
           16
         ],
@@ -1145,15 +1831,34 @@
           "observed_bases": [
             26959
           ],
+          "samples": 93,
+          "base_learned_from_first_packet": 26959,
+          "checked_later_packets": 92,
+          "failed_later_packets": 0,
+          "base_is_execution_specific": true
+        },
+        "zero_payload": false
+      },
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
           "samples": 98,
-          "base_learned_from_first_packet": 26959,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 26959,
           "checked_later_packets": 97,
-          "failed_later_packets": 0,
-          "base_is_execution_specific": true
+          "failed_later_packets": 0
         },
-        "zero_payload": false
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 104,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 26959,
+          "checked_later_packets": 103,
+          "failed_later_packets": 0
+        }
       },
-      "validation": {},
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1162,7 +1867,7 @@
       "method": "udp-dport",
       "target": "200.14.48.134",
       "training": {
-        "samples": 230,
+        "samples": 200,
         "lengths_bytes": [
           16
         ],
@@ -1184,15 +1889,34 @@
           "observed_bases": [
             57977
           ],
-          "samples": 230,
+          "samples": 200,
           "base_learned_from_first_packet": 57977,
-          "checked_later_packets": 229,
+          "checked_later_packets": 199,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 252,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 57977,
+          "checked_later_packets": 251,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 214,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 57977,
+          "checked_later_packets": 213,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1201,7 +1925,7 @@
       "method": "udp-dport",
       "target": "90.150.251.81",
       "training": {
-        "samples": 182,
+        "samples": 188,
         "lengths_bytes": [
           16
         ],
@@ -1223,15 +1947,34 @@
           "observed_bases": [
             34086
           ],
-          "samples": 182,
+          "samples": 188,
           "base_learned_from_first_packet": 34086,
-          "checked_later_packets": 181,
+          "checked_later_packets": 187,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 174,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 34086,
+          "checked_later_packets": 173,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 172,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 34086,
+          "checked_later_packets": 171,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1240,7 +1983,7 @@
       "method": "udp-sport",
       "target": "138.204.230.242",
       "training": {
-        "samples": 38,
+        "samples": 48,
         "lengths_bytes": [
           16
         ],
@@ -1261,15 +2004,34 @@
           "observed_bases": [
             26959
           ],
-          "samples": 38,
+          "samples": 48,
           "base_learned_from_first_packet": 26959,
-          "checked_later_packets": 37,
+          "checked_later_packets": 47,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 26959,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 26959,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1307,7 +2069,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 57977,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 57977,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     },
     {
@@ -1345,7 +2126,26 @@
         },
         "zero_payload": false
       },
-      "validation": {},
+      "validation": {
+        "2": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 34086,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0
+        },
+        "3": {
+          "payload_lengths_match": true,
+          "constant_ascii_segments_match": true,
+          "samples": 38,
+          "word_constraint_stable_in_new_execution": true,
+          "new_execution_base": 34086,
+          "checked_later_packets": 37,
+          "failed_later_packets": 0
+        }
+      },
       "scope": "Restricciones observadas, con offsets desde cero. El prefijo variable puede ser compatible con compensación de checksum; no se presume su valor exacto ni la intención del emisor. Las bases se contrastan dentro de cada ejecución, no se declaran universales."
     }
   ]

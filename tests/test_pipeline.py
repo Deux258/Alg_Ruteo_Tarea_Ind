@@ -318,6 +318,12 @@ class AnalysisTests(unittest.TestCase):
         self.assertEqual(result["additional_ips"], ["8.8.8.8"])
         self.assertFalse(result["complete_reference"])
 
+    def test_stability_does_not_treat_two_empty_paths_as_perfect_match(self):
+        empty = [run("a", round=1, ips=[], unique_ips=0), run("b", round=2, ips=[], unique_ips=0)]
+        self.assertIsNone(method_rankings(empty)[0]["stability_jaccard"])
+        empty.append(run("c", round=3, ips=["1.1.1.1"], unique_ips=1))
+        self.assertEqual(method_rankings(empty)[0]["stability_jaccard"], 0.0)
+
     def test_rank_uses_median_not_most_favorable_run(self):
         runs = [
             run("a", round=1, unique_ips=100),
@@ -538,7 +544,10 @@ class IntegrityTests(unittest.TestCase):
                 },
             )
             save_manifest(folder, {})
-            with patch("path_discovery.analysis.ROOT", Path(td)):
+            with (
+                patch("path_discovery.analysis.ROOT", Path(td)),
+                patch("path_discovery.analysis.config", return_value={}),
+            ):
                 self.assertEqual(len(collect()[1]), 0)
                 self.assertEqual(len(collect(include_pilots=True)[1]), 0)
                 rows, runs, _ = collect(include_pilots=True, diagnostic_pilots=True)

@@ -1,0 +1,17 @@
+HOP,udp,icmp,udp-paris,icmp-paris,tcp,tcp-ack
+1,192.168.100.1 [non_global],192.168.100.1 [non_global],192.168.100.1 [non_global],192.168.100.1 [non_global],? not_recorded,? not_recorded
+2,100.88.0.1 [non_global],100.88.0.1 [non_global],100.88.0.1 [non_global],100.88.0.1 [non_global],? not_recorded,? not_recorded
+3,10.87.0.3 [non_global],10.87.0.3 [non_global],10.87.0.3 [non_global],10.87.0.3 [non_global],? not_recorded,? not_recorded
+4,10.87.0.46 [non_global],10.87.0.46 [non_global],10.87.0.46 [non_global],10.87.0.46 [non_global],? not_recorded,? not_recorded
+5,? not_recorded,? not_recorded,? not_recorded,? not_recorded,? not_recorded,? not_recorded
+6,154.54.92.41 [AS174],154.54.92.41 [AS174],154.54.92.41 [AS174],154.54.92.41 [AS174],NO_MEDIDO,NO_MEDIDO
+7,154.54.29.157 [AS174],154.54.3.29 [AS174],154.54.3.29 [AS174],154.54.3.29 [AS174],NO_MEDIDO,NO_MEDIDO
+8,154.54.167.185 [AS174],154.54.168.85 [AS174],154.54.168.85 [AS174],154.54.168.85 [AS174],NO_MEDIDO,NO_MEDIDO
+9,154.54.10.210 [AS174],154.54.10.210 [AS174],154.54.10.210 [AS174],154.54.10.210 [AS174],NO_MEDIDO,NO_MEDIDO
+10,195.22.211.209 [AS6762],195.22.211.61 [AS6762],195.22.211.61 [AS6762],195.22.211.61 [AS6762],NO_MEDIDO,NO_MEDIDO
+11,195.22.214.161 [AS6762],195.22.214.161 [AS6762],195.22.214.161 [AS6762],195.22.214.161 [AS6762],NO_MEDIDO,NO_MEDIDO
+12,? not_recorded,? not_recorded,? not_recorded,? not_recorded,NO_MEDIDO,NO_MEDIDO
+13,? not_recorded,? not_recorded,? not_recorded,? not_recorded,NO_MEDIDO,NO_MEDIDO
+14,? not_recorded,? not_recorded,? not_recorded,? not_recorded,NO_MEDIDO,NO_MEDIDO
+15,? not_recorded,? not_recorded,? not_recorded,? not_recorded,NO_MEDIDO,NO_MEDIDO
+16,? not_recorded,? not_recorded,? not_recorded,? not_recorded,NO_MEDIDO,NO_MEDIDO

@@ -1,0 +1,10 @@
+{
+  "reviewed_at": "2026-10-27T01:35:40.932210+00:00",
+  "pdf": "informe/avances/casa_20261026T204144_f8fa5b43/102_mediciones/informe.pdf",
+  "pdf_sha256": "21fdcbf301a34cbcc71a741d2c94fe3399b049b881f7c95d73491b4188f55f02",
+  "rendered_pages": 61,
+  "analysis": "resultados/analisis_20261027T001138_a8f6b3d9",
+  "analyzed_measurements": 102,
+  "review": "Las 61 páginas fueron revisadas mediante hojas de contacto; las páginas 1, 5, 24, 31, 33 y 48 a 110 dpi. No se observaron recortes ni superposiciones. Se trata de un avance provisional con dos rondas.",
+  "scope": "Las capturas nuevas se incorporarán al regenerar el informe."
+}

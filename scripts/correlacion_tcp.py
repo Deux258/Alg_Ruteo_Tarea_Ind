@@ -6,7 +6,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from path_discovery.common import (
     ROOT,
-    records,
     json_write,
     verify_manifest,
     sha256,
@@ -15,9 +14,13 @@ from path_discovery.common import (
 
 
 def main():
+    from path_discovery.analysis import collect
+    accepted = {r["run_id"]: r for r in collect()[1]}
     index = json.loads((ROOT / "resultados/exportaciones_paquetes.json").read_text())
     reviews = []
     for rid, export_rel in index.items():
+        if rid not in accepted:
+            continue
         original = ROOT / "datos/originales" / rid
         meta = json.loads((original / "metadata.json").read_text())
         if (
@@ -102,21 +105,7 @@ def main():
                 )
             else:
                 unmatched.append(q)
-        warts_ips = set()
-
-        def walk(v):
-            if isinstance(v, list):
-                for i in v:
-                    walk(i)
-            elif isinstance(v, dict):
-                if v.get("addr") and ("rtt" in v or "replies" in v):
-                    warts_ips.add(v["addr"])
-                for i in v.values():
-                    if isinstance(i, (dict, list)):
-                        walk(i)
-
-        for obj in records(original / "result.jsonl"):
-            walk(obj)
+        warts_ips = set(accepted[rid]["ips"])
         captured_ips = sorted({q["from"] for q in matched})
         reviews.append(
             {

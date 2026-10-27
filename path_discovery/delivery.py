@@ -115,12 +115,24 @@ def delivery_checks(analysis):
     gui = ROOT / "resultados/revision_wireshark_gui.json"
     review = json.loads(gui.read_text()) if gui.exists() else {}
     expected_methods = {"scamper_trace_" + m for m in ("udp", "icmp", "udp-paris", "icmp-paris", "tcp", "tcp-ack")} | {"scamper_tracelb_" + m for m in ("udp-dport", "icmp-echo", "udp-sport", "tcp-sport", "tcp-ack-sport")} | {"ripe_traceroute_" + m for m in ("UDP", "ICMP", "TCP")}
+    current_runs_file = analysis / "runs.json"
+    current_runs = {r["run_id"]: r for r in json.loads(current_runs_file.read_text())} if current_runs_file.exists() else {}
+    reviewed_methods = set()
+    for entry in review.get("reviewed_runs", []):
+        run = current_runs.get(entry.get("run_id"))
+        if not run or run.get("pilot"):
+            continue
+        expected_method = "_".join(run[k] for k in ("tool", "family", "method"))
+        capture = ROOT / "datos/originales" / run["run_id"] / "capture.pcapng"
+        shot = (ROOT / entry.get("screenshot", "")).resolve()
+        if entry.get("method") == expected_method and capture.exists() and entry.get("sha256") == sha256(capture) and shot.is_relative_to(ROOT / "capturas") and shot.is_file() and entry.get("screenshot_sha256") == sha256(shot):
+            reviewed_methods.add(expected_method)
     selective_path = ROOT / "resultados/respuesta_selectiva_validacion.json"
     selective = json.loads(selective_path.read_text()) if selective_path.exists() else {}
     report_path = ROOT / "informe/path_discovery/fuentes.json"
     report = json.loads(report_path.read_text()) if report_path.exists() else {}
     report_current = report.get("analysis") == str(analysis.resolve()) and report.get("campaign_status", {}).get("completed") == 153 and len({p.get("target") for p in report.get("campaign_status", {}).get("public_graphs", [])}) == 3
-    return {"campaign_153_complete": bool(summary.get("complete_campaign")), "three_current_graphs_public": len(graph_targets) == 3 and published == graph_targets, "fourteen_gui_methods_reviewed": expected_methods <= {r.get("method") for r in review.get("reviewed_runs", [])}, "selective_cases_corroborated": bool(selective.get("requirements_corroborated")), "report_uses_current_complete_evidence": report_current and (ROOT / "informe/path_discovery/informe.pdf").exists()}
+    return {"campaign_153_complete": bool(summary.get("complete_campaign")), "three_current_graphs_public": len(graph_targets) == 3 and published == graph_targets, "fourteen_gui_methods_reviewed": expected_methods <= reviewed_methods, "selective_cases_corroborated": bool(selective.get("requirements_corroborated")), "report_uses_current_complete_evidence": report_current and (ROOT / "informe/path_discovery/informe.pdf").exists()}
 
 
 def bundle(analysis):
@@ -132,14 +144,27 @@ def bundle(analysis):
     folder.mkdir(parents=True)
     roots = [ROOT / p for p in ("path_discovery", "config/campana.json", "config/campana_enunciado.json", "config/exclusiones_calidad.json", "config/reproduccion.json", "config/wireshark-image.env.example", "scripts", "docs", "informe", "tests", "docker", "compose.yaml", "compose.wireshark.yaml", "README.md", "main", "pyproject.toml", ".env.example")]
     roots += [analysis, ROOT / "datos/originales", ROOT / "grafos", ROOT / "capturas", ROOT / "resultados/paquetes", ROOT / "resultados/registro_ripe_1018487"]
-    roots += [ROOT / "resultados" / p for p in ("preflight_campana.json", "revision_wireshark_gui.json", "correlacion_tcp_captura.json", "estructura_payload.json", "checksums_tcp.json", "diagnostico_recepcion_tcp.json", "exportaciones_paquetes.json", "respuesta_selectiva_validacion.json", "fichas_paquetes/index.json")]
+    roots += [ROOT / "resultados" / p for p in ("preflight_campana.json", "revision_wireshark_gui.json", "correlacion_tcp_captura.json", "estructura_payload.json", "checksums_tcp.json", "diagnostico_recepcion_tcp.json", "exportaciones_paquetes.json", "respuesta_selectiva_validacion.json", "fichas_paquetes/index.json", "revision_familias.json", "revision_pdf_sesion_activa.json", "revision_vuelta_domicilio.json")]
     roots += sorted((ROOT / "resultados").glob("reproduccion_ronda_*.json"))
     roots += sorted((ROOT / "resultados/fichas_paquetes").glob("progreso*.html"))
+    roots += sorted((ROOT / "resultados").glob("revision_piloto_*"))
+    roots += sorted((ROOT / "resultados").glob("analisis_*/summary.json"))  # summaries of historical sessions
     patterns = sorted((ROOT / "resultados").glob("patrones_*"))
     if patterns:
         roots.append(patterns[-1])
     files = sorted({p for base in roots for p in ([base] if base.is_file() else base.rglob("*")) if p.is_file()})
-    files = [p for p in files if not any(x in ("__pycache__", ".env", ".state", ".tools", "local.json") for x in p.parts) and not p.name.endswith((".pyc", ".key")) and "probe_key" not in p.name]
+    def allowed_file(p):
+        rel = p.relative_to(ROOT)
+        # This archive contains only explicitly selected nonsecret state/config;
+        # include them to keep its sealed manifest verifiable in the package.
+        archived_public = len(rel.parts) >= 5 and rel.parts[:2] == ("datos", "originales") and rel.parts[2].startswith("cambio_sesion_") and str(Path(*rel.parts[3:])) in {
+            "previous/.state/campaign.json", "previous/.state/pilot.json", "previous/.state/postprocessing.json", "previous/config/local.json"
+        }
+        # This exact sealed file is a public probe API response, not local config.
+        public_probe_response = str(rel) == "datos/originales/seleccion_sondas_20261026T012504/local.json"
+        blocked = any(x in ("__pycache__", ".env", ".state", ".tools", "local.json") for x in rel.parts)
+        return (not blocked or archived_public or public_probe_response) and not p.name.endswith((".pyc", ".key")) and "probe_key" not in p.name
+    files = [p for p in files if allowed_file(p)]
     # Rechazar claves privadas accidentales en archivos pequeños, sin mostrarlas.
     for p in files:
         if p.stat().st_size < 1024 * 1024 and p.suffix not in (".pcapng", ".warts", ".pdf", ".docx"):

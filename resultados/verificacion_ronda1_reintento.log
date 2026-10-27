@@ -1,0 +1,7 @@
+Ronda 1 cerrada y diagnóstico terminado: /home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/resultados/analisis_20261026T221234_87acb72d
+Paquete preparado: /home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/entrega/20261026T221959_2c887a28/paquete_preparacion.tar.gz
+{"proof": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/resultados/reproduccion_ronda_1.json", "offline_valid_measurements": 51, "identical_files": 59, "verified_package_files": 2405}
+
+{"markdown": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/informe/path_discovery/informe.md", "pdf": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/informe/path_discovery/informe.pdf", "completed": 51, "graphs": 0}
+
+{"session_id": "casa_20261026T204144_f8fa5b43", "analysis": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/resultados/analisis_20261026T221234_87acb72d", "preparation_package": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/entrega/20261026T221959_2c887a28/paquete_preparacion.tar.gz", "proof": "resultados/reproduccion_ronda_1.json", "status": "round_1_locally_reproduced_not_final_assignment"}

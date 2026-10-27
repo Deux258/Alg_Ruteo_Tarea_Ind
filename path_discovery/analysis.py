@@ -14,7 +14,7 @@ from .common import (ROOT, TRACE_METHODS, RIPE_METHODS, config, csv_write, ident
 
 FIELDS = ["run_id", "tool", "family", "method", "round", "direction", "target", "source", "destination",
           "measurement_id", "probe_id", "timestamp", "ttl", "attempt", "reply_index", "ip", "rtt_ms",
-          "status", "run_status", "pilot", "flow_id", "tx", "evidence_path", "asns", "prefix", "asn_status"]
+          "status", "run_status", "pilot", "flow_id", "tx", "evidence_path", "asns", "prefix", "asn_status", "source_asns", "source_prefix", "source_asn_status"]
 
 
 def row_base(meta, run_id, obj):
@@ -119,8 +119,9 @@ def excluded_runs():
     return excluded
 
 
-def collect(*, include_pilots=False, diagnostic_pilots=False):
+def collect(*, include_pilots=False, diagnostic_pilots=False, session_ip=None):
     rows, runs, invalid = [], [], []
+    session_ip = session_ip or config().get("session_public_ipv4")
     excluded = excluded_runs()
     export_index = ROOT / "resultados/exportaciones_paquetes.json"
     exports = json.loads(export_index.read_text()) if export_index.exists() else {}
@@ -135,6 +136,8 @@ def collect(*, include_pilots=False, diagnostic_pilots=False):
             invalid.append({"run_id": folder.name, "reason": str(e)})
             continue
         meta = json.loads((folder / "metadata.json").read_text())
+        if session_ip and meta.get("public_ipv4") != session_ip:
+            continue
         if meta.get("kind") != "measurement" or (meta.get("pilot") and not include_pilots):
             continue
         diagnostic = diagnostic_pilots and meta.get("pilot") and meta.get("status") == "invalid_public_ip_changed"
@@ -161,7 +164,9 @@ def collect(*, include_pilots=False, diagnostic_pilots=False):
             runrows.extend(current)
         rows.extend(runrows)
         ips = sorted({r["ip"] for r in runrows if r.get("ip")})
-        if meta["tool"] == "ripe" and meta["direction"] == "ida" and folder.name in exports:
+        tool_reported_probes = probes_sent if meta["tool"] == "scamper" else None
+        pcap_observed_probes = None
+        if meta["direction"] == "ida" and folder.name in exports:
             exported = ROOT / exports[folder.name]
             if not exported.resolve().is_relative_to(ROOT / "resultados/paquetes"):
                 raise ValueError("Exportación fuera de resultados/paquetes")
@@ -169,13 +174,18 @@ def collect(*, include_pilots=False, diagnostic_pilots=False):
             packet_meta = json.loads((exported / "metadata.json").read_text())
             if packet_meta.get("source_manifest_sha256") != sha256(folder / "manifest.json"):
                 raise ValueError("La captura exportada no corresponde al original actual")
-            probes_sent = packet_meta["candidate_emitted_packets"]
+            pcap_observed_probes = packet_meta["candidate_emitted_packets"] if packet_meta.get("probe_classifier_revision", 1) >= 2 else None
+            if meta["tool"] == "ripe":
+                probes_sent = pcap_observed_probes
         ttl = {r["ttl"] for r in runrows if r["ttl"] is not None}
         replied = {r["ttl"] for r in runrows if r.get("ip") and r["ttl"] is not None}
         runs.append({**meta, "run_id": folder.name, "ips": ips, "unique_ips": len(ips),
                      "observed_hops": len(ttl), "responsive_hops": len(replied),
                      "coverage": len(replied)/len(ttl) if ttl else 0,
                      "missing_hops": len(ttl - replied), "probes_sent": probes_sent,
+                     "tool_reported_probes": tool_reported_probes, "pcap_observed_probes": pcap_observed_probes,
+                     "probe_count_source": "scamper_warts_reported" if meta["tool"] == "scamper" else "local_pcap_classified_requests" if meta["direction"] == "ida" else "not_observable_from_reverse_capture",
+                     "packet_count_mismatch": tool_reported_probes != pcap_observed_probes if tool_reported_probes is not None and pcap_observed_probes is not None else None,
                      "elapsed_wall_seconds": (datetime.fromisoformat(meta["finished_at"]) - datetime.fromisoformat(meta["started_at"])).total_seconds() if meta.get("finished_at") and meta.get("started_at") else None,
                      "destination_observed": meta["destination"] in ips})
     return rows, runs, invalid
@@ -185,14 +195,10 @@ def enrich(rows, *, online=False):
     cache_dir = ROOT / "datos/originales/asn"
     cache_dir.mkdir(parents=True, exist_ok=True)
     cache = {}
-    for row in rows:
-        ip = row.get("ip")
-        if not ip:
-            continue
-        address = ipaddress.ip_address(ip)
-        if not address.is_global:
-            row.update(asns=[], prefix=None, asn_status="non_global")
-            continue
+
+    def lookup(ip):
+        if not ipaddress.ip_address(ip).is_global:
+            return {"asns": [], "prefix": None, "asn_status": "non_global"}
         if ip not in cache:
             path = cache_dir / f"{ip}.json"
             if not path.exists() and online:
@@ -200,8 +206,14 @@ def enrich(rows, *, online=False):
                 json_write(path, {"queried_at": utc(), "response": data}, exclusive=True)
             cache[ip] = json.loads(path.read_text())["response"]["data"] if path.exists() else None
         data = cache[ip]
-        row.update(asns=data.get("asns", []) if data else [], prefix=data.get("prefix") if data else None,
-                   asn_status="mapped" if data and data.get("asns") else "unknown")
+        return {"asns": data.get("asns", []) if data else [], "prefix": data.get("prefix") if data else None,
+                "asn_status": "mapped" if data and data.get("asns") else "unknown"}
+
+    for row in rows:
+        if row.get("ip"):
+            row.update(lookup(row["ip"]))
+        if row.get("source"):
+            row.update({"source_" + k: v for k, v in lookup(row["source"]).items()})
     return rows
 
 
@@ -241,7 +253,8 @@ def method_rankings(runs):
     for (target, tool, family, direction, method), group in groups.items():
         # Una sola ejecución válida por celda; duplicados se resuelven antes de analizar.
         sets = [set(r["ips"]) for r in group]
-        similarity = [len(a & b)/len(a | b) if a | b else 1 for a, b in itertools.combinations(sets, 2)]
+        # Dos conjuntos vacíos no aportan evidencia de estabilidad de ruta.
+        similarity = [len(a & b)/len(a | b) for a, b in itertools.combinations(sets, 2) if a | b]
         packet_counts = [r["probes_sent"] for r in group if r.get("probes_sent") is not None]
         elapsed = [r["elapsed_wall_seconds"] for r in group if r.get("elapsed_wall_seconds") is not None]
         result.append({"target": target, "tool": tool, "family": family, "direction": direction, "method": method,
@@ -376,7 +389,8 @@ def cx2_graph(pair, rows):
         rr = [r for r in rows if r["run_id"] == run["run_id"]]
         layers = defaultdict(list)
         source = next((r["source"] for r in rr if r.get("source")), None)
-        previous = node(source, {"kind": "ip_interface", "asns": ""}, (0 if line == 0 else columns*160), line*230) if source else None
+        source_asns = next((r.get("source_asns", []) for r in rr if r.get("source") == source), [])
+        previous = node(source, {"kind": "ip_interface", "asns": ",".join(map(str, source_asns))}, (0 if line == 0 else columns*160), line*230) if source else None
         for r in rr:
             if r["ttl"] is not None:
                 layers[r["ttl"]].append(r)
@@ -397,7 +411,8 @@ def cx2_graph(pair, rows):
                 current = node(label, {"kind": "gap" if not addresses else "ambiguous_hop", "key": f"{run['run_id']}:{ttl}", "asns": "", "ttl": ttl}, (column if line == 0 else columns-column)*160, line*230)
                 evidence = "hop_layer_order_only"
             if previous is not None and current != previous:
-                edges.append({"id": len(edges), "s": previous, "t": current, "v": {"direction": run["direction"], "protocol": run["method"], "ttl": ttl, "measurement_id": str(run["measurement_id"]), "evidence": evidence}})
+                edge_evidence = evidence if nodes[previous]["v"]["kind"] == "ip_interface" else "hop_layer_order_only"
+                edges.append({"id": len(edges), "s": previous, "t": current, "v": {"direction": run["direction"], "protocol": run["method"], "ttl": ttl, "measurement_id": str(run["measurement_id"]), "evidence": edge_evidence}})
             previous = current
             previous_ttl = ttl
     a, b = pair
@@ -415,8 +430,8 @@ def cx2_graph(pair, rows):
             {"status": [{"success": True}]}]
 
 
-def analyze(*, online=False, include_pilots=False, diagnostic_pilots=False):
-    rows, runs, invalid = collect(include_pilots=include_pilots or diagnostic_pilots, diagnostic_pilots=diagnostic_pilots)
+def analyze(*, online=False, include_pilots=False, diagnostic_pilots=False, session_ip=None):
+    rows, runs, invalid = collect(include_pilots=include_pilots or diagnostic_pilots, diagnostic_pilots=diagnostic_pilots, session_ip=session_ip)
     cells = defaultdict(list)
     for r in runs:
         cells[tuple(r[k] for k in ("tool", "family", "method", "round", "direction", "target"))].append(r["run_id"])
@@ -427,7 +442,7 @@ def analyze(*, online=False, include_pilots=False, diagnostic_pilots=False):
     out = ROOT / "resultados" / ("analisis_" + identifier())
     out.mkdir(parents=True)
     json_write(out / "responses.json", rows)
-    csv_write(out / "responses.csv", [{**r, "asns": ",".join(map(str, r.get("asns", [])))} for r in rows], FIELDS)
+    csv_write(out / "responses.csv", [{**r, "asns": ",".join(map(str, r.get("asns", []))), "source_asns": ",".join(map(str, r.get("source_asns", [])))} for r in rows], FIELDS)
     json_write(out / "runs.json", runs)
     json_write(out / "invalid.json", invalid)
     json_write(out / "rankings.json", method_rankings(runs))
@@ -439,7 +454,7 @@ def analyze(*, online=False, include_pilots=False, diagnostic_pilots=False):
     for target, pair in pairs.items():
         json_write(out / "grafos" / f"{target}.cx2.json", cx2_graph(pair, rows))
         json_write(out / "grafos" / f"{target}.selection.json", {"ids": [p["measurement_id"] for p in pair], "runs": [p["run_id"] for p in pair], "criterion": "max IP union; min gaps; min temporal distance", "target": target})
-    summary = {"created_at": utc(), "valid_measurements": sum(r.get("status") == "completed" and not r.get("pilot") for r in runs), "processed_runs": len(runs), "expected": 153,
+    summary = {"session_public_ipv4": session_ip or config().get("session_public_ipv4"), "created_at": utc(), "valid_measurements": sum(r.get("status") == "completed" and not r.get("pilot") for r in runs), "processed_runs": len(runs), "expected": 153,
                "includes_pilots": include_pilots or diagnostic_pilots, "diagnostic_pilots": diagnostic_pilots, "invalid": invalid, "graphs": list(pairs), "excluded_runs": sorted(excluded_runs()),
                "complete_campaign": len(runs) == 153 and not include_pilots and not diagnostic_pilots and not invalid}
     json_write(out / "summary.json", summary)

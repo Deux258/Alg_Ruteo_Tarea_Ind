@@ -14,6 +14,14 @@ from path_discovery.common import ROOT, config, utc, verify_manifest
 from path_discovery.cli import status
 
 
+def image_caption(path):
+    index_path = ROOT / "capturas/indice.json"
+    index = json.loads(index_path.read_text()) if index_path.exists() else []
+    relative = str(Path(path).relative_to(ROOT))
+    item = next((i for i in index if i["file"] == relative), {})
+    return item.get("caption", Path(path).stem.replace("_", " "))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("analysis")
@@ -30,6 +38,8 @@ def main():
     additions = json.loads((analysis / "tracelb_additional.json").read_text())
     symmetry = json.loads((analysis / "symmetry.json").read_text())
     cfg = config()
+    if cfg.get("session_public_ipv4") and any(r.get("public_ipv4") != cfg["session_public_ipv4"] for r in runs):
+        raise ValueError("El análisis pertenece a otra sesión; no combinar con el entorno y las capturas actuales")
     state = status()
     out = ROOT / "informe/path_discovery"
     out.mkdir(parents=True, exist_ok=True)
@@ -45,6 +55,9 @@ def main():
         blocks.append(("table", [headers, *[[str(v) for v in row] for row in rows]]))
 
     def csvtable(path):
+        if not path.exists():
+            para("Pendiente de medir en esta sesión; tabla aún sin evidencia.")
+            return
         with path.open() as f:
             rows = list(csv.reader(f))
         if len(rows) > 1:
@@ -127,6 +140,15 @@ def main():
     para(
         "La unidad normalizada es una respuesta por intento y TTL. Se preservan respuestas múltiples, errores y timeouts. Un TTL 255 separado de los anteriores se conserva como registro, sin inventar los TTL intermedios ni enlaces entre capas no consecutivas. Los ASN son asociaciones IP-prefijo obtenidas con RIPEstat y no una ruta BGP observada."
     )
+    para("El costo de Scamper se informa con su contador WARTS y el de RIPE de ida con solicitudes clasificadas en PCAP. Se conservan ambos conteos cuando están disponibles. Una diferencia entre contador y captura se documenta sin atribuir automáticamente pérdida, fallo de envío o filtrado. Las capturas inversas locales no permiten contar toda la emisión remota.")
+    mismatches = [r for r in runs if r.get("packet_count_mismatch")]
+    if mismatches:
+        table(["Destino", "Método", "Ronda", "Contador WARTS", "Solicitudes PCAP"], [[r["target"], r["family"] + " / " + r["method"], r["round"], r["tool_reported_probes"], r["pcap_observed_probes"]] for r in mismatches])
+    family_path = ROOT / "resultados/revision_familias.json"
+    if family_path.exists():
+        family_review = json.loads(family_path.read_text())
+        if all(r["run_id"] in {v["run_id"] for v in runs} for r in family_review.get("families", [])):
+            para("Se contrastó una ejecución representativa de trace, tracelb y RIPE con sus originales, capturas y revisión GUI real. La evidencia y sus hashes están en " + family_review["evidence"] + ". Este control verifica la normalización y la asociación de archivos; el contraste temporal requiere las tres rondas.")
     heading("1. Path Discovery Scamper")
     for target in cfg["targets"]:
         dest = target["ip"]
@@ -143,7 +165,7 @@ def main():
                 "Mediana IP únicas",
                 "Cobertura",
                 "Jaccard entre rondas",
-                "Mediana sondas",
+                "Mediana sondas WARTS",
                 "Mediana duración (s)",
                 "IP destino observada",
             ],
@@ -156,7 +178,7 @@ def main():
                     (
                         f"{r['stability_jaccard']:.3f}"
                         if r["stability_jaccard"] is not None
-                        else "No contrastado"
+                        else ("Sin IP observadas" if r["rounds"] >= 2 else "No contrastado")
                     ),
                     (
                         r.get("median_probes_sent")
@@ -229,7 +251,7 @@ def main():
                 "Mediana IP únicas",
                 "Cobertura",
                 "Jaccard",
-                "Mediana sondas",
+                "Mediana sondas PCAP",
                 "Mediana duración (s)",
                 "IP destino observada",
             ],
@@ -242,7 +264,7 @@ def main():
                     (
                         f"{r['stability_jaccard']:.3f}"
                         if r["stability_jaccard"] is not None
-                        else "No contrastado"
+                        else ("Sin IP observadas" if r["rounds"] >= 2 else "No contrastado")
                     ),
                     (
                         r.get("median_probes_sent")
@@ -273,16 +295,21 @@ def main():
         "Se inspeccionan seis métodos trace, cinco tracelb y tres protocolos RIPE. Las fichas conservan TTL, tamaño, IPID, protocolo, puertos, flags TCP, secuencia/ACK, campos ICMP, checksums, payload hexadecimal y encabezados originales citados. Los campos no presentes en un protocolo se consideran no aplicables."
     )
     patterns = sorted((ROOT / "resultados").glob("patrones_*/predictions.json"))
-    rules = json.loads(patterns[-1].read_text()) if patterns else []
+    current_ids = {r["run_id"] for r in runs}
+    rules = []
+    for candidate in reversed(patterns):
+        candidate_rules = json.loads(candidate.read_text())
+        training = {r["training"] for r in candidate_rules}
+        if candidate_rules and all(json.loads((ROOT / t / "metadata.json").read_text()).get("run_id") in current_ids for t in training):
+            verify_manifest(candidate.parent)
+            rules = candidate_rules
+            break
     method_groups = defaultdict(list)
     for r in rules:
         method_groups[(r["tool"], r["family"], r["method"])].append(r)
     payload_path = ROOT / "resultados/estructura_payload.json"
-    payload_cases = (
-        json.loads(payload_path.read_text()).get("cases", [])
-        if payload_path.exists()
-        else []
-    )
+    payload_info = json.loads(payload_path.read_text()) if payload_path.exists() else {}
+    payload_cases = payload_info.get("cases", []) if payload_info.get("session_public_ipv4") == cfg.get("session_public_ipv4") else []
     for key, items in sorted(method_groups.items()):
         heading(" / ".join(key))
         example_target = sorted({r["target"] for r in items})[0]
@@ -342,10 +369,17 @@ def main():
                     + " módulo 65535 se mantuvo constante dentro de la ejecución. Su base depende de la ejecución. Es compatible con compensación de checksum; se conserva como hipótesis contrastable, sin atribuir una intención no comprobada."
                 )
             if payload_case["validation"]:
-                para(
-                    "Contraste del formato de payload: "
-                    + json.dumps(payload_case["validation"], ensure_ascii=False)
-                )
+                for round_no, validation in sorted(payload_case["validation"].items()):
+                    lengths = "coinciden" if validation.get("payload_lengths_match") else "no coinciden"
+                    segments = "coinciden" if validation.get("constant_ascii_segments_match") else "no coinciden"
+                    detail = (f"Ronda {round_no}: las longitudes {lengths} y los segmentos ASCII constantes {segments}; "
+                              f"se examinaron {validation.get('samples', 0)} paquetes.")
+                    if validation.get("word_constraint_stable_in_new_execution") is not None:
+                        stable = "se mantuvo" if validation["word_constraint_stable_in_new_execution"] else "no se mantuvo"
+                        detail += (f" La restricción de la suma {stable} en esa ejecución: "
+                                   f"{validation.get('checked_later_packets', 0)} paquetes posteriores contrastados y "
+                                   f"{validation.get('failed_later_packets', 0)} discrepancias.")
+                    para(detail)
         para(
             "El archivo predictions.json incluye el contraste por offset de los bytes del payload. Las constancias e incrementos se tratan como hipótesis de captura; una validación fallida se conserva y las bases dependientes de ejecución no se presentan como constantes universales. Los valores variables o dependientes del estado no se predicen exactamente sin evidencia."
         )
@@ -355,13 +389,14 @@ def main():
         )
     tcp_review = ROOT / "resultados/correlacion_tcp_captura.json"
     if tcp_review.exists():
+        tcp_summary = json.loads(tcp_review.read_text()).get("summary", {})
         para(
-            "Control de recepción TCP: "
-            + json.dumps(
-                json.loads(tcp_review.read_text()).get("summary", {}),
-                ensure_ascii=False,
-            )
-            + ". Las respuestas presentes en PCAP y ausentes en WARTS se informan por separado; no prueban filtrado de red. Detalle reproducible en resultados/correlacion_tcp_captura.json."
+            f"Control de recepción TCP: se revisaron {tcp_summary.get('reviewed_scamper_tcp_runs', 0)} ejecuciones de Scamper; "
+            f"{tcp_summary.get('runs_with_matching_icmp_quotes', 0)} contienen respuestas ICMP correlacionadas con solicitudes "
+            f"y {tcp_summary.get('runs_with_pcap_warts_discrepancy', 0)} presentan diferencias entre PCAP y WARTS. "
+            "La correlación usa direcciones, IPID, puertos y orden temporal; la causa de las diferencias no está establecida. "
+            "Una respuesta presente en PCAP no implica que Scamper la haya aceptado y no prueba filtrado de red. "
+            "Detalle reproducible en resultados/correlacion_tcp_captura.json."
         )
     candidates = json.loads((analysis / "selective_candidates.json").read_text())
     para(
@@ -388,17 +423,17 @@ def main():
                         r["run_id"]
                         + " / "
                         + str(r.get("measurement_id") or "No corresponde"),
-                        r["ip_observed"],
+                        "Sí" if r["ip_observed"] else "No",
                     ]
                     for r in case["additional_runs"]
                 ],
             )
-            para(
-                "Resultado de corroboración: "
-                + case["status"]
-                + ". "
-                + case["interpretation"]
-            )
+            if case["status"] == "corroborated_observation":
+                para("Resultado: el contraste se repitió en las pruebas adicionales. La ausencia puede deberse a otra ruta, pérdida, balanceo o recepción local; no identifica por sí sola una regla de firewall.")
+            elif case["status"] == "not_corroborated":
+                para("Resultado: el contraste no se corroboró en las pruebas adicionales. Se conservan las observaciones que contradicen el candidato inicial; no se atribuye una regla de firewall.")
+            else:
+                para("Resultado: " + case["status"] + ". " + case.get("interpretation", ""))
     else:
         para(
             "Pruebas dirigidas de respuesta selectiva pendientes. Este requisito no se da por cerrado por la mera lista de candidatos."
@@ -427,6 +462,12 @@ def main():
         para(check["scope"])
 
     heading("3. Path way RIPE: ida y vuelta")
+    para("Las respuestas desde la IPv4 pública domiciliaria acreditan la observación de esa dirección. Identificar al equipo que respondió requiere correlación con la captura local y conocimiento del NAT.")
+    reverse_note = ROOT / "resultados/revision_vuelta_domicilio.json"
+    if reverse_note.exists():
+        note = json.loads(reverse_note.read_text())
+        if note.get("run_id") in {r["run_id"] for r in runs}:
+            para(f"La vuelta {note['protocol']} {note['measurement_id']} observó respuestas desde la IP pública de destino. La captura local contiene {len(note['local_frames_with_remote_probe_outer_ip'])} paquetes con la IP de esa sonda en el encabezado IPv4 exterior; la identidad del respondiente queda sin establecer. Evidencia: {note['evidence']}.")
     para(
         "Cada comparación conserva la numeración desde cada origen y también compara el orden inverso de la vuelta. Las IP corresponden a interfaces observadas; direcciones distintas no demuestran routers distintos ni se asume alias entre interfaces. Las secuencias AS tampoco prueban una ruta BGP."
     )
@@ -496,13 +537,13 @@ def main():
     if reproduction:
         proof = json.loads(reproduction[-1].read_text())
         para(
-            "Reproducción de avance acreditada en "
+            "Reproducción local acreditada en "
             + reproduction[-1].name
             + ": "
             + str(proof["offline_valid_measurements"])
             + " ejecuciones regeneradas sin nuevas mediciones ni consultas ASN, con tablas, métricas y tres CX2 idénticos. Se verificaron "
             + str(proof["verified_package_files"])
-            + " archivos del paquete. Este control no sustituye la repetición del cierre sobre las tres rondas."
+            + " archivos del paquete. El alcance corresponde a las ejecuciones incluidas en esa constancia; la publicación de grafos se verifica por separado."
         )
     para(
         "Las mediciones describen las rutas observadas en estos horarios y bajo estos protocolos. No cuantifican por sí solas velocidad de acceso, congestión sostenida, censura o reglas de filtrado. Los timeouts y las rutas incompletas se conservan como resultados con sus límites de interpretación."
@@ -522,6 +563,14 @@ def main():
         for p in (ROOT / "capturas").iterdir()
         if p.suffix.lower() in (".png", ".jpg", ".jpeg")
     )
+    index_path = ROOT / "capturas/indice.json"
+    image_index = {i["file"]: i for i in json.loads(index_path.read_text())} if index_path.exists() else {}
+    session_ip = cfg.get("session_public_ipv4")
+    images = [p for p in images if not session_ip or not (
+        image_index.get(str(p.relative_to(ROOT)), {}).get("historical_session") or
+        image_index.get(str(p.relative_to(ROOT)), {}).get("superseded_progress_snapshot") or
+        image_index.get(str(p.relative_to(ROOT)), {}).get("session_public_ipv4") not in (None, session_ip)
+    )]
     gui_available = any(p.name.startswith("wireshark_") for p in images)
     for image in images:
         if image.stem in ("ndex_acceso_inicial", "propuesta_api_key"):
@@ -557,7 +606,7 @@ def main():
                 md_images = True
             md.append(
                 "!["
-                + Path(item).stem
+                + image_caption(item)
                 + "](../../"
                 + str(Path(item).relative_to(ROOT))
                 + ")"
@@ -779,7 +828,7 @@ def render_pdf(blocks, path, title):
                         body,
                     )
                 )
-            story.append(Paragraph(escape(Path(item).stem.replace("_", " ")), heading))
+            story.append(Paragraph(escape(image_caption(item)), heading))
             image = Image(item)
             factor = min(
                 (landscape(A4)[0] - 95) / image.imageWidth,

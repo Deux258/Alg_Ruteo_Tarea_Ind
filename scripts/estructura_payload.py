@@ -4,7 +4,7 @@ import csv, json, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from path_discovery.common import ROOT, json_write, utc
+from path_discovery.common import ROOT, json_write, utc, config
 from path_discovery.packets import pattern_groups
 
 
@@ -138,7 +138,7 @@ def main():
         )
     json_write(
         ROOT / "resultados/estructura_payload.json",
-        {"generated_at": utc(), "cases": cases},
+        {"session_public_ipv4": config().get("session_public_ipv4"), "session_id": config().get("session_id"), "generated_at": utc(), "cases": cases},
     )
     print(
         json.dumps(

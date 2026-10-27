@@ -79,7 +79,7 @@ Repetir el piloto Scamper UDP después de fijar el puerto; agregar el run piloto
 # ./main pilot-accept --wireshark-reviewed
 ```
 
-El usuario confirmó que Wireshark está instalado en el host. La sesión de automatización solo expone el navegador, por lo que se preparó `compose.wireshark.yaml` para abrir Wireshark gráfico local en http://127.0.0.1:8767/. Su imagen se fija por digest y sus PCAP se montan en `/captures` como solo lectura. No se habilitan capacidades de captura sobre la red del host. `scripts/preparar_wireshark.py` espera el cierre de la primera ronda antes de descargar la imagen para evitar contaminar sus RTT. TShark y Dumpcap del servicio tools siguen disponibles. En la GUI, abrir el PCAP, filtrar por destino y examinar cabeceras y bytes; guardar las capturas en `capturas/`.
+El usuario confirmó que Wireshark está instalado en el host. La sesión de automatización solo expone el navegador, por lo que se preparó `compose.wireshark.yaml` para abrir Wireshark gráfico local en http://127.0.0.1:8767/. Su imagen se fija por digest y sus PCAP se montan en `/captures` como solo lectura. No se habilitan capacidades de captura sobre la red del host. `scripts/preparar_wireshark.py` reutiliza la imagen fijada por digest en `config/wireshark-image.env.example`. Si falta, espera el cierre de la primera ronda antes de descargar ese mismo digest para evitar contaminar sus RTT. TShark y Dumpcap del servicio tools siguen disponibles. En la GUI, abrir el PCAP, filtrar por destino y examinar cabeceras y bytes; guardar las capturas en `capturas/`.
 
 ## Campaña
 
@@ -147,3 +147,8 @@ En una copia extraída de la entrega, `cp config/reproduccion.json config/local.
 Con la sesión NDEx iniciada, usar New > Upload Networks, seleccionar el CX2 del análisis final, marcar Make network public y confirmar Import Network. Después registrar el UUID con `./main publish-receipt RUTA_CX2 UUID`; esta comprobación usa lectura anónima y no extrae credenciales del navegador. Capturar cada grafo y sus dos IDs RIPE.
 
 El paquete se marca como entrega final únicamente si, además de las 153 celdas, acredita tres grafos públicos del análisis seleccionado, catorce métodos revisados, corroboraciones selectivas y un informe actualizado. Si falta algo, se genera como paquete de avance y se detallan sus comprobaciones en `package_status.json`.
+
+
+## Verificación de una entrega cerrada sin red
+
+Generar el paquete desde un análisis de ronda cerrada o desde la campaña completa, mientras no se estén agregando nuevas mediciones principales a esa sesión. Ejecutar `python3 scripts/reproducir_entrega.py entrega/IDENTIFICADOR/paquete_preparacion.tar.gz` (o `entrega.tar.gz` para el cierre completo). El verificador extrae en un directorio temporal, comprueba cada SHA-256, bloquea las llamadas HTTP antes de importar el CLI, valida los originales y ejecuta `analyze` sin consultas nuevas. Exige igualdad de bytes en respuestas, métricas, tablas y CX2; el resumen solo puede cambiar su fecha de generación. Conserva la constancia en `resultados/reproduccion_ronda_N.json`. Un paquete hecho mientras avanzaba una ronda puede contener más originales que el análisis incluido; en ese caso el verificador informa la diferencia y no declara reproducción acreditada.

@@ -1,0 +1,18 @@
+{
+  "session_public_ipv4": "186.189.89.115",
+  "created_at": "2026-10-26T21:07:39.039149+00:00",
+  "valid_measurements": 22,
+  "processed_runs": 22,
+  "expected": 153,
+  "includes_pilots": false,
+  "diagnostic_pilots": false,
+  "invalid": [],
+  "graphs": [
+    "138.204.230.242"
+  ],
+  "excluded_runs": [
+    "scamper_20261026T004306_ac2c6641",
+    "scamper_20261026T024854_fb1d5630"
+  ],
+  "complete_campaign": false
+}

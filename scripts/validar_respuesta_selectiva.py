@@ -103,7 +103,7 @@ def main():
     if output.exists():
         print("Validación ya conservada; no se repite.")
         return
-    if list((ROOT / "datos/originales").glob("validacion_selectiva_*/intent.json")):
+    if any(json.loads(p.read_text()).get("session_id") == config().get("session_id") for p in (ROOT / "datos/originales").glob("validacion_selectiva_*/intent.json")):
         raise RuntimeError(
             "Hay validación iniciada sin cierre; revisar antes de repetir cualquier POST."
         )
@@ -120,6 +120,7 @@ def main():
     json_write(
         folder / "intent.json",
         {
+            "session_id": cfg.get("session_id"),
             "started_at": utc(),
             "selected": chosen,
             "maximum_additional_runs": 8,
@@ -197,6 +198,8 @@ def main():
                 }
             )
     result = {
+        "session_id": cfg.get("session_id"),
+        "session_public_ipv4": cfg.get("session_public_ipv4"),
         "performed_at": utc(),
         "evidence": str(folder.relative_to(ROOT)),
         "cases": results,

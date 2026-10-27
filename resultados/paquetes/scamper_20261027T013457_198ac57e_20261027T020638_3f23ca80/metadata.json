@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+  "probe_classifier_revision": 2,
+  "run_id": "scamper_20261027T013457_198ac57e",
+  "tool": "scamper",
+  "method": "udp-dport",
+  "family": "tracelb",
+  "target": "90.150.251.81",
+  "direction": "ida",
+  "round": 3,
+  "pilot": false,
+  "packets_captured": 1180,
+  "candidate_emitted_packets": 172,
+  "outbound_transport_packets": 172,
+  "outbound_nonprobe_packets": 0,
+  "reverse_capture_is_partial": false,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/scamper_20261027T013457_198ac57e/manifest.json",
+  "source_manifest_sha256": "dde9d8c3a003f4459292e8d101a83a84e40d80fa434192605b1692fafc24a26e"
+}

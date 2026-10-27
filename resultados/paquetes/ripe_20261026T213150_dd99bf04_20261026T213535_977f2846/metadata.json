@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+  "probe_classifier_revision": 2,
+  "run_id": "ripe_20261026T213150_dd99bf04",
+  "tool": "ripe",
+  "method": "ICMP",
+  "family": "traceroute",
+  "target": "200.14.48.134",
+  "direction": "ida",
+  "round": 1,
+  "pilot": false,
+  "packets_captured": 104,
+  "candidate_emitted_packets": 51,
+  "outbound_transport_packets": 51,
+  "outbound_nonprobe_packets": 0,
+  "reverse_capture_is_partial": false,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/ripe_20261026T213150_dd99bf04/manifest.json",
+  "source_manifest_sha256": "8e9ef5008cf10fa1710ae748d0efbe25dc25d95dbbb5c07329aff758567115f7"
+}

@@ -17,7 +17,7 @@ ATLAS = "https://atlas.ripe.net/api/v2/"
 
 
 def probe_info(pid):
-    return request_json(f"{ATLAS}probes/{int(pid)}/")
+    return request_json(f"{ATLAS}probes/{int(pid)}/?_pd={identifier()}", headers={"Cache-Control": "no-cache"})
 
 
 def probe_issues(cfg, probes):
@@ -60,6 +60,8 @@ def preflight():
         evidence["egress_observations"] = egress_observations()
         ip = public_ip(evidence["egress_observations"])
         evidence["public_ipv4"] = ip
+        if cfg.get("session_public_ipv4") and cfg["session_public_ipv4"] != ip:
+            evidence["blockers"].append("La IPv4 pública difiere de la sesión activa; conservar y separar sesiones")
         net = request_json(f"https://stat.ripe.net/data/network-info/data.json?resource={ip}")
         json_write(folder / "network-info.json", net, exclusive=True)
         evidence["prefix"] = net["data"]["prefix"]
@@ -154,6 +156,31 @@ def scamper_args(cfg, family, method, dest, output):
     return [*raw_options, "-p", str(cfg["pps"]), "-w", "1", "-O", "warts", "-o", "-" if str(output) == "-" else work_path(output), "-c", " ".join(spec), "-i", dest]
 
 
+def measurement_clocks():
+    return {"monotonic": time.monotonic(), "boottime": time.clock_gettime(time.CLOCK_BOOTTIME),
+            "boot_id": Path("/proc/sys/kernel/random/boot_id").read_text().strip()}
+
+
+def validate_measurement_continuity(meta):
+    start = meta.get("clock_start")
+    if not start:
+        return  # Historical runs retain their original, explicitly reviewed evidence.
+    end = measurement_clocks()
+    active = end["monotonic"] - start["monotonic"]
+    gap = (end["boottime"] - start["boottime"]) - active
+    meta["clock_check"] = {"clock_end": end, "elapsed_awake_seconds": active,
+                           "suspend_gap_seconds": max(0.0, gap)}
+    if meta.get("status") == "completed" and (start["boot_id"] != end["boot_id"] or active < 0 or gap > 1.0):
+        meta["status"] = "invalid_session_interruption"
+        meta["error"] = "Discontinuidad del equipo detectada por relojes monotonic/boottime o cambio de arranque; revisar antes de repetir."
+
+
+def assert_session_ip(cfg, observed):
+    expected = cfg.get("session_public_ipv4")
+    if expected and observed != expected:
+        raise RuntimeError(f"IPv4 de sesión cambió: {observed}; esperada {expected}. No se enviaron nuevas sondas.")
+
+
 def measure_scamper(cfg, target, family, method, round_no, *, pilot=False, kind="measurement"):
     if not cfg.get("baf_confirmed"):
         raise RuntimeError("Mediciones pendientes: confirmar conexión BAF de casa antes de lanzar un piloto")
@@ -161,10 +188,12 @@ def measure_scamper(cfg, target, family, method, round_no, *, pilot=False, kind=
     folder.mkdir(parents=True)
     meta = {"kind": kind, "tool": "scamper", "family": family, "method": method,
             "round": round_no, "direction": "ida", "target": target["ip"], "probe_id": None,
-            "destination": target["ip"], "started_at": utc(), "pilot": pilot, "config": cfg}
+            "destination": target["ip"], "started_at": utc(), "clock_start": measurement_clocks(), "pilot": pilot, "config": cfg}
     cap = None
     try:
         meta["public_ipv4"] = public_ip()
+        assert_session_ip(cfg, meta["public_ipv4"])
+        meta["session_id"] = cfg.get("session_id")
         meta["tool_image_id"] = command(["docker", "image", "inspect", "--format", "{{.Id}}", cfg["tool_image"]]).stdout.strip() if os.environ.get("PD_NATIVE") != "1" else "native"
         meta["version"] = command(tool_command("scamper", ["-v"], cfg=cfg)).stdout.strip()
         if cfg["scamper_version"] not in meta["version"]:
@@ -188,6 +217,7 @@ def measure_scamper(cfg, target, family, method, round_no, *, pilot=False, kind=
         meta["public_ipv4_after"] = public_ip()
         if meta["public_ipv4_after"] != meta["public_ipv4"]:
             meta["status"] = "invalid_public_ip_changed"
+        validate_measurement_continuity(meta)
     except Exception as e:
         meta["status"] = "failed"
         meta["error"] = str(e) if isinstance(e, (RuntimeError, ValueError)) else type(e).__name__
@@ -239,6 +269,7 @@ def fetch_ripe(folder, *, wait_seconds=300):
             meta["public_ipv4_after"] = public_ip()
             if meta["public_ipv4_after"] != meta["public_ipv4"]:
                 meta["status"] = "invalid_public_ip_changed"
+            validate_measurement_continuity(meta)
             json_write(folder / "metadata.json", meta, exclusive=True)
             return meta
         if time.monotonic() >= deadline:
@@ -253,6 +284,7 @@ def measure_ripe(cfg, target, protocol, direction, round_no, *, pilot=False, wai
     if not key:
         raise RuntimeError("Configurar RIPE_ATLAS_API_KEY en el entorno local")
     ip = public_ip()
+    assert_session_ip(cfg, ip)
     local = probe_info(cfg["local_probe_id"])
     remote = probe_info(target["probe_id"])
     issues = probe_issues({"targets": [target]}, {str(target["probe_id"]): remote})
@@ -265,9 +297,9 @@ def measure_ripe(cfg, target, protocol, direction, round_no, *, pilot=False, wai
     folder.mkdir(parents=True)
     meta = {"kind": kind, "tool": "ripe", "family": "traceroute", "method": protocol,
             "round": round_no, "direction": direction, "target": target["ip"],
-            "public_ipv4": ip, "probe_id": int(body["probes"][0]["value"]),
+            "public_ipv4": ip, "session_id": cfg.get("session_id"), "probe_id": int(body["probes"][0]["value"]),
             "destination": body["definitions"][0]["target"], "started_at": utc(),
-            "pilot": pilot, "status": "pending", "config": cfg}
+            "pilot": pilot, "clock_start": measurement_clocks(), "status": "pending", "config": cfg}
     json_write(folder / "request.json", body, exclusive=True)
     json_write(folder / "pending.json", meta, exclusive=True)
     cap = Capture(folder, interface(cfg), target["ip"], cfg)

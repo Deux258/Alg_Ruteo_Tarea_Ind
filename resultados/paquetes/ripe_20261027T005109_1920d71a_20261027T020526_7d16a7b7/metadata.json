@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+  "probe_classifier_revision": 2,
+  "run_id": "ripe_20261027T005109_1920d71a",
+  "tool": "ripe",
+  "method": "UDP",
+  "family": "traceroute",
+  "target": "138.204.230.242",
+  "direction": "vuelta",
+  "round": 3,
+  "pilot": false,
+  "packets_captured": 296,
+  "candidate_emitted_packets": 0,
+  "outbound_transport_packets": 0,
+  "outbound_nonprobe_packets": 0,
+  "reverse_capture_is_partial": true,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/ripe_20261027T005109_1920d71a/manifest.json",
+  "source_manifest_sha256": "b1b47ec78944e813311327337b8b576178b02c09f32100c73c2570b03a9a9ae6"
+}

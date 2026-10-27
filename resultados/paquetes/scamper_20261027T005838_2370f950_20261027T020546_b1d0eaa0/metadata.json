@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+  "probe_classifier_revision": 2,
+  "run_id": "scamper_20261027T005838_2370f950",
+  "tool": "scamper",
+  "method": "tcp",
+  "family": "trace",
+  "target": "200.14.48.134",
+  "direction": "ida",
+  "round": 3,
+  "pilot": false,
+  "packets_captured": 112,
+  "candidate_emitted_packets": 10,
+  "outbound_transport_packets": 10,
+  "outbound_nonprobe_packets": 0,
+  "reverse_capture_is_partial": false,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/scamper_20261027T005838_2370f950/manifest.json",
+  "source_manifest_sha256": "fd2e5a8e1b250703ee193743f8894b91dd7a54215e5c4f51412224ca53c60f0e"
+}

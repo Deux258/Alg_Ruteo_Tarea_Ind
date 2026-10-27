@@ -7,6 +7,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PDF_PYTHON = "/home/diego/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3"
 child = None
+SESSION = json.loads((ROOT / "config/local.json").read_text()).get("session_id", "legacy")
+
+
+def log_path(name):
+    return ROOT / "resultados" / (SESSION + "_" + name)
 
 
 def stop(signum, frame):
@@ -20,7 +25,8 @@ signal.signal(signal.SIGINT, stop)
 
 
 def read_state():
-    return json.loads((ROOT / ".state/campaign.json").read_text())
+    p = ROOT / ".state/campaign.json"
+    return json.loads(p.read_text()) if p.exists() else {"rounds": {}}
 
 
 def save_json(path, data):
@@ -29,7 +35,7 @@ def save_json(path, data):
 
 def run_command(args, logname):
     global child
-    with (ROOT / "resultados" / logname).open("a") as log:
+    with log_path(logname).open("a") as log:
         child = subprocess.Popen(args, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
         result = child.wait()
     child = None
@@ -66,7 +72,7 @@ def process_round(n, checkpoints):
         f"procesamiento_ronda_{n}.log",
     )
     run_command(["./main", "analyze", "--online-asn"], f"analisis_ronda_{n}.log")
-    result = last_json(ROOT / "resultados" / f"analisis_ronda_{n}.log")
+    result = last_json(log_path(f"analisis_ronda_{n}.log"))
     run_command(
         [sys.executable, "scripts/correlacion_tcp.py"], f"correlacion_ronda_{n}.log"
     )

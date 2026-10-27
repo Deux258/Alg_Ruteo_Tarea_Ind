@@ -74,10 +74,16 @@ PACKET_FIELDS = ("frame.number", "frame.time_epoch", "frame.len", "ip.src", "ip.
 
 
 def is_probe_request(row, method):
-    """Distinguir sondas TCP SYN/ACK de RST producidos por la pila del host."""
-    if not method.lower().startswith("tcp"):
-        return True
-    if not row.get("tcp.flags"):
+    """Solo solicitudes del protocolo pedido; excluir citas ICMP y RST del host."""
+    lower = method.lower()
+    proto = row.get("ip.proto")
+    if lower.startswith("udp"):
+        return bool(row.get("udp.srcport") and row.get("udp.dstport")) and not row.get("icmp.type") and proto in (None, "", "17")
+    if lower.startswith("icmp"):
+        return row.get("icmp.type") == "8" and proto in (None, "", "1")
+    if not lower.startswith("tcp"):
+        raise ValueError("Método no reconocido para clasificar solicitudes")
+    if not row.get("tcp.flags") or row.get("icmp.type") or proto not in (None, "", "6"):
         return False
     flags = int(row["tcp.flags"], 0)
     if "ack" in method.lower():
@@ -117,7 +123,7 @@ def export_packets(folder):
         writer = csv.DictWriter(stream, fieldnames=PACKET_FIELDS, delimiter="\t")
         writer.writeheader()
         writer.writerows(emittedrows)
-    json_write(out / "metadata.json", {"format_version": 2, "run_id": folder.name, "tool": meta["tool"], "method": meta["method"], "family": meta["family"], "target": meta["target"], "direction": meta["direction"], "round": meta["round"], "pilot": meta["pilot"], "packets_captured": len(allrows), "candidate_emitted_packets": len(emittedrows), "outbound_transport_packets": len(outbound), "outbound_nonprobe_packets": len(outbound)-len(emittedrows), "reverse_capture_is_partial": meta["direction"] == "vuelta", "source_manifest": str(folder / "manifest.json"), "source_manifest_sha256": sha256(folder / "manifest.json")})
+    json_write(out / "metadata.json", {"format_version": 2, "probe_classifier_revision": 2, "run_id": folder.name, "tool": meta["tool"], "method": meta["method"], "family": meta["family"], "target": meta["target"], "direction": meta["direction"], "round": meta["round"], "pilot": meta["pilot"], "packets_captured": len(allrows), "candidate_emitted_packets": len(emittedrows), "outbound_transport_packets": len(outbound), "outbound_nonprobe_packets": len(outbound)-len(emittedrows), "reverse_capture_is_partial": meta["direction"] == "vuelta", "source_manifest": str(folder / "manifest.json"), "source_manifest_sha256": sha256(folder / "manifest.json")})
     save_manifest(out, {"kind": "packet_export", "source_run": folder.name})
     return out
 
@@ -184,7 +190,7 @@ def pattern_groups():
         if meta["pilot"] or meta["direction"] != "ida":
             continue
         source = ROOT / "datos/originales" / run_id
-        if meta.get("format_version", 1) < 2 or meta.get("source_manifest_sha256") != sha256(source / "manifest.json"):
+        if meta.get("format_version", 1) < 2 or meta.get("probe_classifier_revision", 1) < 2 or meta.get("source_manifest_sha256") != sha256(source / "manifest.json"):
             raise ValueError("Reexportar paquetes antes de generar patrones: " + run_id)
         key = (meta["tool"], meta["family"], meta["method"], meta["target"])
         if meta["round"] in groups[key]:

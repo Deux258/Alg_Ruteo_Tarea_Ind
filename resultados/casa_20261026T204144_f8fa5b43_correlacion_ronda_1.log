@@ -1,0 +1,1 @@
+{"reviewed_scamper_tcp_runs": 12, "runs_with_matching_icmp_quotes": 12, "runs_with_pcap_warts_discrepancy": 12, "interpretation": "Correlación estricta por direcciones, IPID, puertos y orden temporal. Presencia en PCAP no implica aceptación por Scamper. Causa de la diferencia no establecida; no demuestra bloqueo TCP de los routers."}

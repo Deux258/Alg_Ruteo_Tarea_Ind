@@ -30,7 +30,7 @@
     }
   ],
   "baf_confirmed_at": "2026-10-26T00:42:39.594987+00:00",
-  "connection_context": "domicilio_confirmado_por_usuario_2026-10-25",
+  "connection_context": "WOM domiciliaria sin VPN confirmada nuevamente por usuario 2026-10-26",
   "probe_registered_at": "2026-10-26T00:55:22.041106+00:00",
   "probe_location_description": "Quilicura, Región Metropolitana, Chile (ubicación aproximada)",
   "ripe_credit_balance_observed": 50000,
@@ -40,5 +40,10 @@
   ],
   "isp_confirmed_at": "2026-10-26T01:16:43.441766+00:00",
   "target_selection_evidence": "datos/originales/seleccion_sondas_20261026T012504",
-  "russian_target_update_evidence": "datos/originales/actualizacion_rusia_20261026T012854"
+  "russian_target_update_evidence": "datos/originales/actualizacion_rusia_20261026T012854",
+  "session_id": "casa_20261026T204144_f8fa5b43",
+  "session_public_ipv4": "186.189.89.115",
+  "session_started_at": "2026-10-26T20:41:44.368285+00:00",
+  "session_archive": "datos/originales/cambio_sesion_20261026T204144_9c115e26",
+  "session_archive_manifest_sha256": "b84710bcea95f98bb26784cd80d27f10236d6039b96e7e5fb0eb0381b4f554fb"
 }

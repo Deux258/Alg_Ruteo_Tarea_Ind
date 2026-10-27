@@ -1,0 +1,386 @@
+{
+  "session_id": "casa_20261026T204144_f8fa5b43",
+  "session_public_ipv4": "186.189.89.115",
+  "performed_at": "2026-10-27T02:17:04.269542+00:00",
+  "evidence": "datos/originales/validacion_selectiva_20261027T020733_7e3b1f55",
+  "cases": [
+    {
+      "tool": "scamper",
+      "candidate": {
+        "tool": "scamper",
+        "target": "200.14.48.134",
+        "ip": "38.104.94.178",
+        "responds_method": "icmp",
+        "not_observed_method": "udp",
+        "responding_rounds": [
+          1,
+          2,
+          3
+        ],
+        "comparable_ttl_rounds": [
+          1,
+          2,
+          3
+        ],
+        "evidence_runs": [
+          "scamper_20261026T210336_fcc045e2",
+          "scamper_20261026T225816_52ed0974",
+          "scamper_20261027T005551_af3d21dd",
+          "scamper_20261026T210306_6dc1ce5a",
+          "scamper_20261026T225734_e49df6e1",
+          "scamper_20261027T005458_4d0d1537"
+        ],
+        "scope": "IP observada con un método y ausente con otro en ventanas TTL comparables. Puede reflejar diferencias de ruta; no prueba firewall."
+      },
+      "additional_runs": [
+        {
+          "repeat": 1,
+          "method": "icmp",
+          "run_id": "scamper_20261027T020733_37273d3c",
+          "measurement_id": null,
+          "ip_observed": true,
+          "unique_ips": [
+            "10.87.0.2",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.167.185",
+            "154.54.29.157",
+            "154.54.92.41",
+            "190.242.168.37",
+            "192.168.100.1",
+            "200.0.16.21",
+            "200.0.16.29",
+            "200.14.48.134",
+            "200.14.48.178",
+            "38.104.94.178"
+          ],
+          "export": "resultados/paquetes/scamper_20261027T020733_37273d3c_20261027T020819_51b8216f",
+          "manifest_sha256": "167cd2b38c162cbce7bfd0f58439311de71154368780b0bd4972c2c7eb569611"
+        },
+        {
+          "repeat": 1,
+          "method": "udp",
+          "run_id": "scamper_20261027T020821_338f7e04",
+          "measurement_id": null,
+          "ip_observed": true,
+          "unique_ips": [
+            "10.87.0.3",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.167.185",
+            "154.54.3.29",
+            "154.54.92.41",
+            "190.242.168.39",
+            "192.168.100.1",
+            "38.104.94.178"
+          ],
+          "export": "resultados/paquetes/scamper_20261027T020821_338f7e04_20261027T020857_38174a35",
+          "manifest_sha256": "dc89e30e8cf80fb51f6d7a0e30b6de00b3e24fc1e0f15ab69536d8e62120d019"
+        },
+        {
+          "repeat": 2,
+          "method": "icmp",
+          "run_id": "scamper_20261027T020859_632ab7a6",
+          "measurement_id": null,
+          "ip_observed": true,
+          "unique_ips": [
+            "10.87.0.2",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.167.185",
+            "154.54.29.157",
+            "154.54.92.41",
+            "190.242.168.37",
+            "192.168.100.1",
+            "200.0.16.21",
+            "200.0.16.29",
+            "200.14.48.134",
+            "200.14.48.178",
+            "38.104.94.178"
+          ],
+          "export": "resultados/paquetes/scamper_20261027T020859_632ab7a6_20261027T020945_1e3654a7",
+          "manifest_sha256": "2afd0ebb7069b4ddb30ee9be41e088b523ff2dd89bcf59a2e9237ed6945943ac"
+        },
+        {
+          "repeat": 2,
+          "method": "udp",
+          "run_id": "scamper_20261027T020947_0fbcb7dd",
+          "measurement_id": null,
+          "ip_observed": true,
+          "unique_ips": [
+            "10.87.0.3",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.167.185",
+            "154.54.92.41",
+            "192.168.100.1",
+            "200.0.16.16",
+            "200.0.16.21",
+            "200.0.16.25",
+            "200.0.16.29",
+            "200.14.48.134",
+            "200.14.48.178",
+            "38.104.94.178",
+            "69.79.104.1"
+          ],
+          "export": "resultados/paquetes/scamper_20261027T020947_0fbcb7dd_20261027T021024_f436293d",
+          "manifest_sha256": "a9a608ca34027c4699a24b1c2afddb61b5f0993a64ae18554bfa84d76c340508"
+        }
+      ],
+      "status": "not_corroborated",
+      "interpretation": "Corroboración del comportamiento observado, sin identificar una regla de firewall. No aparición también puede corresponder a otra ruta, pérdida, balanceo o recepción local."
+    },
+    {
+      "tool": "ripe",
+      "candidate": {
+        "tool": "ripe",
+        "target": "200.14.48.134",
+        "ip": "200.0.16.25",
+        "responds_method": "TCP",
+        "not_observed_method": "ICMP",
+        "responding_rounds": [
+          1,
+          2,
+          3
+        ],
+        "comparable_ttl_rounds": [
+          1,
+          2,
+          3
+        ],
+        "evidence_runs": [
+          "ripe_20261026T213337_91ad53db",
+          "ripe_20261026T233005_446893c5",
+          "ripe_20261027T012509_aab72abf",
+          "ripe_20261026T213150_dd99bf04",
+          "ripe_20261026T232833_9f181ea5",
+          "ripe_20261027T012347_919c43c9"
+        ],
+        "scope": "IP observada con un método y ausente con otro en ventanas TTL comparables. Puede reflejar diferencias de ruta; no prueba firewall."
+      },
+      "additional_runs": [
+        {
+          "repeat": 1,
+          "method": "TCP",
+          "run_id": "ripe_20261027T021029_21cd8259",
+          "measurement_id": 228007771,
+          "ip_observed": true,
+          "unique_ips": [
+            "10.87.0.3",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.167.185",
+            "154.54.29.157",
+            "154.54.92.41",
+            "190.242.168.39",
+            "192.168.100.1",
+            "200.0.16.16",
+            "200.0.16.21",
+            "200.0.16.25",
+            "200.0.16.29",
+            "200.14.48.134",
+            "200.14.48.178",
+            "38.88.57.26"
+          ],
+          "export": "resultados/paquetes/ripe_20261027T021029_21cd8259_20261027T021237_7ceae44a",
+          "manifest_sha256": "6a548930581c498db403b480d771546676677c6932dbbf777b26b25ef2ceeb83"
+        },
+        {
+          "repeat": 1,
+          "method": "ICMP",
+          "run_id": "ripe_20261027T021245_9bda16d8",
+          "measurement_id": 228009257,
+          "ip_observed": false,
+          "unique_ips": [
+            "10.87.0.2",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.167.185",
+            "154.54.29.157",
+            "154.54.92.41",
+            "190.242.168.37",
+            "192.168.100.1",
+            "200.0.16.21",
+            "200.0.16.29",
+            "200.14.48.134",
+            "200.14.48.178",
+            "38.104.94.178"
+          ],
+          "export": "resultados/paquetes/ripe_20261027T021245_9bda16d8_20261027T021354_67922b63",
+          "manifest_sha256": "02c2d3e13598846ac70910c803650f85075c8595df066078cf01abaca1801342"
+        },
+        {
+          "repeat": 2,
+          "method": "TCP",
+          "run_id": "ripe_20261027T021359_987fefb9",
+          "measurement_id": 228009551,
+          "ip_observed": true,
+          "unique_ips": [
+            "10.87.0.3",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.168.85",
+            "154.54.3.29",
+            "154.54.92.41",
+            "190.242.168.37",
+            "192.168.100.1",
+            "200.0.16.21",
+            "200.0.16.25",
+            "200.14.48.134",
+            "200.14.48.178",
+            "38.104.94.178",
+            "69.79.104.1"
+          ],
+          "export": "resultados/paquetes/ripe_20261027T021359_987fefb9_20261027T021543_c339eaba",
+          "manifest_sha256": "18dc57d4bed86b30181e840e032dad40fa67e959a358ca56ae195838d8e64c88"
+        },
+        {
+          "repeat": 2,
+          "method": "ICMP",
+          "run_id": "ripe_20261027T021549_02ab18c4",
+          "measurement_id": 228009740,
+          "ip_observed": false,
+          "unique_ips": [
+            "10.87.0.2",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.167.185",
+            "154.54.29.157",
+            "154.54.92.41",
+            "190.242.168.37",
+            "192.168.100.1",
+            "200.0.16.21",
+            "200.0.16.29",
+            "200.14.48.134",
+            "200.14.48.178",
+            "38.104.94.178"
+          ],
+          "export": "resultados/paquetes/ripe_20261027T021549_02ab18c4_20261027T021701_0d363509",
+          "manifest_sha256": "3f083d867908cc82a1f0ef825163fdaf81979ab083000c799035e34b5c90e2b9"
+        }
+      ],
+      "status": "corroborated_observation",
+      "interpretation": "Corroboración del comportamiento observado, sin identificar una regla de firewall. No aparición también puede corresponder a otra ruta, pérdida, balanceo o recepción local."
+    },
+    {
+      "tool": "scamper",
+      "candidate": {
+        "tool": "scamper",
+        "target": "90.150.251.81",
+        "ip": "195.22.211.61",
+        "responds_method": "icmp",
+        "not_observed_method": "udp",
+        "responding_rounds": [
+          1,
+          2,
+          3
+        ],
+        "comparable_ttl_rounds": [
+          1,
+          2,
+          3
+        ],
+        "evidence_runs": [
+          "scamper_20261026T213729_709f7dd4",
+          "scamper_20261026T233422_ab1a612a",
+          "scamper_20261027T012931_11b2d74a",
+          "scamper_20261026T213625_ebd3155e",
+          "scamper_20261026T233314_4773e517",
+          "scamper_20261027T012824_0e804103"
+        ],
+        "scope": "IP observada con un método y ausente con otro en ventanas TTL comparables. Puede reflejar diferencias de ruta; no prueba firewall."
+      },
+      "additional_runs": [
+        {
+          "repeat": 1,
+          "method": "icmp",
+          "run_id": "scamper_20261027T021854_775a5cfb",
+          "measurement_id": null,
+          "ip_observed": true,
+          "unique_ips": [
+            "10.87.0.3",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.10.210",
+            "154.54.168.85",
+            "154.54.3.29",
+            "154.54.92.41",
+            "192.168.100.1",
+            "195.22.211.61",
+            "195.22.214.161"
+          ],
+          "export": "resultados/paquetes/scamper_20261027T021854_775a5cfb_20261027T022004_b879ba9f",
+          "manifest_sha256": "11c4cb59a5a3a404308bc8b71a06582ffd4531ea101f7e8cfdfd691829473093"
+        },
+        {
+          "repeat": 1,
+          "method": "udp",
+          "run_id": "scamper_20261027T022006_e5c77463",
+          "measurement_id": null,
+          "ip_observed": false,
+          "unique_ips": [
+            "10.87.0.3",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.10.210",
+            "154.54.167.185",
+            "154.54.3.29",
+            "154.54.92.41",
+            "192.168.100.1",
+            "195.22.211.209",
+            "195.22.214.161"
+          ],
+          "export": "resultados/paquetes/scamper_20261027T022006_e5c77463_20261027T022112_65434bca",
+          "manifest_sha256": "c458f80ad0be61f7aea60eb29ecd9f76853250253f2e9a885c7697fcf1d74adf"
+        },
+        {
+          "repeat": 2,
+          "method": "icmp",
+          "run_id": "scamper_20261027T022114_f9852554",
+          "measurement_id": null,
+          "ip_observed": true,
+          "unique_ips": [
+            "10.87.0.3",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.10.210",
+            "154.54.168.85",
+            "154.54.3.29",
+            "154.54.92.41",
+            "192.168.100.1",
+            "195.22.211.61",
+            "195.22.214.161"
+          ],
+          "export": "resultados/paquetes/scamper_20261027T022114_f9852554_20261027T022225_bf57adda",
+          "manifest_sha256": "f9031fa05021c1af19beaaf16e381bee7251a8d263d1e7301b68c2e6797a4162"
+        },
+        {
+          "repeat": 2,
+          "method": "udp",
+          "run_id": "scamper_20261027T022228_f031242b",
+          "measurement_id": null,
+          "ip_observed": false,
+          "unique_ips": [
+            "10.87.0.3",
+            "10.87.0.46",
+            "100.88.0.1",
+            "154.54.10.210",
+            "154.54.29.157",
+            "154.54.3.29",
+            "154.54.92.41",
+            "192.168.100.1",
+            "195.22.214.161"
+          ],
+          "export": "resultados/paquetes/scamper_20261027T022228_f031242b_20261027T022324_71bbd01a",
+          "manifest_sha256": "0c61a6f3860d1fdf4d4d95261f7a8772241c2af0090e6a64fa226a6e515b7aaa"
+        }
+      ],
+      "status": "corroborated_observation",
+      "interpretation": "Observación acotada; la ausencia puede deberse a rutas, pérdida o balanceo y no prueba una regla de firewall."
+    }
+  ],
+  "requirements_corroborated": true,
+  "scope": "Pruebas adicionales fuera de las 153 celdas y del entrenamiento de patrones.",
+  "supplemental_evidence": "datos/originales/validacion_segundo_scamper_20261027T021854_54c72758",
+  "updated_at": "2026-10-27T02:23:27.236503+00:00"
+}

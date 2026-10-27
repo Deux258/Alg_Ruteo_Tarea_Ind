@@ -24,9 +24,7 @@ def main():
     if output.exists():
         print("Diagnóstico ya realizado; se conserva sin duplicarlo.")
         return
-    if list(
-        (ROOT / "datos/originales").glob("diagnostico_recepcion_tcp_*/intent.json")
-    ):
+    if any(json.loads(p.read_text()).get("session_id") == config().get("session_id") for p in (ROOT / "datos/originales").glob("diagnostico_recepcion_tcp_*/intent.json")):
         raise RuntimeError(
             "Existe un diagnóstico incompleto; revisar sus originales antes de repetirlo."
         )
@@ -38,6 +36,7 @@ def main():
     json_write(
         folder / "intent.json",
         {
+            "session_id": cfg.get("session_id"),
             "started_at": utc(),
             "target": target,
             "purpose": "Comparar envío TCP predeterminado por datalink y opción rawtcp oficial, con control de puerto origen. No cuenta para las 153 mediciones.",
@@ -71,6 +70,7 @@ def main():
             results.append(result)
             json_write(folder / "progress.json", results)
     result = {
+        "session_id": cfg.get("session_id"),
         "performed_at": utc(),
         "target": target["ip"],
         "scope": "Diagnóstico adicional; excluido de la comparación principal y del entrenamiento de patrones. Una diferencia no identifica por sí sola la regla de firewall o causa local.",

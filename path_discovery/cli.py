@@ -64,6 +64,8 @@ def accept_pilot(args):
         raise ValueError("Revisar PCAP en Wireshark o generar pilot-review y proporcionar --packet-review")
     if cfg["udp_base_port"] is None:
         raise ValueError("Configurar udp_base_port a partir del PCAP piloto RIPE UDP")
+    if cfg.get("session_public_ipv4") and any(r["public_ipv4"] != cfg["session_public_ipv4"] for r in chosen):
+        raise ValueError("Piloto de otra sesión pública")
     if len({r["public_ipv4"] for r in chosen}) != 1:
         raise ValueError("Los pilotos no comparten IPv4 pública")
     import csv
@@ -179,8 +181,12 @@ def status():
         if tuple(job[k] for k in ("round", "target", "tool", "family", "method", "direction")) not in keys:
             missing.append(job)
     publications = []
+    current_ripe_ids = {r["measurement_id"] for r in runs if r.get("measurement_id")}
     for p in (ROOT / "grafos").glob("publication_*/publication.json"):
-        publications.append(json.loads(p.read_text()))
+        publication = json.loads(p.read_text())
+        ids = set(publication.get("measurement_ids", []))
+        if len(ids) == 2 and ids <= current_ripe_ids:
+            publications.append(publication)
     return {"expected": 153, "completed": len(keys), "valid_runs": len(runs), "pilots": sum(r.get("pilot", False) for r in rr), "missing": missing, "invalid": invalid,
             "public_graphs": publications, "scientific_results_complete": not missing and len({p["target"] for p in publications}) == 3}
 
@@ -208,6 +214,7 @@ def build_parser():
         sub.add_parser(name).add_argument("run")
     p = sub.add_parser("analyze")
     p.add_argument("--online-asn", action="store_true")
+    p.add_argument("--session-ip", help="Analizar explícitamente una sesión IPv4 histórica")
     p.add_argument("--include-pilots", action="store_true")
     p.add_argument("--diagnostic-pilots", action="store_true")
     sub.add_parser("publish").add_argument("cx2")
@@ -252,7 +259,7 @@ def execute(args):
         with campaign_lock():
             return recover_ripe(args.run)
     if args.cmd == "analyze":
-        folder, result = analyze(online=args.online_asn, include_pilots=args.include_pilots, diagnostic_pilots=args.diagnostic_pilots)
+        folder, result = analyze(online=args.online_asn, include_pilots=args.include_pilots, diagnostic_pilots=args.diagnostic_pilots, session_ip=args.session_ip)
         return {"folder": str(folder), **result}
     if args.cmd == "packet-export":
         return {"folder": str(export_packets(resolve_run(args.run)))}

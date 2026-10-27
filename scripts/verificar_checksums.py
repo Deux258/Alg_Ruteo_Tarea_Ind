@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Comprobar checksum IPv4 y TCP de las solicitudes capturadas, sin emitir tráfico."""
 from pathlib import Path
-import json, struct
+import json, struct, sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from path_discovery.analysis import collect
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -17,7 +19,10 @@ def folded(data):
 
 index = json.loads((ROOT / "resultados/exportaciones_paquetes.json").read_text())
 records = []
+accepted = {r["run_id"] for r in collect()[1]}
 for rid, export in index.items():
+    if rid not in accepted:
+        continue
     original = ROOT / "datos/originales" / rid
     m = json.loads((original / "metadata.json").read_text())
     if m["direction"] != "ida":
@@ -59,7 +64,7 @@ for rid, export in index.items():
 (ROOT / "resultados/checksums_tcp.json").write_text(
     json.dumps(
         {
-            "scope": "Solicitudes exteriores completas de las exportaciones actuales; la ausencia de respuestas no se atribuye a checksum sin evidencia.",
+            "scope": "Tramas TCP exteriores completas de las exportaciones actuales, incluidos paquetes RST de control. No equivale al número de sondas. La ausencia de respuestas no se atribuye a checksum sin evidencia.",
             "runs": records,
         },
         indent=2,
@@ -70,7 +75,7 @@ print(
     json.dumps(
         {
             "runs": len(records),
-            "tcp_requests_checked": sum(r["checked"] for r in records),
+            "tcp_frames_checked": sum(r["checked"] for r in records),
             "invalid_tcp": sum(r["checked"] - r["tcp_valid"] for r in records),
         }
     )

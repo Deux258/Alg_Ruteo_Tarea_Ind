@@ -127,13 +127,8 @@ def main():
     for rid in runs:
         original = ROOT / "datos/originales" / rid
         verify_manifest(original)
-        outdated = (
-            rid in index
-            and json.loads((ROOT / index[rid] / "metadata.json").read_text()).get(
-                "format_version", 1
-            )
-            < 2
-        )
+        exported_meta = json.loads((ROOT / index[rid] / "metadata.json").read_text()) if rid in index else {}
+        outdated = rid in index and (exported_meta.get("format_version", 1) < 2 or exported_meta.get("probe_classifier_revision", 1) < 2)
         if rid not in index or outdated:
             exported = export_packets(original)
             index[rid] = str(exported.relative_to(ROOT))

@@ -12,7 +12,8 @@ from path_discovery.analysis import collect
 def main():
     rows, runs, invalid = collect()
     cfg = config()
-    state = json.loads((ROOT / ".state/campaign.json").read_text())
+    statefile = ROOT / ".state/campaign.json"
+    state = json.loads(statefile.read_text()) if statefile.exists() else {"rounds": {}}
     counts = Counter(r["round"] for r in runs)
     out = ROOT / "resultados/fichas_paquetes"
     out.mkdir(exist_ok=True)
@@ -21,8 +22,9 @@ def main():
         + html.escape(utc())
         + " UTC · conexión domiciliaria WOM · sonda RIPE 1018487</p>"
     )
+    body += "<p>Sesión: " + html.escape(cfg.get("session_id", "histórica")) + " · IPv4: " + html.escape(cfg.get("session_public_ipv4", "no fijada")) + "</p>"
     body += f'<div class="count">{len(runs)} / 153 <span>ejecuciones principales con originales y manifiesto</span></div>'
-    body += '<p class="note">Vista local generada desde WARTS/JSON y metadatos; no es una captura del panel RIPE. Pilotos, diagnósticos y ejecuciones descartadas no cuentan. La ronda 1 tuvo una discontinuidad temporal documentada.</p>'
+    body += '<p class="note">Vista local generada desde WARTS/JSON y metadatos; no es una captura del panel RIPE. Pilotos, diagnósticos y ejecuciones descartadas no cuentan. La sesión anterior se conserva aparte; sus 60 resultados no se suman a esta campaña.</p>'
     body += "<table><tr><th>Ronda</th><th>trace / 18</th><th>tracelb / 15</th><th>RIPE ida / 9</th><th>RIPE vuelta / 9</th><th>Total / 51</th><th>Cierre UTC</th></tr>"
     for n in (1, 2, 3):
         rr = [r for r in runs if r["round"] == n]
