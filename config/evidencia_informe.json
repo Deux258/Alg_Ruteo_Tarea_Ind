@@ -1,0 +1,47 @@
+{
+  "patterns": "resultados/patrones_20261027T151548_e1a4cccd/predictions.json",
+  "payload": "resultados/estructura_payload.json",
+  "selective": "resultados/respuesta_selectiva_revision.json",
+  "files": [
+    {
+      "path": "resultados/patrones_20261027T151548_e1a4cccd/predictions.json",
+      "sha256": "9bf5475ee1efe384d40edacbee4d22066b676c8af77ddf7cfa8e9ba9cbab50de"
+    },
+    {
+      "path": "resultados/estructura_payload.json",
+      "sha256": "74bc8c003e2e11528ead5d6583e2caac37983b517dac6ac8ad20327e44f143f2"
+    },
+    {
+      "path": "resultados/respuesta_selectiva_revision.json",
+      "sha256": "d7c6f073b6a851ce05d8122a804afb3f2548ffe6db0a5ba99a8646d49ab7c7af"
+    },
+    {
+      "path": "resultados/correlacion_tcp_captura.json",
+      "sha256": "711309923192cb664406261fa7b8f0369ead728012192f6c146017057326e81e"
+    },
+    {
+      "path": "resultados/checksums_tcp.json",
+      "sha256": "8fe53d3581876fd8691454bf751ca7494a87dc894274f3f97b4e3daa25311b64"
+    },
+    {
+      "path": "resultados/auditoria_patrones_revision.json",
+      "sha256": "27bc9aadcde6d567a1ee50deef5ee225a8140c5c96f4ed5132e7e50b9207af9a"
+    },
+    {
+      "path": "resultados/revision_wireshark_gui.json",
+      "sha256": "64920512ffd670ca92b861f57e1bb38900b382be5676b2e0e4239fe5da3aacc9"
+    },
+    {
+      "path": "capturas/indice.json",
+      "sha256": "4dda67c22ec2a924be0948eaced63dbcd30be1e5f257ecd2153fc74c7023190a"
+    },
+    {
+      "path": "resultados/preflight_campana.json",
+      "sha256": "a577fb5759eeee0c34c05fe2782e3fd30f9acccabeea9aefbe828fe913888a3d"
+    },
+    {
+      "path": "resultados/bgp_he_origen.txt",
+      "sha256": "e223c4be4bc94b95963415c3b7f5778f68378d59d0555edc04f709d531c08f3e"
+    }
+  ]
+}

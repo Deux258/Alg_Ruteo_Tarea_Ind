@@ -1,0 +1,15 @@
+{
+  "compiled_at": "2026-10-27T15:48:15.475921+00:00",
+  "image": "path-discovery-latex:bookworm",
+  "image_id": "sha256:e183bb169b3dc0e90beafa06456f0e8571a0184a9db6401fe9400a4dcf2d27be",
+  "base_digest": "debian@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8",
+  "pdftex": "3.141592653-2.6-1.40.24 (TeX Live 2022/Debian)",
+  "latexmk": "1:4.79-1",
+  "reportlab": "3.6.12",
+  "lmodern": "2.005-1",
+  "source_date_epoch": 1793114149,
+  "network_mode": "none",
+  "pdf_sha256": "37de93cce61cf55089c65f9fe790912a3c08a1ff15337a72467628c8f37a2fc2",
+  "overfull_boxes": 0,
+  "undefined_references": 0
+}

@@ -1,0 +1,48 @@
+\section{Introducción}\label{sec:intro}
+Este trabajo caracteriza las rutas de Internet utilizadas desde una conexión de banda ancha fija domiciliaria y compara la información revelada por Scamper y RIPE Atlas. Las preguntas son qué método descubre más interfaces por destino, qué cambia al invertir el sentido y qué patrones permiten reconocer las sondas en una captura.
+
+El objetivo es documentar observaciones reproducibles y su alcance. Una IP de respuesta representa una interfaz observada; no equivale por sí sola a un router físico. Los ASN se obtienen de asociaciones IP-prefijo y no constituyen una ruta BGP medida.
+
+\subsection{Conexión de origen}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{4.2cm}p{10.3cm}}
+\toprule
+\textbf{Dato} & \textbf{Valor} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Dato} & \textbf{Valor} \\ \midrule
+\endhead
+Proveedor comercial & WOM, confirmado por el estudiante \\
+Ubicación aproximada & Quilicura, Región Metropolitana de Chile \\
+IPv4 pública & 186.189.89.115 \\
+Prefijo & 186.189.89.0/24 \\
+ASN & AS52341 \\
+Sonda local & 1018487 \\
+Interfaz & wlan0 \\
+\bottomrule
+\end{longtable}
+\endgroup
+La asociación IP-prefijo-AS proviene de RIPEstat y sus respuestas conservadas. La consulta en BGP HE del 27 de octubre de 2026 confirma AS52341 (WOM S.A.) y muestra los anuncios 186.189.80.0/20 y 186.189.89.0/24; se usa el más específico. Su captura y transcripción se incluyen en los anexos y en el manifiesto de fuentes. Las direcciones privadas y 100.88.0.1 observadas son compatibles con NAT; sin comprobar la WAN del router no se confirma CGNAT.
+
+\subsection{Destinos y motivación}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3cm}p{6cm}p{3cm}}
+\toprule
+\textbf{Destino} & \textbf{IPv4} & \textbf{Sonda} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Destino} & \textbf{IPv4} & \textbf{Sonda} \\ \midrule
+\endhead
+Valparaíso & 138.204.230.242 & 6652 \\
+La Habana & 200.14.48.134 & 12734 \\
+Rusia & 37.79.226.46 & 3959 \\
+\bottomrule
+\end{longtable}
+\endgroup
+Se usan las alternativas admitidas por el enunciado actualizado. Valparaíso, La Habana y Rusia son los casos propuestos por el curso para contrastar contextos de conectividad. Las referencias del enunciado a velocidad y censura motivan la selección, pero estos traceroutes no miden velocidad de acceso ni demuestran censura. El destino ruso anterior, 90.150.251.81 / 870, se conserva como antecedente y queda fuera del análisis vigente. Se consideran tres destinos; la referencia del punto 4 a sí mismo se interpreta como una referencia al proceso bidireccional del punto 3.
+
+\noindent Fuentes para la conexión de origen: RIPEstat \cite{ref4} y BGP HE \cite{ref7}; la motivación y los destinos proceden del enunciado \cite{ref8}.

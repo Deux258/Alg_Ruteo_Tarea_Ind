@@ -18,9 +18,9 @@ La sesión anterior (`186.189.107.115`) se interrumpió tras reiniciar el equipo
 
 El servicio finito `path-discovery-casa-20261026-204144.service` mantiene un bloqueo temporal de suspensión y procesa cada ronda. Consultar `./main status` y `systemctl --user status path-discovery-casa-20261026-204144.service`; el log es `resultados/casa_20261026T204144_f8fa5b43_supervisor.log`. No iniciar otra campaña mientras esté activo. Un reinicio o un cambio de IP detiene la ejecución y requiere revisar los intentos pendientes.
 
-Las tres rondas terminaron con **153/153 mediciones principales válidas**; las pruebas adicionales concluyeron. La primera ronda terminó con 51/51 mediciones válidas. Se reprodujo sin red: 59 archivos de tablas, métricas y CX2 idénticos; 2405 archivos del paquete y 163 manifiestos originales verificados. El informe de avance vigente incorpora las dos rondas; las capturas nuevas se indexaron para la próxima regeneración. El servicio finalizó correctamente. Quedan pendientes las corroboraciones entre rondas y tres publicaciones públicas en NDEx.
+Las tres rondas de la selección actual terminaron con **153/153 mediciones válidas**. Valparaíso, La Habana y Rusia tienen grafos definitivos públicos y recibos de comprobación anónima. Los 14 métodos cuentan con revisión gráfica en Wireshark y capturas de la sesión seleccionada; los dos casos de respuesta selectiva se corroboraron con repeticiones.
 
-El usuario autorizó sustituir 31416 por 6652 y actualizar la IP de 870. Se conserva la justificación en [Cambios de destinos](docs/CAMBIOS_DESTINOS.md). Las catorce capturas Wireshark anteriores pertenecen a la sesión histórica. Los 14 métodos nuevos ya tienen revisión gráfica sellada y capturas propias de sesión, más dos imágenes de las citas ICMP. Faltan tres publicaciones públicas en NDEx y el cierre del informe.
+El análisis final es `resultados/analisis_20261027T151549_92fa68e2`. El informe se genera en LaTeX desde esa selección sellada: [fuentes y reproducción](informe/latex/README.md). El origen es WOM, 186.189.89.115, AS52341. Los destinos vigentes son 138.204.230.242 / 6652, 200.14.48.134 / 12734 y 37.79.226.46 / 3959, alternativas admitidas por el enunciado actualizado. Las sesiones anteriores permanecen como antecedentes y no se mezclan con estas 153 ejecuciones.
 
 ## Organización
 
@@ -29,7 +29,7 @@ El usuario autorizó sustituir 31416 por 6652 y actualizar la IP de 870. Se cons
 - `datos/originales/`: enunciado, preflight, mediciones y consultas ASN; nunca se sobrescriben después del sellado.
 - `resultados/`: análisis regenerables, tablas, diagnósticos y exportaciones de paquetes.
 - `grafos/`: constancias de publicación NDEx.
-- `informe/`: informes Markdown y PDF cuando ReportLab está disponible.
+- `informe/`: proyecto LaTeX, PDF final y versiones históricas; `compose.latex.yaml` permite compilar sin red.
 - `tests/`: fixtures sintéticos separados de los datos medidos.
 
 Los originales y capturas quedan fuera de Git y se incluyen en la entrega local con `bundle`. No se publica automáticamente ningún cambio en Git.

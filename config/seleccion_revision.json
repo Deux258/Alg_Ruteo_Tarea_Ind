@@ -533,37 +533,294 @@
       "reason": "Medición válida del destino aceptado en el enunciado actualizado"
     },
     {
-      "run_id": "scamper_20261027T025650_31dc05de",
-      "manifest_sha256": "ede07b160f8b81aa934e5b24443933fade37d72257e85760f72fa04acb02ddd7",
+      "run_id": "scamper_20261027T122128_067eb422",
+      "manifest_sha256": "865fd9eb5ebd10d2f4abe76bdfe21a35a6372ccad7e4019c9ee7ca389eb9ef95",
       "reason": "Nueva medición del destino ruso del enunciado actualizado"
     },
     {
-      "run_id": "scamper_20261027T025827_77d7daf0",
-      "manifest_sha256": "7f9a03cde4596d523ea981e4960798fa5e31e872cdb732585661b12327c12625",
+      "run_id": "scamper_20261027T122255_4ebb822c",
+      "manifest_sha256": "e3adcf71921aed4c36e485e3d0ed6a608a6a03741d1f473e275c588bbf3f2d78",
       "reason": "Nueva medición del destino ruso del enunciado actualizado"
     },
     {
-      "run_id": "scamper_20261027T025904_83434a70",
-      "manifest_sha256": "007d31b668eca6267d1a89052043894761d8df6d74231e19fab72ee1e7ce3ed9",
+      "run_id": "scamper_20261027T122332_333eec60",
+      "manifest_sha256": "4ee776f461c13dfb9973f51ffd8b7ae2c843424de86c936ec15cecb525445463",
       "reason": "Nueva medición del destino ruso del enunciado actualizado"
     },
     {
-      "run_id": "scamper_20261027T030040_fbc921ef",
-      "manifest_sha256": "62af52d1584cb65001f4fa6c8bc859d2222d2d2c6607ea2d589763a19449ee8e",
+      "run_id": "scamper_20261027T122523_6f5cf517",
+      "manifest_sha256": "19b3c6bb67c8cfba3e0295c3df07288ed2fce35418d9f60afa2d62172880d058",
       "reason": "Nueva medición del destino ruso del enunciado actualizado"
     },
     {
-      "run_id": "scamper_20261027T030127_4d5aa28a",
-      "manifest_sha256": "b668a8af3d50b4d68eaa999c01b70ec7ffd91baaac07b02da4827c771d8fa59e",
+      "run_id": "scamper_20261027T122603_9cf0b7ab",
+      "manifest_sha256": "e760acb26fc622e11282e067fcb624d45d2aa7d80143e7f4847930a8506b49a7",
       "reason": "Nueva medición del destino ruso del enunciado actualizado"
     },
     {
-      "run_id": "scamper_20261027T030223_d586a076",
-      "manifest_sha256": "6fdc95f9f6c6894272e2bd91fb9a1fad01477ef976982d6d3d58845aac6e2904",
+      "run_id": "scamper_20261027T122658_d4e81abd",
+      "manifest_sha256": "1d6f1f2e90fd8733c2a5180d88d5371ce0647ead8bf46da962717df45f9fcfad",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T122755_8f2c50cc",
+      "manifest_sha256": "0f5228220b38ea425eb9cdc1ddad0dfd69135fb07cdb85d79d89cf818f77bfab",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T123536_356c3cb4",
+      "manifest_sha256": "ce26b557d1b80926328bf04e06ba7440251baa213add5e15393d52f66462a137",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T123943_e5028bf7",
+      "manifest_sha256": "4a40c6d221872c0c1d6dd2b24b9f6b4af8bd99b397c98d142fceffa356580392",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T124259_a463214c",
+      "manifest_sha256": "2917f0e6ec6a1ffbb56906ac2744035865a611714c3121212179642b3c076203",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T124614_a6851bc6",
+      "manifest_sha256": "0c9153a3f59674dec8b622ba800b992cddc64ea8368387ba95b5ca897add525b",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T124834_9d1c57e6",
+      "manifest_sha256": "d39e95b047db73eb9ad4cbca974e312840a8d6d3360933544d79947d6218a790",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T125057_9092ff69",
+      "manifest_sha256": "bd22cc6010d45f0865c02d0660dfe4d5e4b8423dc13dfbbd865be9dff6778843",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T125233_f50dfa95",
+      "manifest_sha256": "0da7095179854506cfb3f09086026e11cbe401cba3becc282c13d60f5b02d196",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T125344_97d99e54",
+      "manifest_sha256": "1f8804e11721b9f949f47ffcbcd80b0bf6766850dad1bd5c4655f8bb43fa0d70",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T125412_c3e5e550",
+      "manifest_sha256": "e3fcef836c365d0b4493d816cac773753c8e8a9f1575d8a4fd4c97d89918e7d9",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T125535_bccbdded",
+      "manifest_sha256": "0206f4a40bd8c1c96b8f0d462d47034032431658ded9b5a3084b5fcf901c4e9f",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T132713_13bd3bbd",
+      "manifest_sha256": "61f7cf54446b7e4750b3b994ed95e54b06f419df7635bf1278d35acdb6fb39b4",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T132842_2d583f30",
+      "manifest_sha256": "2f175d1bd6f9cf75a9cf519e31691d2c693865475401a466c134d1378e3d3a4d",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T132928_5db71372",
+      "manifest_sha256": "261a00822393586e71703ddd179c8c15df1c8c90ef2d121b327797c62c9d98c3",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T133106_bf31e633",
+      "manifest_sha256": "8cc84d7115ca2a7350f748d58c635d7d48c5dfd438b0b6618fb1b1ec705c7dea",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T133144_537e3557",
+      "manifest_sha256": "bdabd49cebc64ed5663f9fb4416106ac85d4c1d673855ddcae751fb04a72aadd",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T133239_5dff758c",
+      "manifest_sha256": "8fcf5d19431398b455327db024af6f85751647a3a60f4bf405c67423d3b0652c",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T133334_20c9c861",
+      "manifest_sha256": "0a088b46a1950a81ba3330d933a0a76fe90c242c38cbf757acc4fde73413c9ad",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T134136_6181f384",
+      "manifest_sha256": "0ba51f8025a8481242f99f7d203fb6af3a1ecc23e473e5838e06775fe2332ed9",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T134547_d99ce8a9",
+      "manifest_sha256": "708ffd99b59ad5378db2ed12d1721f88650ae834782d0b620c21d291165ef529",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T134903_273e63c8",
+      "manifest_sha256": "bfa70c1dc95503e5ab753cb260b23ee0526d1de49962fc70e939d974439eae18",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T135218_bb87bc87",
+      "manifest_sha256": "711c6aac19b175a38e3affb0fb2748eac9c3827a8b3dc62d5c90e30f8d7c0a6c",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T135437_14778cac",
+      "manifest_sha256": "3019ed5fac98246e5ab63c5a16210344f318c95320797bb4650d13c5c88a2854",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T135655_22f533a4",
+      "manifest_sha256": "eaab8810aee594382d90c4776ccbd12db172166d560feaa69debc1290fc76edb",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T135825_f3ae6ad9",
+      "manifest_sha256": "80fff1a9005c2d93419f45ccb77eff338efb07e91b0d78fc18c64c01c9a3fa25",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T135941_a75bd536",
+      "manifest_sha256": "a52ce1017247f535bbfb36fceae12baa72a7510ceaac05b6b198de191d8abdcd",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T140008_fc6631c8",
+      "manifest_sha256": "7f48a24a4761514e5ac936c28b6f3b4ef1ab25d013b94cb96b383d8a857dda40",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T140215_a2c474ab",
+      "manifest_sha256": "5dda1ad290c4d99da5463e771c73eb4b16f6a62ad7cb8adb2c573d5e2b73723e",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T143431_04baf747",
+      "manifest_sha256": "5ad13b0f0564ee9d145d5807ed0603cf407abddf1cd85d1d0bf945989cc25e1d",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T143604_596b1ee0",
+      "manifest_sha256": "16cefe44cab272fe861520308649ed51d804b9733dcc8aefa8a0d24f0fa471e2",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T143646_45d80dcf",
+      "manifest_sha256": "53b2319ab2502c07a375e72c85ef1edfa4c86e45752cbc8011aeac7c11a1968b",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T143828_4d59ff50",
+      "manifest_sha256": "155301eaf9889b47f66db6c7c161d34bea3c5195621dac2976a598fd3ebb84fc",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T143919_6776f092",
+      "manifest_sha256": "5dab95e17c44a098f67a386edf8bf500efd5f88852521437c5506961bedd4ffb",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T144015_80cb6f2b",
+      "manifest_sha256": "e43d44a6f9d30d8523d57b4f0e8fc5ca0ec4c2194d906b56830bf5b09d3b49a4",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T144111_0f27a645",
+      "manifest_sha256": "331e8938d8694ab61501da2738ab55357e34ebe4589767ec99236f69c19161f0",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T145243_ef3699fd",
+      "manifest_sha256": "1d85862ec3405b5063eee525114f391f38b9dc8976c098ac27113b3c1e1efa44",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T145713_b3a8f2ae",
+      "manifest_sha256": "a8abdc52af1bbb203b74fa8ca38b7b9168eb3b0e25515ce42d3eddef94b8921a",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T150028_fbd29619",
+      "manifest_sha256": "bb83346cb58dcd676e72868b4f22604d575df607e4b2aaeaaca1c9a33ba8b2b4",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "scamper_20261027T150342_25bcefdc",
+      "manifest_sha256": "32b94b518bc5908aa8c9002bcb262fcbb9f8a287e4578dd1acc766f0e6c655a6",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T150559_2bb2091f",
+      "manifest_sha256": "efad28fdb316719e7a30a844969124a871d1dda0d9974a8ad26d0c7196187895",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T150818_9cbea4ac",
+      "manifest_sha256": "6ad40465fc28b2aef131b118437e19f0210aafc2669342a6a2b3e3e6bdbe4e0c",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T150952_6dfc9a2c",
+      "manifest_sha256": "26f01343868fba6c0a586f0352b087d3d33adc91942bc027f7cd336acfe37c28",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T151113_9b745a55",
+      "manifest_sha256": "f80f8c13b797537cc2e96fd612cacf217ba993872ce3407b857e2a377e720fd2",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T151134_cf1f5a9c",
+      "manifest_sha256": "b60558582f054bb78656ddec771f7e2d08ed1ad42bd9408c2aae82907fa33842",
+      "reason": "Nueva medición del destino ruso del enunciado actualizado"
+    },
+    {
+      "run_id": "ripe_20261027T151250_95ae1fff",
+      "manifest_sha256": "92ad21bbff53a751545d507117a019c12cd771670ddf75c25a14b7e86e0f2d6c",
       "reason": "Nueva medición del destino ruso del enunciado actualizado"
     }
   ],
   "superseded_target": "90.150.251.81",
   "updated_assignment": "datos/originales/enunciado_actualizado_20261026",
-  "expected_cells": 153
+  "expected_cells": 153,
+  "superseded_runs": [
+    {
+      "run_id": "scamper_20261027T025650_31dc05de",
+      "reason": "Ronda rusa reiniciada tras interrupción prolongada; originales conservados",
+      "incident": "reinicio_rusia_20261027T122100_27cba923"
+    },
+    {
+      "run_id": "scamper_20261027T025827_77d7daf0",
+      "reason": "Ronda rusa reiniciada tras interrupción prolongada; originales conservados",
+      "incident": "reinicio_rusia_20261027T122100_27cba923"
+    },
+    {
+      "run_id": "scamper_20261027T025904_83434a70",
+      "reason": "Ronda rusa reiniciada tras interrupción prolongada; originales conservados",
+      "incident": "reinicio_rusia_20261027T122100_27cba923"
+    },
+    {
+      "run_id": "scamper_20261027T030040_fbc921ef",
+      "reason": "Ronda rusa reiniciada tras interrupción prolongada; originales conservados",
+      "incident": "reinicio_rusia_20261027T122100_27cba923"
+    },
+    {
+      "run_id": "scamper_20261027T030127_4d5aa28a",
+      "reason": "Ronda rusa reiniciada tras interrupción prolongada; originales conservados",
+      "incident": "reinicio_rusia_20261027T122100_27cba923"
+    },
+    {
+      "run_id": "scamper_20261027T030223_d586a076",
+      "reason": "Ronda rusa reiniciada tras interrupción prolongada; originales conservados",
+      "incident": "reinicio_rusia_20261027T122100_27cba923"
+    }
+  ]
 }

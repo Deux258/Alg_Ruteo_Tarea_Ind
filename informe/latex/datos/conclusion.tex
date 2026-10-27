@@ -1,0 +1,15 @@
+\section{Conclusión}\label{sec:conclusion}
+Las tres rondas muestran que el método más informativo depende del destino y del criterio aplicado. La comparación se apoya en medianas de IP únicas, cobertura y estabilidad, y conserva el costo de exploración.
+
+Valparaíso: scamper: icmp, icmp-paris, udp, udp-paris (mediana 9 IP); ripe: ICMP, TCP, UDP (mediana 9 IP).
+
+La Habana: scamper: icmp, icmp-paris (mediana 13 IP); ripe: TCP (mediana 14 IP).
+
+Rusia: scamper: icmp, icmp-paris (mediana 12 IP); ripe: TCP (mediana 11 IP).
+
+tracelb permite revelar interfaces adicionales en algunos modos y destinos, con distinto costo en sondas. Las diferencias entre Chile, Cuba y Rusia describen las rutas y horarios medidos; no deben interpretarse como una clasificación de velocidades o de censura.
+
+Ida y vuelta no ofrecieron evidencia suficiente para afirmar simetría completa en las rutas incompletas. Las observaciones corresponden a interfaces; la identificación de routers físicos requiere corroboración adicional de alias. La respuesta selectiva sí se repitió en los casos documentados, pero no identifica por sí sola una regla de filtrado.
+
+El aprendizaje principal es que la calidad de Path Discovery depende tanto del método como de la captura, la recepción local y la trazabilidad. Para repetir el estudio conviene preservar originales, contrastar parámetros efectivos, verificar la continuidad de la sesión y comparar pares próximos temporalmente. El diagnóstico TCP demuestra por qué una ausencia en la salida de una herramienta debe contrastarse con los paquetes antes de atribuirla a la red.
+

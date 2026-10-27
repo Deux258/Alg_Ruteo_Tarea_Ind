@@ -16,6 +16,7 @@ from path_discovery.common import (
     identifier,
     sha256,
     utc,
+    verify_manifest,
 )
 from path_discovery.analysis import collect, load_dataset, normalize_trace, normalize_ripe
 from path_discovery.acquire import measure_scamper, measure_ripe
@@ -98,6 +99,42 @@ def candidates(rows, runs, tool):
     )
 
 
+def previous_cases(path, accepted_ids):
+    """Reutiliza solo un contraste respaldado por originales íntegros vigentes."""
+    if not path.exists():
+        return {}, set()
+    result = json.loads(path.read_text())
+    if result.get("evidence"):
+        verify_manifest(ROOT / result["evidence"])
+    reusable, failed = {}, set()
+    for case in result.get("cases", []):
+        candidate = case.get("candidate") or {}
+        key = tuple(candidate.get(k) for k in ("tool", "target", "ip", "not_observed_method"))
+        if case.get("status") == "not_corroborated":
+            failed.add(key)
+        evidence = candidate.get("evidence_runs", [])
+        if case.get("status") != "corroborated_observation" or not evidence or not set(evidence) <= accepted_ids:
+            continue
+        extra = case.get("additional_runs", [])
+        if len(extra) < 4:
+            continue
+        for item in extra:
+            path = ROOT / "datos/originales" / item["run_id"]
+            verify_manifest(path)
+            if sha256(path / "manifest.json") != item["manifest_sha256"]:
+                raise ValueError("Manifiesto de validación previa modificado")
+        reusable[case["tool"]] = {**case, "reused_from": str(pathlib_relative(result["evidence"]))}
+    return reusable, failed
+
+
+def pathlib_relative(value):
+    """Valida la referencia de evidencia contenida en el proyecto."""
+    path = (ROOT / value).resolve()
+    if not path.is_relative_to(ROOT / "datos/originales"):
+        raise ValueError("Evidencia previa fuera del proyecto")
+    return path.relative_to(ROOT)
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser()
@@ -123,7 +160,14 @@ def main():
         cfg = {**cfg, "targets": selection["targets"]}
     folder = ROOT / "datos/originales" / ("validacion_selectiva_" + identifier())
     folder.mkdir()
-    chosen = {t: (candidates(rows, runs, t) or [None])[0] for t in ("scamper", "ripe")}
+    reusable, failed = previous_cases(ROOT / "resultados/respuesta_selectiva_validacion.json", {r["run_id"] for r in runs}) if selection else ({}, set())
+    chosen = {}
+    for tool in ("scamper", "ripe"):
+        if tool in reusable:
+            chosen[tool] = reusable[tool]["candidate"]
+            continue
+        eligible = [c for c in candidates(rows, runs, tool) if tuple(c.get(k) for k in ("tool", "target", "ip", "not_observed_method")) not in failed]
+        chosen[tool] = (eligible or [None])[0]
     json_write(
         folder / "intent.json",
         {
@@ -131,8 +175,9 @@ def main():
             "dataset_id": selection.get("dataset_id") if selection else None,
             "started_at": utc(),
             "selected": chosen,
-            "maximum_additional_runs": 8,
-            "ripe_credit_estimate": 240,
+            "maximum_additional_runs": sum(4 for t, c in chosen.items() if c and t not in reusable),
+            "ripe_credit_estimate": 0 if "ripe" in reusable or not chosen["ripe"] else 240,
+            "reused_tools": sorted(reusable),
             "purpose": "Dos repeticiones por cada método de un caso Scamper y otro RIPE, sin superponer campaña.",
         },
         exclusive=True,
@@ -140,6 +185,9 @@ def main():
     results = []
     with campaign_lock():
         for tool, candidate in chosen.items():
+            if tool in reusable:
+                results.append(reusable[tool])
+                continue
             if candidate is None:
                 results.append(
                     {

@@ -1,0 +1,68 @@
+\section{Metodología}\label{sec:metodo}
+\subsection{Entorno y herramientas}
+Equipo Linux CachyOS en la conexión WOM domiciliaria. Scamper 20260902, sus conversores y las herramientas de captura se ejecutaron con Docker Compose. La sonda RIPE Atlas usa red del host, identidad persistente y una imagen fijada por digest. La versión y la configuración efectiva se conservan por ejecución. Las capturas se inspeccionaron en Wireshark 4.6.6 y se exportaron con TShark.
+
+Antes y después de cada ejecución se verificó la IPv4 pública esperada. El piloto contrastó WARTS, JSON, puertos, solicitudes emitidas y citas ICMP. Las mediciones relacionadas se ejecutaron secuencialmente, sin campañas locales superpuestas.
+
+\subsection{Diseño de mediciones}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{10cm}p{2cm}p{2cm}}
+\toprule
+\textbf{Familia} & \textbf{Por ronda} & \textbf{Tres rondas} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Familia} & \textbf{Por ronda} & \textbf{Tres rondas} \\ \midrule
+\endhead
+Scamper trace: seis métodos x tres destinos & 18 & 54 \\
+Scamper tracelb: cinco modos x tres destinos & 15 & 45 \\
+RIPE ida: tres protocolos x tres destinos & 9 & 27 \\
+RIPE vuelta: tres protocolos x tres destinos & 9 & 27 \\
+Total & 51 & 153 \\
+\bottomrule
+\end{longtable}
+\endgroup
+Las rondas son repeticiones completas, distintas de los paquetes por salto. Las rondas rusas se separaron al menos 30 minutos desde el cierre anterior. Los dos primeros destinos pertenecen a una campaña anterior; no se presentan como una instantánea simultánea con Rusia. Tras un reinicio durante la primera ronda rusa, el intento incompleto y seis resultados previos se conservaron y se repitió esa ronda completa. Las comparaciones temporales se realizan dentro de cada destino.
+
+\subsection{Sondas, puertos y comandos}
+Scamper se limitó a 20 paquetes por segundo. TCP utilizó puerto de destino 80 y UDP base 33435, validada contra el piloto RIPE. RIPE mantuvo el resto de sus parámetros predeterminados y seleccionó sondas por ID exacto: 1018487 en ida y la sonda de cada destino en vuelta. Cada vuelta apuntó a 186.189.89.115. El apéndice conserva los comandos efectivos y las definiciones RIPE completas.
+
+\begin{lstlisting}[caption={Forma de los comandos Scamper; los valores efectivos están en cada metadata.json.}]
+scamper -p 20 -w 1 -O warts -o - \
+  -c "trace -P METODO -d PUERTO" -i DESTINO
+scamper -p 20 -w 1 -O warts -o - \
+  -c "tracelb -P MODO -d PUERTO" -i DESTINO
+# ICMP no necesita puerto de destino.
+\end{lstlisting}
+Métodos trace: UDP, ICMP, UDP-Paris, ICMP-Paris, TCP y TCP-ACK. Modos tracelb: UDP-dport, ICMP-echo, UDP-sport, TCP-sport y TCP-ack-sport. Las opciones específicas y los valores predeterminados son parte del procedimiento de cada algoritmo, no se asumen equivalentes por compartir protocolo.
+
+\subsection{Captura, normalización y métricas}
+Dumpcap guardó PCAPNG con un filtro de captura que incluyó ICMP y el destino. TShark separó solicitudes exteriores de las cabeceras originales citadas dentro de ICMP; se excluyeron paquetes RST de control al contar sondas TCP. En vuelta, la captura domiciliaria es parcial y no permite observar todos los paquetes emitidos remotamente.
+
+La unidad normalizada es una respuesta por intento y TTL. Se preservan respuestas múltiples, errores y ausencias. En las tablas, * significa timeout registrado, ? significa que la herramienta no registró la respuesta y -- indica ausencia de registro para ese TTL en esa ejecución; no significa que no se haya ejecutado el método. [priv./esp.] indica dirección no global y [AS n/d] asociación no disponible. Un TTL 255 separado no se une artificialmente al salto anterior.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3cm}p{11.3cm}}
+\toprule
+\textbf{Métrica} & \textbf{Definición y uso} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Métrica} & \textbf{Definición y uso} \\ \midrule
+\endhead
+IP únicas & Conjunto de direcciones de respuesta de cada ejecución; no es cantidad de routers físicos. \\
+Cobertura & Proporción de TTL registrados con al menos una respuesta, según la normalización. \\
+Estabilidad & Jaccard entre conjuntos de IP de rondas; conjuntos vacíos no prueban estabilidad perfecta. \\
+Costo & Sondas informadas en WARTS y solicitudes observadas en PCAP; en RIPE inverso no se reconstruye emisión remota. \\
+Elección & Mediana de IP únicas por destino; cobertura y estabilidad como desempates. \\
+\bottomrule
+\end{longtable}
+\endgroup
+Las tablas principales usan la ronda 2; las estadísticas usan las tres rondas. Se incluyen las rondas 1 y 3 en anexos. El descubrimiento con más paquetes se informa junto con ese costo, sin atribuir toda diferencia al algoritmo.
+
+\subsection{Construcción y publicación de grafos}
+Se eligió un par de ida/vuelta del mismo destino, protocolo, ronda e IPv4 de sesión. El criterio lexicográfico maximiza la unión de IP, minimiza huecos y minimiza separación temporal. Los grafos dirigidos conservan las referencias RIPE y distinguen interfaz, hueco y capa ambigua. Las aristas indican adyacencia inferida u orden de capas; no se forman productos cartesianos de respuestas múltiples. La publicación NDEx se comprobó sin credenciales y se conservó la copia exportada.
+
+\noindent Bases documentales: Scamper \cite{ref1}; captura y exportación \cite{ref2}; mediciones RIPE \cite{ref3}; asociación de ASN \cite{ref4}; publicación y formato de grafos \cite{ref5,ref6}. Los detalles experimentales provienen de los originales locales.

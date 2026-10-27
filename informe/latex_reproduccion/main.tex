@@ -1,0 +1,58 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{lmodern,microtype,amsmath,amssymb,graphicx,booktabs,longtable,array,pdflscape,caption,xcolor,listings,fancyhdr,geometry,enumitem,needspace}
+\geometry{left=2.5cm,right=2.5cm,top=2.4cm,bottom=2.4cm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=2em
+\setlength{\headheight}{16pt}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.08}
+\definecolor{azul}{HTML}{173D5C}
+\definecolor{backcolour}{rgb}{.95,.95,.92}
+\definecolor{codegreen}{rgb}{0,.6,0}
+\definecolor{codegray}{rgb}{.5,.5,.5}
+\definecolor{codepurple}{rgb}{.58,0,.82}
+\lstdefinestyle{mystyle}{backgroundcolor=\color{backcolour},commentstyle=\color{codegreen},keywordstyle=\color{magenta},numberstyle=\tiny\color{codegray},stringstyle=\color{codepurple},basicstyle=\ttfamily\footnotesize,breaklines=true,captionpos=b,keepspaces=true,numbers=left,numbersep=5pt,showstringspaces=false,tabsize=2,columns=fullflexible}
+\lstset{style=mystyle}
+\captionsetup{font=small,labelfont=bf}
+\renewcommand{\refname}{}
+\pagestyle{fancy}\fancyhf{}\lhead{\small Algoritmos de Ruteo}\rhead{\small Path Discovery}\cfoot{\thepage}
+\hypersetup{pdftitle={Tarea individual: Path Discovery},pdfauthor={Diego Muñoz}}
+\begin{document}
+\begin{titlepage}\centering
+\vspace*{2cm}
+{\Large Algoritmos de Ruteo\par}\vspace{1.5cm}
+{\Huge\bfseries\color{azul} Tarea individual\par}\vspace{.5cm}
+{\LARGE Path Discovery\par}\vspace{.6cm}
+{\large Comparación de Scamper y RIPE Atlas\par}
+\vfill
+{\large Integrante: Diego Muñoz\par}\vspace{.5cm}
+{\large Profesor: Nicolas Boettcher\par}
+\vfill
+{\large 27 de octubre de 2026\par}
+\vspace{.6cm}
+{\small Banda ancha fija domiciliaria WOM, Quilicura, Chile\par}
+\end{titlepage}
+\pagenumbering{roman}\tableofcontents\clearpage
+\pagenumbering{arabic}
+\clearpage
+\input{secciones/introduccion.tex}
+\clearpage
+\input{secciones/metodologia.tex}
+\input{secciones/scamper.tex}
+\input{secciones/trace_patrones.tex}
+\input{secciones/tracelb.tex}
+\input{secciones/ripe.tex}
+\input{secciones/vuelta.tex}
+\input{secciones/selectiva.tex}
+\input{secciones/publicacion.tex}
+\clearpage
+\input{secciones/conclusion.tex}
+\clearpage
+\input{secciones/anexos.tex}
+\end{document}

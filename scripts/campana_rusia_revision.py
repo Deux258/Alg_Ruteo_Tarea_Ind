@@ -40,7 +40,7 @@ def main():
  if any(j.get('status') in ('running','needs_review') for j in state.get('pilot',{}).values()):raise RuntimeError('Piloto incierto: revisar originales y solicitudes antes de repetir')
  if any(j.get('status') in ('running','needs_review') for r in state['rounds'].values() for j in r.get('jobs',{}).values()):raise RuntimeError('Celda incierta: revisar antes de repetir')
  atomic(STATE,state)
- _,checks=preflight(cfg)
+ _,checks=preflight({**cfg,'targets':[target]})
  if checks['blockers']:raise RuntimeError('Preflight: '+'; '.join(checks['blockers']))
  print('Preflight correcto; IP pública:',checks['public_ipv4'],flush=True)
  pilots=[('scamper', 'ida'),('ripe','ida'),('ripe','vuelta')]

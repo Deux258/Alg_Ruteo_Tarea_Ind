@@ -1,0 +1,13 @@
+{
+  "uuid": "1e51f458-d206-11f1-be0a-005056ae3c32",
+  "visibility": "PRIVATE",
+  "preliminary": true,
+  "measurement_ids": [
+    228235056,
+    228235188
+  ],
+  "source": "grafos/provisional_rusia_ronda1.cx2.json",
+  "source_analysis": "resultados/analisis_20261027T125738_3d1808d5",
+  "screenshot": "capturas/ndex_rusia_provisional.jpg",
+  "note": "Ronda 1; el grafo final se seleccionará tras todas las rondas."
+}

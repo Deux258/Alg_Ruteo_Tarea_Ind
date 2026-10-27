@@ -1,7 +1,7 @@
 {
   "session_public_ipv4": "186.189.89.115",
   "session_id": "casa_20261026T204144_f8fa5b43",
-  "generated_at": "2026-10-27T02:07:18.404551+00:00",
+  "generated_at": "2026-10-27T15:15:40.215298+00:00",
   "cases": [
     {
       "tool": "ripe",
@@ -131,9 +131,9 @@
       "tool": "ripe",
       "family": "traceroute",
       "method": "ICMP",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
-        "samples": 51,
+        "samples": 45,
         "lengths_bytes": [
           48
         ],
@@ -159,9 +159,9 @@
           "observed_bases": [
             25823
           ],
-          "samples": 51,
+          "samples": 45,
           "base_learned_from_first_packet": 25823,
-          "checked_later_packets": 50,
+          "checked_later_packets": 44,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
@@ -171,19 +171,19 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 51,
+          "samples": 45,
           "word_constraint_stable_in_new_execution": true,
           "new_execution_base": 25823,
-          "checked_later_packets": 50,
+          "checked_later_packets": 44,
           "failed_later_packets": 0
         },
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 51,
+          "samples": 45,
           "word_constraint_stable_in_new_execution": true,
           "new_execution_base": 25823,
-          "checked_later_packets": 50,
+          "checked_later_packets": 44,
           "failed_later_packets": 0
         }
       },
@@ -279,7 +279,7 @@
       "tool": "ripe",
       "family": "traceroute",
       "method": "TCP",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
         "samples": 51,
         "lengths_bytes": [
@@ -300,7 +300,7 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 48,
+          "samples": 51,
           "word_constraint_stable_in_new_execution": null,
           "new_execution_base": null,
           "checked_later_packets": 0,
@@ -309,7 +309,7 @@
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 48,
+          "samples": 51,
           "word_constraint_stable_in_new_execution": null,
           "new_execution_base": null,
           "checked_later_packets": 0,
@@ -446,15 +446,14 @@
       "tool": "ripe",
       "family": "traceroute",
       "method": "UDP",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
-        "samples": 54,
+        "samples": 60,
         "lengths_bytes": [
           48
         ],
-        "first_hex": "1f29687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000",
+        "first_hex": "6d93687474703a2f2f61746c61732e726970652e6e65742041746c617320736179732048692100000000000000000000",
         "within_run_variable_offsets": [
-          0,
           1
         ],
         "constant_ascii_segments": [
@@ -473,11 +472,11 @@
           "modulus": 65535,
           "stable_within_run": true,
           "observed_bases": [
-            61893
+            16432
           ],
-          "samples": 54,
-          "base_learned_from_first_packet": 61893,
-          "checked_later_packets": 53,
+          "samples": 60,
+          "base_learned_from_first_packet": 16432,
+          "checked_later_packets": 59,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
@@ -487,19 +486,19 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 54,
+          "samples": 60,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 61893,
-          "checked_later_packets": 53,
+          "new_execution_base": 16432,
+          "checked_later_packets": 59,
           "failed_later_packets": 0
         },
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 54,
+          "samples": 60,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 61893,
-          "checked_later_packets": 53,
+          "new_execution_base": 16432,
+          "checked_later_packets": 59,
           "failed_later_packets": 0
         }
       },
@@ -619,9 +618,9 @@
       "tool": "scamper",
       "family": "trace",
       "method": "icmp",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
-        "samples": 22,
+        "samples": 18,
         "lengths_bytes": [
           16
         ],
@@ -640,9 +639,9 @@
           "observed_bases": [
             63487
           ],
-          "samples": 22,
+          "samples": 18,
           "base_learned_from_first_packet": 63487,
-          "checked_later_packets": 21,
+          "checked_later_packets": 17,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
@@ -652,19 +651,19 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 22,
+          "samples": 19,
           "word_constraint_stable_in_new_execution": true,
           "new_execution_base": 63487,
-          "checked_later_packets": 21,
+          "checked_later_packets": 18,
           "failed_later_packets": 0
         },
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 23,
+          "samples": 19,
           "word_constraint_stable_in_new_execution": true,
           "new_execution_base": 63487,
-          "checked_later_packets": 22,
+          "checked_later_packets": 18,
           "failed_later_packets": 0
         }
       },
@@ -788,9 +787,9 @@
       "tool": "scamper",
       "family": "trace",
       "method": "icmp-paris",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
-        "samples": 24,
+        "samples": 18,
         "lengths_bytes": [
           16
         ],
@@ -811,9 +810,9 @@
           "observed_bases": [
             63487
           ],
-          "samples": 24,
+          "samples": 18,
           "base_learned_from_first_packet": 63487,
-          "checked_later_packets": 23,
+          "checked_later_packets": 17,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
@@ -823,19 +822,19 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 22,
+          "samples": 18,
           "word_constraint_stable_in_new_execution": true,
           "new_execution_base": 63487,
-          "checked_later_packets": 21,
+          "checked_later_packets": 17,
           "failed_later_packets": 0
         },
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 22,
+          "samples": 20,
           "word_constraint_stable_in_new_execution": true,
           "new_execution_base": 63487,
-          "checked_later_packets": 21,
+          "checked_later_packets": 19,
           "failed_later_packets": 0
         }
       },
@@ -921,7 +920,7 @@
       "tool": "scamper",
       "family": "trace",
       "method": "tcp",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
         "samples": 10,
         "lengths_bytes": [
@@ -1035,7 +1034,7 @@
       "tool": "scamper",
       "family": "trace",
       "method": "tcp-ack",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
         "samples": 10,
         "lengths_bytes": [
@@ -1183,9 +1182,9 @@
       "tool": "scamper",
       "family": "trace",
       "method": "udp",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
-        "samples": 21,
+        "samples": 27,
         "lengths_bytes": [
           16
         ],
@@ -1202,11 +1201,11 @@
           "modulus": 65535,
           "stable_within_run": true,
           "observed_bases": [
-            34086
+            54160
           ],
-          "samples": 21,
-          "base_learned_from_first_packet": 34086,
-          "checked_later_packets": 20,
+          "samples": 27,
+          "base_learned_from_first_packet": 54160,
+          "checked_later_packets": 26,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
@@ -1216,19 +1215,19 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 22,
+          "samples": 27,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 34086,
-          "checked_later_packets": 21,
+          "new_execution_base": 54160,
+          "checked_later_packets": 26,
           "failed_later_packets": 0
         },
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 22,
+          "samples": 28,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 34086,
-          "checked_later_packets": 21,
+          "new_execution_base": 54160,
+          "checked_later_packets": 27,
           "failed_later_packets": 0
         }
       },
@@ -1352,13 +1351,13 @@
       "tool": "scamper",
       "family": "trace",
       "method": "udp-paris",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
-        "samples": 22,
+        "samples": 31,
         "lengths_bytes": [
           16
         ],
-        "first_hex": "82880000000000000000000000000000",
+        "first_hex": "d0f20000000000000000000000000000",
         "within_run_variable_offsets": [
           1
         ],
@@ -1373,11 +1372,11 @@
           "modulus": 65535,
           "stable_within_run": true,
           "observed_bases": [
-            34086
+            54160
           ],
-          "samples": 22,
-          "base_learned_from_first_packet": 34086,
-          "checked_later_packets": 21,
+          "samples": 31,
+          "base_learned_from_first_packet": 54160,
+          "checked_later_packets": 30,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
@@ -1387,19 +1386,19 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 22,
+          "samples": 29,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 34086,
-          "checked_later_packets": 21,
+          "new_execution_base": 54160,
+          "checked_later_packets": 28,
           "failed_later_packets": 0
         },
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 23,
+          "samples": 30,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 34086,
-          "checked_later_packets": 22,
+          "new_execution_base": 54160,
+          "checked_later_packets": 29,
           "failed_later_packets": 0
         }
       },
@@ -1523,9 +1522,9 @@
       "tool": "scamper",
       "family": "tracelb",
       "method": "icmp-echo",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
-        "samples": 100,
+        "samples": 103,
         "lengths_bytes": [
           16
         ],
@@ -1546,9 +1545,9 @@
           "observed_bases": [
             63487
           ],
-          "samples": 100,
+          "samples": 103,
           "base_learned_from_first_packet": 63487,
-          "checked_later_packets": 99,
+          "checked_later_packets": 102,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
@@ -1558,19 +1557,19 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 111,
+          "samples": 104,
           "word_constraint_stable_in_new_execution": true,
           "new_execution_base": 63487,
-          "checked_later_packets": 110,
+          "checked_later_packets": 103,
           "failed_later_packets": 0
         },
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 108,
+          "samples": 107,
           "word_constraint_stable_in_new_execution": true,
           "new_execution_base": 63487,
-          "checked_later_packets": 107,
+          "checked_later_packets": 106,
           "failed_later_packets": 0
         }
       },
@@ -1656,7 +1655,7 @@
       "tool": "scamper",
       "family": "tracelb",
       "method": "tcp-ack-sport",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
         "samples": 27,
         "lengths_bytes": [
@@ -1770,7 +1769,7 @@
       "tool": "scamper",
       "family": "tracelb",
       "method": "tcp-sport",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
         "samples": 38,
         "lengths_bytes": [
@@ -1923,15 +1922,14 @@
       "tool": "scamper",
       "family": "tracelb",
       "method": "udp-dport",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
-        "samples": 188,
+        "samples": 194,
         "lengths_bytes": [
           16
         ],
-        "first_hex": "82880000000000000000000000000000",
+        "first_hex": "d0f20000000000000000000000000000",
         "within_run_variable_offsets": [
-          0,
           1
         ],
         "constant_ascii_segments": [],
@@ -1945,11 +1943,11 @@
           "modulus": 65535,
           "stable_within_run": true,
           "observed_bases": [
-            34086
+            54160
           ],
-          "samples": 188,
-          "base_learned_from_first_packet": 34086,
-          "checked_later_packets": 187,
+          "samples": 194,
+          "base_learned_from_first_packet": 54160,
+          "checked_later_packets": 193,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
         },
@@ -1959,19 +1957,19 @@
         "2": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 174,
+          "samples": 204,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 34086,
-          "checked_later_packets": 173,
+          "new_execution_base": 54160,
+          "checked_later_packets": 203,
           "failed_later_packets": 0
         },
         "3": {
           "payload_lengths_match": true,
           "constant_ascii_segments_match": true,
-          "samples": 172,
+          "samples": 227,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 34086,
-          "checked_later_packets": 171,
+          "new_execution_base": 54160,
+          "checked_later_packets": 226,
           "failed_later_packets": 0
         }
       },
@@ -2095,13 +2093,13 @@
       "tool": "scamper",
       "family": "tracelb",
       "method": "udp-sport",
-      "target": "90.150.251.81",
+      "target": "37.79.226.46",
       "training": {
         "samples": 38,
         "lengths_bytes": [
           16
         ],
-        "first_hex": "82880000000000000000000000000000",
+        "first_hex": "d0f20000000000000000000000000000",
         "within_run_variable_offsets": [
           1
         ],
@@ -2116,10 +2114,10 @@
           "modulus": 65535,
           "stable_within_run": true,
           "observed_bases": [
-            34086
+            54160
           ],
           "samples": 38,
-          "base_learned_from_first_packet": 34086,
+          "base_learned_from_first_packet": 54160,
           "checked_later_packets": 37,
           "failed_later_packets": 0,
           "base_is_execution_specific": true
@@ -2132,7 +2130,7 @@
           "constant_ascii_segments_match": true,
           "samples": 38,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 34086,
+          "new_execution_base": 54160,
           "checked_later_packets": 37,
           "failed_later_packets": 0
         },
@@ -2141,7 +2139,7 @@
           "constant_ascii_segments_match": true,
           "samples": 38,
           "word_constraint_stable_in_new_execution": true,
-          "new_execution_base": 34086,
+          "new_execution_base": 54160,
           "checked_later_packets": 37,
           "failed_later_packets": 0
         }

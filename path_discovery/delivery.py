@@ -138,7 +138,7 @@ def delivery_checks(analysis):
             valid_selective.add(case.get("tool"))
     report_path = ROOT / "informe/path_discovery/fuentes.json"
     report = json.loads(report_path.read_text()) if report_path.exists() else {}
-    report_current = report.get("analysis") == str(analysis.resolve()) and report.get("campaign_status", {}).get("completed") == 153 and len({p.get("target") for p in report.get("campaign_status", {}).get("public_graphs", [])}) == 3
+    report_current = (report.get("analysis_relative") == str(analysis.resolve().relative_to(ROOT)) or report.get("analysis") == str(analysis.resolve())) and report.get("campaign_status", {}).get("completed") == 153 and len({p.get("target") for p in report.get("campaign_status", {}).get("public_graphs", [])}) == 3
     return {"campaign_153_complete": bool(summary.get("complete_campaign")), "three_current_graphs_public": len(graph_targets) == 3 and published == graph_targets, "fourteen_gui_methods_reviewed": expected_methods <= reviewed_methods, "selective_cases_corroborated": {"scamper", "ripe"} <= valid_selective, "report_uses_current_complete_evidence": report_current and (ROOT / "informe/path_discovery/informe.pdf").exists()}
 
 
@@ -149,9 +149,9 @@ def bundle(analysis):
     verify_manifest(analysis)
     folder = ROOT / "entrega" / identifier()
     folder.mkdir(parents=True)
-    roots = [ROOT / p for p in ("path_discovery", "config/campana.json", "config/campana_enunciado.json", "config/exclusiones_calidad.json", "config/reproduccion.json", "config/seleccion_revision.json", "config/wireshark-image.env.example", "scripts", "docs", "informe", "tests", "docker", "compose.yaml", "compose.wireshark.yaml", "README.md", "main", "pyproject.toml", ".env.example")]
+    roots = [ROOT / p for p in ("path_discovery", "config/campana.json", "config/campana_enunciado.json", "config/exclusiones_calidad.json", "config/reproduccion.json", "config/seleccion_revision.json", "config/wireshark-image.env.example", "scripts", "docs", "informe", "tests", "docker", "compose.yaml", "compose.wireshark.yaml", "compose.latex.yaml", "config/evidencia_informe.json", "README.md", "main", "pyproject.toml", ".env.example")]
     roots += [analysis, ROOT / "datos/originales", ROOT / "grafos", ROOT / "capturas", ROOT / "resultados/paquetes", ROOT / "resultados/registro_ripe_1018487"]
-    roots += [ROOT / "resultados" / p for p in ("preflight_campana.json", "revision_wireshark_gui.json", "correlacion_tcp_captura.json", "estructura_payload.json", "auditoria_patrones_revision.json", "checksums_tcp.json", "diagnostico_recepcion_tcp.json", "diagnostico_tcp_rxerr_revision.json", "exportaciones_paquetes.json", "respuesta_selectiva_validacion.json", "respuesta_selectiva_revision.json", "fichas_paquetes/index.json", "revision_familias.json", "revision_pdf_sesion_activa.json", "revision_vuelta_domicilio.json")]
+    roots += [ROOT / "resultados" / p for p in ("bgp_he_origen.txt", "revision_informe_latex.json", "reproduccion_informe_latex.json", "analisis_revision_final.json", "preflight_campana.json", "revision_wireshark_gui.json", "correlacion_tcp_captura.json", "estructura_payload.json", "auditoria_patrones_revision.json", "checksums_tcp.json", "diagnostico_recepcion_tcp.json", "diagnostico_tcp_rxerr_revision.json", "exportaciones_paquetes.json", "respuesta_selectiva_validacion.json", "respuesta_selectiva_revision.json", "fichas_paquetes/index.json", "revision_familias.json", "revision_pdf_sesion_activa.json", "revision_vuelta_domicilio.json")]
     roots += sorted((ROOT / "resultados").glob("reproduccion_ronda_*.json"))
     roots += sorted((ROOT / "resultados/fichas_paquetes").glob("progreso*.html"))
     roots += sorted((ROOT / "resultados").glob("revision_piloto_*"))
@@ -169,7 +169,7 @@ def bundle(analysis):
         }
         # This exact sealed file is a public probe API response, not local config.
         public_probe_response = str(rel) == "datos/originales/seleccion_sondas_20261026T012504/local.json"
-        blocked = any(x in ("__pycache__", ".env", ".state", ".tools", "local.json") for x in rel.parts)
+        blocked = any(x in ("__pycache__", ".env", ".state", ".tools", "local.json", "build", "qa", "latex_reproduccion") for x in rel.parts)
         return (not blocked or archived_public or public_probe_response) and not p.name.endswith((".pyc", ".key")) and "probe_key" not in p.name
     files = [p for p in files if allowed_file(p)]
     # Rechazar claves privadas accidentales en archivos pequeños, sin mostrarlas.

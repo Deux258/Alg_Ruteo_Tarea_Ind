@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+  "probe_classifier_revision": 2,
+  "run_id": "ripe_20261027T151134_cf1f5a9c",
+  "tool": "ripe",
+  "method": "TCP",
+  "family": "traceroute",
+  "target": "37.79.226.46",
+  "direction": "ida",
+  "round": 3,
+  "pilot": false,
+  "packets_captured": 370,
+  "candidate_emitted_packets": 51,
+  "outbound_transport_packets": 51,
+  "outbound_nonprobe_packets": 0,
+  "reverse_capture_is_partial": false,
+  "source_manifest": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/datos/originales/ripe_20261027T151134_cf1f5a9c/manifest.json",
+  "source_manifest_sha256": "b60558582f054bb78656ddec771f7e2d08ed1ad42bd9408c2aae82907fa33842"
+}

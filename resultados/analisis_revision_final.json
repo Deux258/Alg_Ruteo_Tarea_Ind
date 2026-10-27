@@ -1,0 +1,43 @@
+{
+  "folder": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/resultados/analisis_20261027T151549_92fa68e2",
+  "session_public_ipv4": "186.189.89.115",
+  "created_at": "2026-10-27T15:15:49.770555+00:00",
+  "valid_measurements": 153,
+  "processed_runs": 153,
+  "expected": 153,
+  "includes_pilots": false,
+  "diagnostic_pilots": false,
+  "invalid": [],
+  "graphs": [
+    "138.204.230.242",
+    "200.14.48.134",
+    "37.79.226.46"
+  ],
+  "excluded_runs": [
+    "scamper_20261026T004306_ac2c6641",
+    "scamper_20261026T024854_fb1d5630"
+  ],
+  "complete_campaign": true,
+  "dataset_id": "rubrica_20261026_revision1",
+  "dataset_manifest": "config/seleccion_revision.json",
+  "dataset_manifest_sha256": "3da9de48ae338f00b0ffebfd3923cd8502f32d7e68bb425cd24ac2ca556113cd",
+  "targets": [
+    {
+      "ip": "138.204.230.242",
+      "probe_id": 6652,
+      "label": "Valparaiso"
+    },
+    {
+      "ip": "200.14.48.134",
+      "probe_id": 12734,
+      "label": "Habana"
+    },
+    {
+      "ip": "37.79.226.46",
+      "probe_id": 3959,
+      "label": "Rusia"
+    }
+  ],
+  "missing_cells": 0,
+  "unexpected_cells": 0
+}

@@ -1,0 +1,12 @@
+{
+  "kind": "packet_export",
+  "source_run": "scamper_20261027T133334_20c9c861",
+  "sealed_at": "2026-10-27T14:21:59.485964+00:00",
+  "sha256": {
+    "emitted.tsv": "3ce1bccb99a5583224f7d25300fdcced44a750772fbb790108342b9d0c39e532",
+    "metadata.json": "96a04ffc3b9e9b4ea565018b5494a3c4a962401e2b0c6103f8ce232c922957a4",
+    "outbound.tsv": "5a444f7c6e3eb116fa298f7af89819e93719ac2563e6b8c8e72cfc19172d15a8",
+    "packets.tsv": "e9485aaebc9581db84215376a63596983e04d7b6f79352785dd384fe5d9a10f3",
+    "packets_full.json": "27403c7a12d57889a728976bdb869c70ecbd55b5d1add66d3ca6ff845cac05d0"
+  }
+}

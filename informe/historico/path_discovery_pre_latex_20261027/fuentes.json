@@ -1,0 +1,14 @@
+{
+  "analysis": "/home/diego/Documentos/GitHub/Alg_Ruteo_Tarea_Ind/resultados/analisis_20261027T020719_b8304fe1",
+  "generated_at": "2026-10-27T02:24:55.845516+00:00",
+  "campaign_status": {
+    "expected": 153,
+    "completed": 153,
+    "valid_runs": 153,
+    "pilots": 3,
+    "missing": [],
+    "invalid": [],
+    "public_graphs": [],
+    "scientific_results_complete": false
+  }
+}

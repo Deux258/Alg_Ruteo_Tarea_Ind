@@ -1,0 +1,1052 @@
+[
+  {
+    "CXVersion": "2.0",
+    "hasFragments": false
+  },
+  {
+    "metaData": [
+      {
+        "name": "nodes",
+        "elementCount": 38
+      },
+      {
+        "name": "edges",
+        "elementCount": 36
+      }
+    ]
+  },
+  {
+    "attributeDeclarations": [
+      {
+        "networkAttributes": {
+          "name": {
+            "d": "string"
+          },
+          "description": {
+            "d": "string"
+          }
+        },
+        "nodes": {
+          "name": {
+            "d": "string"
+          },
+          "label": {
+            "d": "string"
+          },
+          "kind": {
+            "d": "string"
+          },
+          "asns": {
+            "d": "string"
+          },
+          "ttl": {
+            "d": "integer"
+          }
+        },
+        "edges": {
+          "direction": {
+            "d": "string"
+          },
+          "protocol": {
+            "d": "string"
+          },
+          "ttl": {
+            "d": "integer"
+          },
+          "measurement_id": {
+            "d": "string"
+          },
+          "evidence": {
+            "d": "string"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "networkAttributes": [
+      {
+        "name": "Path Discovery 200.14.48.134",
+        "description": "Path Discovery 200.14.48.134. Ida msm_id=227953132; vuelta msm_id=227953345. TCP, ronda 2. Ida azul/verde; vuelta naranja; flechas indican sentido. Huecos grises y capas ambiguas amarillas. Adyacencias inferidas; IPs no equivalen necesariamente a routers; huecos y saltos ambiguos explícitos. TTL no consecutivos sin enlace entre sí."
+      }
+    ]
+  },
+  {
+    "nodes": [
+      {
+        "id": 0,
+        "x": 0.0,
+        "y": 0.0,
+        "v": {
+          "name": "192.168.100.7",
+          "label": "192.168.100.7\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 1,
+        "x": 160.0,
+        "y": 0.0,
+        "v": {
+          "name": "192.168.100.1",
+          "label": "192.168.100.1\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 2,
+        "x": 320.0,
+        "y": 0.0,
+        "v": {
+          "name": "100.88.0.1",
+          "label": "100.88.0.1\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 3,
+        "x": 480.0,
+        "y": 0.0,
+        "v": {
+          "name": "10.87.0.3",
+          "label": "10.87.0.3\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 4,
+        "x": 640.0,
+        "y": 0.0,
+        "v": {
+          "name": "10.87.0.46",
+          "label": "10.87.0.46\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 5,
+        "x": 800.0,
+        "y": 0.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 5",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 5
+        }
+      },
+      {
+        "id": 6,
+        "x": 960.0,
+        "y": 0.0,
+        "v": {
+          "name": "154.54.92.41",
+          "label": "154.54.92.41\nAS174",
+          "kind": "ip_interface",
+          "asns": "174"
+        }
+      },
+      {
+        "id": 7,
+        "x": 1120.0,
+        "y": 0.0,
+        "v": {
+          "name": "154.54.29.157 | 154.54.3.29 | *",
+          "label": "Respuesta múltiple\nTTL 7",
+          "kind": "ambiguous_hop",
+          "asns": "",
+          "ttl": 7
+        }
+      },
+      {
+        "id": 8,
+        "x": 1280.0,
+        "y": 0.0,
+        "v": {
+          "name": "154.54.167.185",
+          "label": "154.54.167.185\nAS174",
+          "kind": "ip_interface",
+          "asns": "174"
+        }
+      },
+      {
+        "id": 9,
+        "x": 1440.0,
+        "y": 0.0,
+        "v": {
+          "name": "38.88.57.26",
+          "label": "38.88.57.26\nAS174",
+          "kind": "ip_interface",
+          "asns": "174"
+        }
+      },
+      {
+        "id": 10,
+        "x": 1600.0,
+        "y": 0.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 10",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 10
+        }
+      },
+      {
+        "id": 11,
+        "x": 1760.0,
+        "y": 0.0,
+        "v": {
+          "name": "190.242.168.39 | *",
+          "label": "Respuesta múltiple\nTTL 11",
+          "kind": "ambiguous_hop",
+          "asns": "",
+          "ttl": 11
+        }
+      },
+      {
+        "id": 12,
+        "x": 1920.0,
+        "y": 0.0,
+        "v": {
+          "name": "200.0.16.16",
+          "label": "200.0.16.16\nAS11960",
+          "kind": "ip_interface",
+          "asns": "11960"
+        }
+      },
+      {
+        "id": 13,
+        "x": 2080.0,
+        "y": 0.0,
+        "v": {
+          "name": "200.0.16.21",
+          "label": "200.0.16.21\nAS11960",
+          "kind": "ip_interface",
+          "asns": "11960"
+        }
+      },
+      {
+        "id": 14,
+        "x": 2240.0,
+        "y": 0.0,
+        "v": {
+          "name": "200.0.16.25",
+          "label": "200.0.16.25\nAS11960",
+          "kind": "ip_interface",
+          "asns": "11960"
+        }
+      },
+      {
+        "id": 15,
+        "x": 2400.0,
+        "y": 0.0,
+        "v": {
+          "name": "200.0.16.25 | *",
+          "label": "Respuesta múltiple\nTTL 15",
+          "kind": "ambiguous_hop",
+          "asns": "",
+          "ttl": 15
+        }
+      },
+      {
+        "id": 16,
+        "x": 2560.0,
+        "y": 0.0,
+        "v": {
+          "name": "192.168.100.1 | *",
+          "label": "Respuesta múltiple\nTTL 16",
+          "kind": "ambiguous_hop",
+          "asns": "",
+          "ttl": 16
+        }
+      },
+      {
+        "id": 17,
+        "x": 2720.0,
+        "y": 0.0,
+        "v": {
+          "name": "100.88.0.1 | 200.0.16.29 | *",
+          "label": "Respuesta múltiple\nTTL 17",
+          "kind": "ambiguous_hop",
+          "asns": "",
+          "ttl": 17
+        }
+      },
+      {
+        "id": 18,
+        "x": 2880.0,
+        "y": 0.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 18",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 18
+        }
+      },
+      {
+        "id": 19,
+        "x": 3040.0,
+        "y": 0.0,
+        "v": {
+          "name": "200.14.48.178",
+          "label": "200.14.48.178\nAS27725",
+          "kind": "ip_interface",
+          "asns": "27725"
+        }
+      },
+      {
+        "id": 20,
+        "x": 3200.0,
+        "y": 0.0,
+        "v": {
+          "name": "200.14.48.134",
+          "label": "200.14.48.134\nAS27725",
+          "kind": "ip_interface",
+          "asns": "27725"
+        }
+      },
+      {
+        "id": 21,
+        "x": 3040.0,
+        "y": 230.0,
+        "v": {
+          "name": "200.14.48.132",
+          "label": "200.14.48.132\nAS27725",
+          "kind": "ip_interface",
+          "asns": "27725"
+        }
+      },
+      {
+        "id": 22,
+        "x": 2880.0,
+        "y": 230.0,
+        "v": {
+          "name": "200.14.48.177",
+          "label": "200.14.48.177\nAS27725",
+          "kind": "ip_interface",
+          "asns": "27725"
+        }
+      },
+      {
+        "id": 23,
+        "x": 2720.0,
+        "y": 230.0,
+        "v": {
+          "name": "192.168.118.89",
+          "label": "192.168.118.89\nsin ASN disponible",
+          "kind": "ip_interface",
+          "asns": ""
+        }
+      },
+      {
+        "id": 24,
+        "x": 2560.0,
+        "y": 230.0,
+        "v": {
+          "name": "200.14.48.132 | 200.14.48.177 | *",
+          "label": "Respuesta múltiple\nTTL 4",
+          "kind": "ambiguous_hop",
+          "asns": "",
+          "ttl": 4
+        }
+      },
+      {
+        "id": 25,
+        "x": 2400.0,
+        "y": 230.0,
+        "v": {
+          "name": "200.0.16.86",
+          "label": "200.0.16.86\nAS11960",
+          "kind": "ip_interface",
+          "asns": "11960"
+        }
+      },
+      {
+        "id": 26,
+        "x": 2240.0,
+        "y": 230.0,
+        "v": {
+          "name": "200.0.16.45",
+          "label": "200.0.16.45\nAS11960",
+          "kind": "ip_interface",
+          "asns": "11960"
+        }
+      },
+      {
+        "id": 27,
+        "x": 2080.0,
+        "y": 230.0,
+        "v": {
+          "name": "200.0.16.20",
+          "label": "200.0.16.20\nAS11960",
+          "kind": "ip_interface",
+          "asns": "11960"
+        }
+      },
+      {
+        "id": 28,
+        "x": 1920.0,
+        "y": 230.0,
+        "v": {
+          "name": "89.221.37.138",
+          "label": "89.221.37.138\nAS6762",
+          "kind": "ip_interface",
+          "asns": "6762"
+        }
+      },
+      {
+        "id": 29,
+        "x": 1760.0,
+        "y": 230.0,
+        "v": {
+          "name": "8.243.236.9",
+          "label": "8.243.236.9\nAS3356",
+          "kind": "ip_interface",
+          "asns": "3356"
+        }
+      },
+      {
+        "id": 30,
+        "x": 1600.0,
+        "y": 230.0,
+        "v": {
+          "name": "200.189.207.14",
+          "label": "200.189.207.14\nAS3549",
+          "kind": "ip_interface",
+          "asns": "3549"
+        }
+      },
+      {
+        "id": 31,
+        "x": 1440.0,
+        "y": 230.0,
+        "v": {
+          "name": "8.243.191.90",
+          "label": "8.243.191.90\nAS3356",
+          "kind": "ip_interface",
+          "asns": "3356"
+        }
+      },
+      {
+        "id": 32,
+        "x": 1280.0,
+        "y": 230.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 12",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 12
+        }
+      },
+      {
+        "id": 33,
+        "x": 1120.0,
+        "y": 230.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 13",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 13
+        }
+      },
+      {
+        "id": 34,
+        "x": 960.0,
+        "y": 230.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 14",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 14
+        }
+      },
+      {
+        "id": 35,
+        "x": 800.0,
+        "y": 230.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 15",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 15
+        }
+      },
+      {
+        "id": 36,
+        "x": 640.0,
+        "y": 230.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 16",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 16
+        }
+      },
+      {
+        "id": 37,
+        "x": 480.0,
+        "y": 230.0,
+        "v": {
+          "name": "*",
+          "label": "Sin respuesta\nTTL 255",
+          "kind": "gap",
+          "asns": "",
+          "ttl": 255
+        }
+      }
+    ]
+  },
+  {
+    "edges": [
+      {
+        "id": 0,
+        "s": 0,
+        "t": 1,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 1,
+          "measurement_id": "227953132",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 1,
+        "s": 1,
+        "t": 2,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 2,
+          "measurement_id": "227953132",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 2,
+        "s": 2,
+        "t": 3,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 3,
+          "measurement_id": "227953132",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 3,
+        "s": 3,
+        "t": 4,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 4,
+          "measurement_id": "227953132",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 4,
+        "s": 4,
+        "t": 5,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 5,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 5,
+        "s": 5,
+        "t": 6,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 6,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 6,
+        "s": 6,
+        "t": 7,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 7,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 7,
+        "s": 7,
+        "t": 8,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 8,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 8,
+        "s": 8,
+        "t": 9,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 9,
+          "measurement_id": "227953132",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 9,
+        "s": 9,
+        "t": 10,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 10,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 10,
+        "s": 10,
+        "t": 11,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 11,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 11,
+        "s": 11,
+        "t": 12,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 12,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 12,
+        "s": 12,
+        "t": 13,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 13,
+          "measurement_id": "227953132",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 13,
+        "s": 13,
+        "t": 14,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 14,
+          "measurement_id": "227953132",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 14,
+        "s": 14,
+        "t": 15,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 15,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 15,
+        "s": 15,
+        "t": 16,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 16,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 16,
+        "s": 16,
+        "t": 17,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 17,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 17,
+        "s": 17,
+        "t": 18,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 18,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 18,
+        "s": 18,
+        "t": 19,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 19,
+          "measurement_id": "227953132",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 19,
+        "s": 19,
+        "t": 20,
+        "v": {
+          "direction": "ida",
+          "protocol": "TCP",
+          "ttl": 20,
+          "measurement_id": "227953132",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 20,
+        "s": 20,
+        "t": 21,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 1,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 21,
+        "s": 21,
+        "t": 22,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 2,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 22,
+        "s": 22,
+        "t": 23,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 3,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 23,
+        "s": 23,
+        "t": 24,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 4,
+          "measurement_id": "227953345",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 24,
+        "s": 24,
+        "t": 25,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 5,
+          "measurement_id": "227953345",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 25,
+        "s": 25,
+        "t": 26,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 6,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 26,
+        "s": 26,
+        "t": 27,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 7,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 27,
+        "s": 27,
+        "t": 28,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 8,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 28,
+        "s": 28,
+        "t": 29,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 9,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 29,
+        "s": 29,
+        "t": 30,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 10,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 30,
+        "s": 30,
+        "t": 31,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 11,
+          "measurement_id": "227953345",
+          "evidence": "inferred_traceroute_adjacency"
+        }
+      },
+      {
+        "id": 31,
+        "s": 31,
+        "t": 32,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 12,
+          "measurement_id": "227953345",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 32,
+        "s": 32,
+        "t": 33,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 13,
+          "measurement_id": "227953345",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 33,
+        "s": 33,
+        "t": 34,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 14,
+          "measurement_id": "227953345",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 34,
+        "s": 34,
+        "t": 35,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 15,
+          "measurement_id": "227953345",
+          "evidence": "hop_layer_order_only"
+        }
+      },
+      {
+        "id": 35,
+        "s": 35,
+        "t": 36,
+        "v": {
+          "direction": "vuelta",
+          "protocol": "TCP",
+          "ttl": 16,
+          "measurement_id": "227953345",
+          "evidence": "hop_layer_order_only"
+        }
+      }
+    ]
+  },
+  {
+    "visualProperties": [
+      {
+        "default": {
+          "network": {
+            "NETWORK_BACKGROUND_COLOR": "#FFFFFF"
+          },
+          "node": {
+            "NODE_WIDTH": 135,
+            "NODE_HEIGHT": 44,
+            "NODE_SHAPE": "round-rectangle",
+            "NODE_BACKGROUND_COLOR": "#DCEEF2",
+            "NODE_BORDER_COLOR": "#173D5C",
+            "NODE_BORDER_WIDTH": 1.2,
+            "NODE_LABEL_COLOR": "#173D5C",
+            "NODE_LABEL_FONT_SIZE": 10
+          },
+          "edge": {
+            "EDGE_WIDTH": 2.0,
+            "EDGE_LINE_COLOR": "#137C82",
+            "EDGE_TARGET_ARROW_SHAPE": "triangle",
+            "EDGE_TARGET_ARROW_COLOR": "#137C82",
+            "EDGE_CURVE_STYLE": "bezier"
+          }
+        },
+        "nodeMapping": {
+          "NODE_LABEL": {
+            "type": "PASSTHROUGH",
+            "definition": {
+              "attribute": "label"
+            }
+          },
+          "NODE_BACKGROUND_COLOR": {
+            "type": "DISCRETE",
+            "definition": {
+              "attribute": "kind",
+              "map": [
+                {
+                  "v": "ip_interface",
+                  "vp": "#DCEEF2"
+                },
+                {
+                  "v": "gap",
+                  "vp": "#E5E7EB"
+                },
+                {
+                  "v": "ambiguous_hop",
+                  "vp": "#FDE6AD"
+                }
+              ]
+            }
+          }
+        },
+        "edgeMapping": {
+          "EDGE_LINE_COLOR": {
+            "type": "DISCRETE",
+            "definition": {
+              "attribute": "direction",
+              "map": [
+                {
+                  "v": "ida",
+                  "vp": "#137C82"
+                },
+                {
+                  "v": "vuelta",
+                  "vp": "#CC641D"
+                }
+              ]
+            }
+          },
+          "EDGE_TARGET_ARROW_COLOR": {
+            "type": "DISCRETE",
+            "definition": {
+              "attribute": "direction",
+              "map": [
+                {
+                  "v": "ida",
+                  "vp": "#137C82"
+                },
+                {
+                  "v": "vuelta",
+                  "vp": "#CC641D"
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "visualEditorProperties": [
+      {
+        "arrowColorMatchesEdge": true,
+        "nodeSizeLocked": false
+      }
+    ]
+  },
+  {
+    "status": [
+      {
+        "success": true
+      }
+    ]
+  }
+]

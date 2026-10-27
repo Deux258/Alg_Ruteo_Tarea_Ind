@@ -1357,736 +1357,6 @@
       ]
     },
     {
-      "run_id": "scamper_20261026T214111_ea9a36d4",
-      "method": "tcp",
-      "round": 1,
-      "checked": 10,
-      "ipv4_valid": 10,
-      "tcp_valid": 10,
-      "frames": [
-        {
-          "frame": "1",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "3",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "37",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "40",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "69",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "121",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "177",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "242",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "292",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "342",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261026T214205_1e95351b",
-      "method": "tcp-ack",
-      "round": 1,
-      "checked": 10,
-      "ipv4_valid": 10,
-      "tcp_valid": 10,
-      "frames": [
-        {
-          "frame": "2",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "14",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "47",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "56",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "59",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "69",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "88",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "121",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "130",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "134",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261026T215723_aa3045e2",
-      "method": "tcp-sport",
-      "round": 1,
-      "checked": 38,
-      "ipv4_valid": 38,
-      "tcp_valid": 38,
-      "frames": [
-        {
-          "frame": "1",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "4",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "11",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "17",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "27",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "70",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "84",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "107",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "112",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "127",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "131",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "140",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "143",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "158",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "162",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "165",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "176",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "198",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "233",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "236",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "247",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "272",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "275",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "279",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "282",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "318",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "348",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "359",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "363",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "367",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "371",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "385",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "394",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "396",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "398",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "400",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "408",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "412",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261026T220037_d656f1fd",
-      "method": "tcp-ack-sport",
-      "round": 1,
-      "checked": 27,
-      "ipv4_valid": 27,
-      "tcp_valid": 27,
-      "frames": [
-        {
-          "frame": "1",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "3",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "5",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "42",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "43",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "44",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "45",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "46",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "53",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "60",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "61",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "66",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "73",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "84",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "95",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "109",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "123",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "131",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "148",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "157",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "160",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "168",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "170",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "172",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "186",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "194",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "196",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "ripe_20261026T220810_eb54e174",
-      "method": "TCP",
-      "round": 1,
-      "checked": 51,
-      "ipv4_valid": 51,
-      "tcp_valid": 51,
-      "frames": [
-        {
-          "frame": "9",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "11",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "13",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "15",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "17",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "19",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "21",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "23",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "25",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "27",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "29",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "31",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "33",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "63",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "65",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "67",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "69",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "71",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "73",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "75",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "77",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "79",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "81",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "83",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "85",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "87",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "89",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "91",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "93",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "95",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "97",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "99",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "130",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "197",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "203",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "205",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "211",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "234",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "239",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "241",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "243",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "250",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "251",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "252",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "280",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "281",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "282",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "283",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "290",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "306",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "346",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
       "run_id": "scamper_20261026T224210_4a6640f1",
       "method": "tcp",
       "round": 2,
@@ -3487,721 +2757,6 @@
       ]
     },
     {
-      "run_id": "scamper_20261026T233743_f52fb903",
-      "method": "tcp",
-      "round": 2,
-      "checked": 10,
-      "ipv4_valid": 10,
-      "tcp_valid": 10,
-      "frames": [
-        {
-          "frame": "4",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "11",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "34",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "53",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "95",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "151",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "155",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "165",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "205",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "213",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261026T233838_d31e10cb",
-      "method": "tcp-ack",
-      "round": 2,
-      "checked": 10,
-      "ipv4_valid": 10,
-      "tcp_valid": 10,
-      "frames": [
-        {
-          "frame": "3",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "60",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "65",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "74",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "111",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "119",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "121",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "128",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "144",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "145",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261026T235344_aa9c46a8",
-      "method": "tcp-sport",
-      "round": 2,
-      "checked": 38,
-      "ipv4_valid": 38,
-      "tcp_valid": 38,
-      "frames": [
-        {
-          "frame": "9",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "36",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "50",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "69",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "83",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "97",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "101",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "103",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "113",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "125",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "127",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "135",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "143",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "189",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "201",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "203",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "211",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "213",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "246",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "249",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "255",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "266",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "268",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "270",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "274",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "310",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "312",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "314",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "316",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "318",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "320",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "322",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "328",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "338",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "346",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "402",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "417",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "469",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261026T235659_966beaca",
-      "method": "tcp-ack-sport",
-      "round": 2,
-      "checked": 27,
-      "ipv4_valid": 27,
-      "tcp_valid": 27,
-      "frames": [
-        {
-          "frame": "1",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "4",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "7",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "15",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "29",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "31",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "33",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "46",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "55",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "93",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "113",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "122",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "134",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "140",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "152",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "162",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "175",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "178",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "181",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "191",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "206",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "220",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "222",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "234",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "263",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "272",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "296",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "ripe_20261027T000517_3e00b79b",
-      "method": "TCP",
-      "round": 2,
-      "checked": 48,
-      "ipv4_valid": 48,
-      "tcp_valid": 48,
-      "frames": [
-        {
-          "frame": "7",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "9",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "11",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "13",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "15",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "17",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "19",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "21",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "23",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "25",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "27",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "29",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "31",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "38",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "39",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "41",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "44",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "46",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "48",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "53",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "56",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "67",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "69",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "71",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "73",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "75",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "77",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "79",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "81",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "84",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "87",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "104",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "105",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "118",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "127",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "142",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "145",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "152",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "155",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "160",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "161",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "168",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "184",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "197",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "229",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "237",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "243",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "253",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
       "run_id": "scamper_20261027T003923_3411c093",
       "method": "tcp",
       "round": 3,
@@ -5587,25 +4142,35 @@
       ]
     },
     {
-      "run_id": "scamper_20261027T013306_4c7bc89e",
-      "method": "tcp",
-      "round": 3,
-      "checked": 10,
-      "ipv4_valid": 10,
-      "tcp_valid": 10,
+      "run_id": "ripe_20261027T125412_c3e5e550",
+      "method": "TCP",
+      "round": 1,
+      "checked": 51,
+      "ipv4_valid": 51,
+      "tcp_valid": 51,
       "frames": [
         {
-          "frame": "1",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "3",
+          "frame": "8",
           "ip_valid": true,
           "tcp_valid": true
         },
         {
           "frame": "11",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "13",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "15",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "17",
           "ip_valid": true,
           "tcp_valid": true
         },
@@ -5620,6 +4185,21 @@
           "tcp_valid": true
         },
         {
+          "frame": "23",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "25",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "27",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
           "frame": "29",
           "ip_valid": true,
           "tcp_valid": true
@@ -5630,497 +4210,17 @@
           "tcp_valid": true
         },
         {
-          "frame": "43",
+          "frame": "33",
           "ip_valid": true,
           "tcp_valid": true
         },
         {
-          "frame": "53",
+          "frame": "34",
           "ip_valid": true,
           "tcp_valid": true
         },
         {
-          "frame": "66",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261027T013401_71ebdb55",
-      "method": "tcp-ack",
-      "round": 3,
-      "checked": 10,
-      "ipv4_valid": 10,
-      "tcp_valid": 10,
-      "frames": [
-        {
-          "frame": "3",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "27",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "43",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "44",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "51",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "52",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "59",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "60",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "73",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "80",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261027T014917_3122b025",
-      "method": "tcp-sport",
-      "round": 3,
-      "checked": 38,
-      "ipv4_valid": 38,
-      "tcp_valid": 38,
-      "frames": [
-        {
-          "frame": "3",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "9",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "12",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "23",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "38",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "54",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "76",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "86",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "100",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "108",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "125",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "133",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "137",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "139",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "156",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "160",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "166",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "176",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "182",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "192",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "198",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "200",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "208",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "210",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "243",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "247",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "261",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "263",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "265",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "292",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "295",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "298",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "367",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "371",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "410",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "474",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "512",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "523",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "scamper_20261027T015233_5546c9c9",
-      "method": "tcp-ack-sport",
-      "round": 3,
-      "checked": 27,
-      "ipv4_valid": 27,
-      "tcp_valid": 27,
-      "frames": [
-        {
-          "frame": "2",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "7",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "16",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "18",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "20",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "23",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "56",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "106",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "114",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "124",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "159",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "160",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "167",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "170",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "234",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "245",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "254",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "293",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "314",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "335",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "343",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "351",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "353",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "359",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "363",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "371",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "417",
-          "ip_valid": true,
-          "tcp_valid": true
-        }
-      ]
-    },
-    {
-      "run_id": "ripe_20261027T020126_908a7039",
-      "method": "TCP",
-      "round": 3,
-      "checked": 48,
-      "ipv4_valid": 48,
-      "tcp_valid": 48,
-      "frames": [
-        {
-          "frame": "18",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "20",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "22",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "24",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "26",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "28",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "30",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "32",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "36",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "38",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "40",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "43",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "46",
+          "frame": "35",
           "ip_valid": true,
           "tcp_valid": true
         },
@@ -6130,12 +4230,57 @@
           "tcp_valid": true
         },
         {
-          "frame": "64",
+          "frame": "51",
           "ip_valid": true,
           "tcp_valid": true
         },
         {
-          "frame": "74",
+          "frame": "53",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "55",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "57",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "59",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "61",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "65",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "67",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "69",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "71",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "75",
           "ip_valid": true,
           "tcp_valid": true
         },
@@ -6145,17 +4290,147 @@
           "tcp_valid": true
         },
         {
-          "frame": "80",
+          "frame": "79",
           "ip_valid": true,
           "tcp_valid": true
         },
         {
-          "frame": "82",
+          "frame": "81",
           "ip_valid": true,
           "tcp_valid": true
         },
         {
-          "frame": "94",
+          "frame": "83",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "85",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "126",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "129",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "142",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "147",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "150",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "151",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "158",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "159",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "161",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "163",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "165",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "167",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "169",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "171",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "173",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "175",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "177",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "178",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "180",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "ripe_20261027T140008_fc6631c8",
+      "method": "TCP",
+      "round": 2,
+      "checked": 51,
+      "ipv4_valid": 51,
+      "tcp_valid": 51,
+      "frames": [
+        {
+          "frame": "91",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "93",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "95",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "97",
           "ip_valid": true,
           "tcp_valid": true
         },
@@ -6171,6 +4446,11 @@
         },
         {
           "frame": "103",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "105",
           "ip_valid": true,
           "tcp_valid": true
         },
@@ -6200,7 +4480,1827 @@
           "tcp_valid": true
         },
         {
+          "frame": "116",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "117",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "118",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "155",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "157",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "159",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "161",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "187",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "189",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "191",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "193",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "195",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "197",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "199",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "201",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "203",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "206",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "208",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "217",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "219",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "221",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "227",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "249",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "251",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "255",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "262",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "270",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "280",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "282",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "284",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "288",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "290",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "296",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "298",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "300",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "304",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "314",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "323",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T122603_9cf0b7ab",
+      "method": "tcp",
+      "round": 1,
+      "checked": 10,
+      "ipv4_valid": 10,
+      "tcp_valid": 10,
+      "frames": [
+        {
+          "frame": "5",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "15",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "19",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "21",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "54",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "73",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "111",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "146",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "157",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "213",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T122658_d4e81abd",
+      "method": "tcp-ack",
+      "round": 1,
+      "checked": 10,
+      "ipv4_valid": 10,
+      "tcp_valid": 10,
+      "frames": [
+        {
+          "frame": "7",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "39",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "42",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "45",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "47",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "54",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "55",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "56",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "82",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "84",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T124259_a463214c",
+      "method": "tcp-sport",
+      "round": 1,
+      "checked": 38,
+      "ipv4_valid": 38,
+      "tcp_valid": 38,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "10",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "14",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "17",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "21",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "24",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "28",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "31",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "54",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "56",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "58",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "62",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "93",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "106",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "109",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "125",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "149",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "152",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "162",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "168",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "177",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "180",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "183",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "202",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "205",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "213",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "215",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "221",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "229",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "233",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "235",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "243",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "287",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "373",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "377",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "399",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "448",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "473",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T124614_a6851bc6",
+      "method": "tcp-ack-sport",
+      "round": 1,
+      "checked": 27,
+      "ipv4_valid": 27,
+      "tcp_valid": 27,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "10",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "14",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "16",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "20",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "32",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "51",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "61",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "69",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "71",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "80",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "84",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "86",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "88",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "91",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "98",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "100",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "102",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "104",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "158",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "162",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "164",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "166",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "168",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "170",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "178",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "186",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T133144_537e3557",
+      "method": "tcp",
+      "round": 2,
+      "checked": 10,
+      "ipv4_valid": 10,
+      "tcp_valid": 10,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "3",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "5",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "13",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "15",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "17",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "19",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "21",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "27",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "32",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T133239_5dff758c",
+      "method": "tcp-ack",
+      "round": 2,
+      "checked": 10,
+      "ipv4_valid": 10,
+      "tcp_valid": 10,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "3",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "5",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "6",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "7",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "8",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "9",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "12",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "23",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "24",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T134903_273e63c8",
+      "method": "tcp-sport",
+      "round": 2,
+      "checked": 38,
+      "ipv4_valid": 38,
+      "tcp_valid": 38,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "9",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "27",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "55",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "66",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "76",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "85",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "97",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "107",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "121",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "129",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "149",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "166",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "173",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "179",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "193",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "195",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "197",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "211",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "213",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "221",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "223",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "239",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "245",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "253",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "255",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "288",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "291",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "294",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "308",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "310",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "312",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "314",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "343",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "350",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "392",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "453",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "456",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T135218_bb87bc87",
+      "method": "tcp-ack-sport",
+      "round": 2,
+      "checked": 27,
+      "ipv4_valid": 27,
+      "tcp_valid": 27,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "21",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "93",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "97",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "100",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "104",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "112",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "115",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "117",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "144",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "201",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "207",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "252",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "255",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "256",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "264",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "305",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "336",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "343",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "360",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "402",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "417",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "422",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "434",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "449",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "452",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "458",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "ripe_20261027T151134_cf1f5a9c",
+      "method": "TCP",
+      "round": 3,
+      "checked": 51,
+      "ipv4_valid": 51,
+      "tcp_valid": 51,
+      "frames": [
+        {
+          "frame": "13",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "16",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "19",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "22",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "25",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "28",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "31",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "34",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "36",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "38",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "40",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "42",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "44",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "66",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "128",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "173",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "177",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "179",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "183",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "197",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "199",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "201",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "204",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "206",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "208",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "210",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "212",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "218",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "228",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "230",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "232",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "234",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "236",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "265",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "267",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "269",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "281",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "300",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "302",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "307",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "310",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "312",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "315",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "318",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "322",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "328",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "330",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "332",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "334",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "335",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "352",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T143919_6776f092",
+      "method": "tcp",
+      "round": 3,
+      "checked": 10,
+      "ipv4_valid": 10,
+      "tcp_valid": 10,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "3",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "5",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "8",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "10",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "12",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "50",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "78",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "97",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "98",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T144015_80cb6f2b",
+      "method": "tcp-ack",
+      "round": 3,
+      "checked": 10,
+      "ipv4_valid": 10,
+      "tcp_valid": 10,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "9",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "17",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "20",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "25",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "59",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "60",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "61",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "79",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "80",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T150028_fbd29619",
+      "method": "tcp-sport",
+      "round": 3,
+      "checked": 38,
+      "ipv4_valid": 38,
+      "tcp_valid": 38,
+      "frames": [
+        {
+          "frame": "2",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "7",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "15",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "89",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "91",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "93",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "95",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "97",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "99",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "101",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "109",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "117",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
           "frame": "119",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "127",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "133",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "145",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "153",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "171",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "191",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "203",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "213",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "215",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "223",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "229",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "239",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "241",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "249",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "261",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "271",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "279",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "281",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "289",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "291",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "293",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "295",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "297",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "299",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "301",
+          "ip_valid": true,
+          "tcp_valid": true
+        }
+      ]
+    },
+    {
+      "run_id": "scamper_20261027T150342_25bcefdc",
+      "method": "tcp-ack-sport",
+      "round": 3,
+      "checked": 27,
+      "ipv4_valid": 27,
+      "tcp_valid": 27,
+      "frames": [
+        {
+          "frame": "1",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "3",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "5",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "12",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "13",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "14",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "31",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "48",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "62",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "76",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "83",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "84",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "85",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "86",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "87",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "89",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "91",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "93",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "95",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "103",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "111",
+          "ip_valid": true,
+          "tcp_valid": true
+        },
+        {
+          "frame": "113",
           "ip_valid": true,
           "tcp_valid": true
         },
@@ -6215,87 +6315,17 @@
           "tcp_valid": true
         },
         {
-          "frame": "132",
+          "frame": "139",
           "ip_valid": true,
           "tcp_valid": true
         },
         {
-          "frame": "138",
+          "frame": "155",
           "ip_valid": true,
           "tcp_valid": true
         },
         {
-          "frame": "147",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "163",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "166",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "167",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "174",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "175",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "176",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "181",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "190",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "197",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "202",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "211",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "212",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "213",
-          "ip_valid": true,
-          "tcp_valid": true
-        },
-        {
-          "frame": "220",
+          "frame": "161",
           "ip_valid": true,
           "tcp_valid": true
         }

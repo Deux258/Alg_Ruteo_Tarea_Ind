@@ -1,0 +1,15 @@
+{
+  "uuid": "6f78f82e-d219-11f1-be0a-005056ae3c32",
+  "visibility": "PUBLIC",
+  "target": "37.79.226.46",
+  "measurement_ids": [
+    228276628,
+    228277013
+  ],
+  "source": "resultados/analisis_20261027T151549_92fa68e2/grafos/37.79.226.46.cx2.json",
+  "source_sha256": "672787045cf22794ed8659cd58770c46cf7398cd8bd3f16f086688ea41b35ad2",
+  "viewer_verified": true,
+  "screenshot": "capturas/ndex_rusia_publico.jpg",
+  "publication_receipt": "grafos/publication_20261027T152035_e63266aa/publication.json",
+  "previous_state": "grafos/rusia_definitivo_privado.json"
+}
