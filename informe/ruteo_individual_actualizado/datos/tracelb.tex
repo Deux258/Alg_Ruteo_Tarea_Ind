@@ -1,0 +1,334 @@
+\subsection{tracelb: descubrimiento adicional y patrones}\label{sec:lb}
+
+tracelb intenta enumerar todos los caminos posibles hacia el destino. Para eso varía algún campo de las sondas (el puerto de destino, el de origen o el contenido ICMP) y así provoca flujos distintos, con la esperanza de atravesar las distintas ramas de un balanceador de carga. Para saber si vale la pena, se comparará lo que descubre cada modo con la unión de los 6 trace de la misma ronda y destino, y miro cuántas sondas cuesta.
+
+\subsubsection{Valparaíso}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.2cm}p{8cm}p{3cm}}
+\toprule
+\textbf{Modo} & \textbf{IP adicionales r1 / r2 / r3} & \textbf{Mediana sondas} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Modo} & \textbf{IP adicionales r1 / r2 / r3} & \textbf{Mediana sondas} \\ \midrule
+\endhead
+udp-dport & 0 / 0 / 0 & 98 \\
+icmp-echo & 0 / 0 / 0 & 44 \\
+udp-sport & 0 / 0 / 0 & 38 \\
+tcp-sport & 0 / 0 / 0 & 38 \\
+tcp-ack-sport & 0 / 0 / 0 & 27 \\
+\bottomrule
+\end{longtable}
+\endgroup
+La referencia es la unión de los seis trace de la misma ronda y destino. En Valparaíso nungún modo de tracelb  encontró IP adicionales, en ninguna de las 3 rondas, aunque cada ejecución emitió entre 27 y 98 sondas, unas 10 veces lo que cuesta un trace simple (9 o 10). Con una ruta corta y sin variaciones entre rondas, no se detectó ningún balanceo que explorar, el costo extra no trajo información nueva. En general, un aumento de IP revela interfaces adicionales a cambio de explorar más, pero no demuestra por sí solo menor costo por descubrimiento.
+
+\subsubsection{La Habana}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.2cm}p{8cm}p{3cm}}
+\toprule
+\textbf{Modo} & \textbf{IP adicionales r1 / r2 / r3} & \textbf{Mediana sondas} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Modo} & \textbf{IP adicionales r1 / r2 / r3} & \textbf{Mediana sondas} \\ \midrule
+\endhead
+udp-dport & 2 / 2 / 0 & 214 \\
+icmp-echo & 0 / 0 / 0 & 118 \\
+udp-sport & 0 / 0 / 0 & 38 \\
+tcp-sport & 0 / 0 / 0 & 38 \\
+tcp-ack-sport & 0 / 0 / 0 & 27 \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+La referencia es la unión de los seis trace de la misma ronda y destino. En la Habana, udp-dport encontró en total 3 IP que los trace no habían visto (154.54.168.85, 154.54.3.29 y 69.79.104.1), dos adicionales en la ronda 1, dos en la ronda 2 y ninguna en la 3. Su costo mediano fue de 214 sondas, casi diez veces las 22 de un trace icmp. icmp-echo, con 118 sondas, no agregó nada, y los modos por puerto de origen y TCP, con 38 y 27, tampoco. Las tres direcciones son vecinas de otras ya conocidas: 154.54.3.29 junto a 154.54.29.157 en el TTL 7, 154.54.168.85 junto a 154.54.167.185 en el TTL 8 y 69.79.104.1 junto a las 190.242.168.x en el TTL 11. Es decir, ramas alternativas en un mismo salto, lo que apunta a balanceo de carga dentro de AS174 y en el paso hacia AS23520. También se ven en otras mediciones del informe: 154.54.3.29 y 69.79.104.1 en las tablas RIPE de la ronda 2, y 154.54.168.85 en los trace de Scamper.
+
+%IP adicionales observadas: udp-dport: 154.54.168.85, 154.54.3.29, 69.79.104.1; icmp-echo: ninguna; udp-sport: ninguna; tcp-sport: ninguna; tcp-ack-sport: ninguna. Un aumento de IP revela interfaces adicionales bajo mayor exploración; no acredita por sí solo un menor costo por descubrimiento.
+
+\subsubsection{Rusia}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.2cm}p{8cm}p{3cm}}
+\toprule
+\textbf{Modo} & \textbf{IP adicionales r1 / r2 / r3} & \textbf{Mediana sondas} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Modo} & \textbf{IP adicionales r1 / r2 / r3} & \textbf{Mediana sondas} \\ \midrule
+\endhead
+udp-dport & 1 / 0 / 0 & 204 \\
+icmp-echo & 0 / 0 / 0 & 104 \\
+udp-sport & 0 / 0 / 0 & 38 \\
+tcp-sport & 0 / 0 / 0 & 38 \\
+tcp-ack-sport & 0 / 0 / 0 & 27 \\
+\bottomrule
+\end{longtable}
+\endgroup
+La referencia es la unión de los seis trace de la misma ronda y destino. En Rusia solo udp-dport aportó algo, una IP adicional (195.22.211.209), únicamente en la ronda 1, con una mediana de 204 sondas (icmp-echo con 104 no encontró nada). Esa dirección pertenece a AS6762 y también aparece en el trace udp-paris de Scamper (TTL 11) y en la tabla RIPE con TCP (TTL 10), así que no es un descubrimiento exclusivo de tracelb, sino una rama alternativa que solo algunas sondas alcanzan.
+
+\textbf{Qué aporta tracelb.}
+En Valparaíso ningún modo descubrió algo nuevo, en La Habana y en Rusia solo udp-dport lo hizo, y únicamente en las primeras rondas (1 y 2 en La Habana, solo en la 1 en Rusia), a un costo cercano a diez veces el de un trace. La posible lectura es que los balanceadores de estas rutas, cuando existen, deciden según el puerto de destino de UDP y no según el puerto de origen ni el contenido ICMP, pero no es una prueba, porque los modos por el puerto de origen y TCP gastaron exactamente lo mismo en los tres destinos (38 y 27 sondas). Esa coincidencia sugiere que esas ejecuciones terminaron pronto, tras recorrer solo los primeros saltos, y no que hayan explorado a fondo y descartado alternativas. Para confirmar esto habría que revisar los WARTS correspondientes.
+
+
+\Needspace{9\baselineskip}
+\subsubsection{scamper / tracelb / udp-dport}
+Tomo Valparaíso como ejemplo. Entrenamiento: scamper\_\allowbreak{}20261026T204825\_\allowbreak{}aa1fe10f; contraste: rondas 2 y 3. Las reglas completas de los tres destinos están en el archivo de predicciones enlazado en el anexo.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.1cm}p{5.8cm}p{5.1cm}}
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endhead
+ip.ttl & variable en la captura & r2: no exacto; r3: no exacto \\
+ip.id & incremento 1 por paquete & r2: cumple; r3: cumple \\
+ip.len & constante 44 & r2: cumple; r3: cumple \\
+ip.proto & constante 17 & r2: cumple; r3: cumple \\
+udp.srcport & constante 32769 & r2: cumple; r3: cumple \\
+udp.dstport & variable en la captura & r2: no exacto; r3: no exacto \\
+udp.length & constante 24 & r2: cumple; r3: cumple \\
+udp.checksum & incremento 1 por paquete & r2: cumple; r3: cumple \\
+\bottomrule
+\end{longtable}
+\endgroup
+Payload: [16] bytes. Hexadecimal inicial (offset 0):
+
+\begin{quote}\ttfamily\footnotesize\raggedright 66b1 0000 0000 0000 0000 0000 0000 0000\end{quote}
+%La suma de payload\_\allowbreak{}word0\_\allowbreak{}BE, udp.checksum, udp.srcport, udp.dstport módulo 65535 se mantuvo constante. La base se aprende del primer paquete de cada ejecución; no se presume universal. Es compatible con compensación de checksum, sin probar la intención del emisor.
+
+Al sumar payload\_\allowbreak{}word0\_\allowbreak{}BE, udp.checksum, udp.srcport, udp.dstport módulo 65535, el resultado se mantiene constante durante la ejecución. Ese valor base se aprende del primer paquete de cada ejecución y no lo doy por universal (es lo que se esperaría si el emisor compensara el checksum con el payload).
+
+Predicción concreta en ronda 2, campo ip.id: la primera solicitud tiene valor 0x0001. Con la regla aprendida y esa base cuando corresponde, se predicen las solicitudes 2 a 4 antes de compararlos con lo que realmente se observó.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.2cm}p{5.1cm}p{5.1cm}}
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endhead
+2 / 3 & 2 & 0x0002 \\
+3 / 5 & 3 & 0x0003 \\
+4 / 7 & 4 & 0x0004 \\
+\bottomrule
+\end{longtable}
+\endgroup
+Alcance: 93 solicitudes en el ejemplo inicial. 
+
+\Needspace{9\baselineskip}
+\subsubsection{scamper / tracelb / icmp-echo}
+Ejemplo en Valparaíso. Entrenamiento: scamper\_\allowbreak{}20261026T204853\_\allowbreak{}edf82eeb. Contraste: rondas 2 y 3. 
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.1cm}p{5.8cm}p{5.1cm}}
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endhead
+ip.ttl & variable en la captura & r2: no exacto; r3: no exacto \\
+ip.id & constante 0x0000 & r2: cumple; r3: cumple \\
+ip.len & constante 44 & r2: cumple; r3: cumple \\
+ip.proto & constante 1 & r2: cumple; r3: cumple \\
+icmp.type & constante 8 & r2: cumple; r3: cumple \\
+icmp.code & constante 0 & r2: cumple; r3: cumple \\
+icmp.ident & constante 32769 & r2: cumple; r3: cumple \\
+icmp.seq & incremento 1 por paquete & r2: cumple; r3: cumple \\
+icmp.checksum & variable en la captura & r2: no exacto; r3: no exacto \\
+\bottomrule
+\end{longtable}
+\endgroup
+Payload: [16] bytes. Hexadecimal inicial (offset 0):
+
+\begin{quote}\ttfamily\footnotesize\raggedright 77fd 0000 0000 0000 0000 0000 0000 0000\end{quote}
+%La suma de payload\_\allowbreak{}word0\_\allowbreak{}BE, icmp.checksum, icmp.ident, icmp.seq módulo 65535 se mantuvo constante. La base se aprende del primer paquete de cada ejecución; no se presume universal. Es compatible con compensación de checksum, sin probar la intención del emisor.
+
+Al sumar payload\_\allowbreak{}word0\_\allowbreak{}BE, icmp.checksum, icmp.ident, icmp.seq módulo 65535, el resultado se mantiene constante durante la ejecución.
+
+Predicción concreta en ronda 2, campo icmp.seq: la primera solicitud tiene valor 0. Con la regla aprendida y esa base cuando corresponde, se predicen las solicitudes 2 a 4 antes de contrastarlas con sus valores observados.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.2cm}p{5.1cm}p{5.1cm}}
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endhead
+2 / 3 & 1 & 1 \\
+3 / 5 & 2 & 2 \\
+4 / 7 & 3 & 3 \\
+\bottomrule
+\end{longtable}
+\endgroup
+Alcance: 44 solicitudes en el ejemplo inicial. Una verificación de campo o byte no equivale a una medición independiente.
+
+\Needspace{9\baselineskip}
+\subsubsection{scamper / tracelb / udp-sport}
+Ejemplo: Valparaíso. Entrenamiento: scamper\_\allowbreak{}20261026T204908\_\allowbreak{}3c31fd8c; contraste: rondas 2 y 3. Las reglas completas de los tres destinos están en el archivo de predicciones enlazado en el anexo.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.1cm}p{5.8cm}p{5.1cm}}
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endhead
+ip.ttl & variable en la captura & r2: no exacto; r3: no exacto \\
+ip.id & incremento 1 por paquete & r2: cumple; r3: cumple \\
+ip.len & constante 44 & r2: cumple; r3: cumple \\
+ip.proto & constante 17 & r2: cumple; r3: cumple \\
+udp.srcport & variable en la captura & r2: no exacto; r3: no exacto \\
+udp.dstport & constante 33435 & r2: cumple; r3: cumple \\
+udp.length & constante 24 & r2: cumple; r3: cumple \\
+udp.checksum & incremento 1 por paquete & r2: cumple; r3: cumple \\
+\bottomrule
+\end{longtable}
+\endgroup
+Payload: [16] bytes. Hexadecimal inicial (offset 0):
+
+\begin{quote}\ttfamily\footnotesize\raggedright 66b1 0000 0000 0000 0000 0000 0000 0000\end{quote}
+La suma de payload\_\allowbreak{}word0\_\allowbreak{}BE, udp.checksum, udp.srcport, udp.dstport módulo 65535 se mantuvo constante. La base se aprende del primer paquete de cada ejecución, es compatible con compensación de checksum.
+
+Predicción en la ronda 2, campo ip.id: la primera solicitud tiene valor 0x0001. Con la regla aprendida y esa base cuando corresponde, se predicen las solicitudes 2 a 4 antes de contrastarlas con sus valores observados.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.2cm}p{5.1cm}p{5.1cm}}
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endhead
+2 / 9 & 2 & 0x0002 \\
+3 / 24 & 3 & 0x0003 \\
+4 / 29 & 4 & 0x0004 \\
+\bottomrule
+\end{longtable}
+\endgroup
+Alcance: 48 solicitudes en el ejemplo inicial. Una verificación de campo o byte no equivale a una medición independiente; los campos variables conservan sus restricciones y no reciben valores inventados.
+
+\Needspace{9\baselineskip}
+\subsubsection{scamper / tracelb / tcp-sport}
+Ejemplo: Valparaíso. Entrenamiento: scamper\_\allowbreak{}20261026T205303\_\allowbreak{}343973b5; contraste: rondas 2 y 3.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.1cm}p{5.8cm}p{5.1cm}}
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endhead
+ip.ttl & variable en la captura & r2: no exacto; r3: no exacto \\
+ip.id & incremento 1 por paquete & r2: cumple; r3: cumple \\
+ip.len & constante 40 & r2: cumple; r3: cumple \\
+ip.proto & constante 6 & r2: cumple; r3: cumple \\
+tcp.srcport & variable en la captura & r2: no exacto; r3: no exacto \\
+tcp.dstport & constante 80 & r2: cumple; r3: cumple \\
+tcp.flags & constante 0x0002 & r2: cumple; r3: cumple \\
+tcp.seq\_\allowbreak{}raw & constante 0 & r2: cumple; r3: cumple \\
+tcp.ack\_\allowbreak{}raw & constante 0 & r2: cumple; r3: cumple \\
+tcp.len & constante 0 & r2: cumple; r3: cumple \\
+tcp.checksum & variable en la captura & r2: no exacto; r3: no exacto \\
+\bottomrule
+\end{longtable}
+\endgroup
+Payload: [0] bytes. No hay datos de aplicación en las sondas TCP observadas.
+
+Predicción en la ronda 2, campo ip.id: la primera solicitud tiene valor 0x0001. 
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.2cm}p{5.1cm}p{5.1cm}}
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endhead
+2 / 3 & 2 & 0x0002 \\
+3 / 7 & 3 & 0x0003 \\
+4 / 13 & 4 & 0x0004 \\
+\bottomrule
+\end{longtable}
+\endgroup
+Alcance: 38 solicitudes en el ejemplo inicial. 
+
+\Needspace{9\baselineskip}
+\subsubsection{scamper / tracelb / tcp-ack-sport}
+Ejemplo en Valparaíso. Entrenamiento: scamper\_\allowbreak{}20261026T205617\_\allowbreak{}88e8814e con contraste rondas 2 y 3.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.1cm}p{5.8cm}p{5.1cm}}
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Campo} & \textbf{Regla en ronda 1} & \textbf{Contraste posterior} \\ \midrule
+\endhead
+ip.ttl & variable en la captura & r2: no exacto; r3: no exacto \\
+ip.id & incremento 1 por paquete & r2: cumple; r3: cumple \\
+ip.len & constante 40 & r2: cumple; r3: cumple \\
+ip.proto & constante 6 & r2: cumple; r3: cumple \\
+tcp.srcport & variable en la captura & r2: no exacto; r3: no exacto \\
+tcp.dstport & constante 80 & r2: cumple; r3: cumple \\
+tcp.flags & constante 0x0010 & r2: cumple; r3: cumple \\
+tcp.seq\_\allowbreak{}raw & constante 0 & r2: cumple; r3: cumple \\
+tcp.ack\_\allowbreak{}raw & constante 0 & r2: cumple; r3: cumple \\
+tcp.len & constante 0 & r2: cumple; r3: cumple \\
+tcp.checksum & variable en la captura & r2: no exacto; r3: no exacto \\
+\bottomrule
+\end{longtable}
+\endgroup
+Payload: [0] bytes. No hay datos de aplicación en las sondas TCP observadas.
+
+Predicción concreta en ronda 2, campo ip.id: la primera solicitud tiene valor 0x0001.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.2cm}p{5.1cm}p{5.1cm}}
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Solicitud / trama} & \textbf{Predicción} & \textbf{Observación} \\ \midrule
+\endhead
+2 / 3 & 2 & 0x0002 \\
+3 / 5 & 3 & 0x0003 \\
+4 / 6 & 4 & 0x0004 \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+Alcance: 27 solicitudes en el ejemplo inicial.
+
+\subsubsection{Lectura conjunta de los patrones de tracelb}
+
+Una huella de tracelb se parece a la de los trace, con algunos rasgos propios. Los modos UDP y el modo ICMP llevan 16 bytes de payload con los dos primeros bytes distintos de cero (66b1 en udp-dport y udp-sport, 77fs en icmp-echo) y el resto en cero, mientras que los modos TCP no llevan datos de aplicación. En cuatro de los cinco modos el campo predicho fue ip.id, cuya primera solicitud vale 0x0001, y en icmp-echo fue icmp.seq, que parte en 0.
+La diferencia más visible es el volumen, en el ejemplo de Valparaíso se observaron 93 solicitudes con udp-port, 44 con icmp-echo, 48 con udp-sport, 38 con tcp-sport y 27 con tcp-ack-sport, frente a las 9 o 10 de un trace.

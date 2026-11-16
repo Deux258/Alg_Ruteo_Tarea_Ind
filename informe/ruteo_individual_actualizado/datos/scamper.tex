@@ -1,0 +1,195 @@
+\clearpage
+\section{Resultados y análisis}\label{sec:resultados}
+
+En esta sección se presentará primero lo que se obtuvo con Scamper (Sección 3.1) y la huella que dejan sus sondas en la captura (Sección 3.2). Después vienen tracelb (Sección 3.3), RIPE Atlas (Sección 3.4), la comparación entre ida y vuelta (Sección 3.5), las IP que responden solo a algunos protocolos (Sección 3.6) y los grafos publicados (Sección 3.7). Las tablas del cuerpo muestran la ronda 2 y las estadísticas usan las tres rondas (las rondas 1 y 3 están completas en los anexos).
+
+
+\subsection{Path Discovery con Scamper}\label{sec:scamper}
+\subsubsection{Valparaíso - 138.204.230.242}
+\begingroup
+\fontsize{8}{10}\selectfont
+\begin{longtable}{p{0.8cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}}
+\caption{Ruta observada con los seis métodos Scamper; Valparaíso, ronda 2.}\label{tabla1:138.204.230.242} \\
+\toprule
+\textbf{HOP} & \textbf{udp} & \textbf{icmp} & \textbf{udp-paris} & \textbf{icmp-paris} & \textbf{tcp} & \textbf{tcp-ack} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{HOP} & \textbf{udp} & \textbf{icmp} & \textbf{udp-paris} & \textbf{icmp-paris} & \textbf{tcp} & \textbf{tcp-ack} \\ \midrule
+\endhead
+1 & 192.168.100.1 & 192.168.100.1 & 192.168.100.1 & 192.168.100.1 & ? & ? \\
+2 & 100.88.0.1 & 100.88.0.1 & 100.88.0.1 & 100.88.0.1 & ? & ? \\
+3 & 10.87.0.3 & 10.87.0.2 & 10.87.0.3 & 10.87.0.2 & ? & ? \\
+4 & 10.87.0.46 & 10.87.0.46 & 10.87.0.46 & 10.87.0.46 & ? & ? \\
+5 & 45.68.16.129 & 45.68.16.129 & 10.87.0.46 & 45.68.16.129 & ? & ? \\
+6 & 10.100.154.1 & 10.100.154.1 & 45.68.16.129 & 10.100.154.1 & -- & -- \\
+7 & 138.204.228.164 & 138.204.228.164 & 10.100.154.1 & 138.204.228.164 & -- & -- \\
+8 & 138.204.228.162 & 138.204.228.162 & 138.204.228.164 & 138.204.228.162 & -- & -- \\
+9 & 138.204.230.242 & 138.204.230.242 & 138.204.228.162 & 138.204.230.242 & -- & -- \\
+10 & -- & -- & 138.204.230.242 & -- & -- & -- \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+
+%Las IP se muestran por TTL y método. Las ausencias al final de un método no extienden artificialmente su recorrido. Los ASN y las respuestas por intento se conservan en los originales y anexos.
+
+Cada columna es un método y cada fila es un TTL, cuando un método termina antes que otro, no extiendo artificialmente su recorrido (los ASN y las respuestas por intento están en los anexos).
+La ruta a Valparaíso es corta, con 9 saltos. Los primeros pertenecen a mi red y a la del operador (192.168.100.1, 100.88.0.1 y direcciones 10.87.0.x). Después aparece 45.68.16.129, sin AS asociado, otra dirección privada y, desde el TTL 7, direcciones de AS61506 hasta llegar al destino. Los cuatro métodos que reciben respuestas (udp, icmp y sus variantes Paris) son casi idénticos, y las diferencias que quedan son pequeñas pero informativas. En el TTL 3, udp y udp-paris ven 10.87.0.3 mientras que icmp e icmp-paris ven 10.87.0.2, según el protocolo, el tráfico pasa por una interfaz distinta en ese salto. Además, udp-paris repite 10.87.0.46 en los TTL 4 y 5, lo que desplaza una posición el resto de su recorrido y explica que necesite 10 sondas en lugar de 9, lo malo es que con estos datos no puedo decir si es un mismo equipo respondiendo en dos TTL seguidos o un efecto del balanceo. Los dos métodos TCP no registran respuestas, eso se explica en la sección 3.6 y no significa que la red bloquee TCP.
+
+\subsubsection{La Habana - 200.14.48.134}
+\begingroup
+\fontsize{8}{10}\selectfont
+\begin{longtable}{p{0.8cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}}
+\caption{Ruta observada con los seis métodos Scamper; La Habana, ronda 2.}\label{tabla1:200.14.48.134} \\
+\toprule
+\textbf{HOP} & \textbf{udp} & \textbf{icmp} & \textbf{udp-paris} & \textbf{icmp-paris} & \textbf{tcp} & \textbf{tcp-ack} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{HOP} & \textbf{udp} & \textbf{icmp} & \textbf{udp-paris} & \textbf{icmp-paris} & \textbf{tcp} & \textbf{tcp-ack} \\ \midrule
+\endhead
+1 & 192.168.100.1 & 192.168.100.1 & 192.168.100.1 & 192.168.100.1 & ? & ? \\
+2 & 100.88.0.1 & 100.88.0.1 & 100.88.0.1 & 100.88.0.1 & ? & ? \\
+3 & 10.87.0.3 & 10.87.0.2 & 10.87.0.3 & 10.87.0.2 & ? & ? \\
+4 & 10.87.0.46 & 10.87.0.46 & 10.87.0.46 & 10.87.0.46 & ? & ? \\
+5 & ? & ? & 10.87.0.46 & ? & ? & ? \\
+6 & 154.54.92.41 & 154.54.92.41 & ? & 154.54.92.41 & -- & -- \\
+7 & 154.54.29.157 & 154.54.29.157 & 154.54.92.41 & ? & -- & -- \\
+8 & 154.54.168.85 & 154.54.167.185 & ? & 154.54.167.185 & -- & -- \\
+9 & 38.88.57.26 & 38.104.94.178 & 154.54.168.85 & 38.104.94.178 & -- & -- \\
+10 & ? & ? & 38.104.94.178 & ? & -- & -- \\
+11 & ? & 190.242.168.37 & ? & 190.242.168.37 & -- & -- \\
+12 & 200.0.16.16 & 200.0.16.21 & 190.242.168.39 & 200.0.16.21 & -- & -- \\
+13 & 200.0.16.25 & 200.0.16.29 & 200.0.16.16 & 200.0.16.29 & -- & -- \\
+14 & 200.0.16.25 & ? & 200.0.16.21 & ? & -- & -- \\
+15 & 200.0.16.29 & ? & 200.0.16.29 & ? & -- & -- \\
+16 & 200.0.16.25 & 200.14.48.178 & ? & 200.14.48.178 & -- & -- \\
+17 & -- & 200.14.48.134 & ? & 200.14.48.134 & -- & -- \\
+18 & -- & -- & 200.14.48.178 & -- & -- & -- \\
+19 & -- & -- & 200.14.48.134 & -- & -- & -- \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+
+%Las IP se muestran por TTL y método. Las ausencias al final de un método no extienden artificialmente su recorrido. Los ASN y las respuestas por intento se conservan en los originales y anexos.
+
+Hacia la Habana y la ruta ya es bastante más larga, con ICMP el destino responde en el TTL 17 y con udp-parís en el 19. Los cuatro primeros saltos son los mismos que hacia Valparaíso, en el TTL 5 no hay respuesta y desde el TTL 6 aparecen interfaces de AS174 (154.54.x.x y 38.x). Más adelante hay una zona sin respuesta (TTL 10 y 11), luego direcciones 190.242.168.x (AS23520), un tramo largo en 200.0.16.x (AS11960) y, al final, las dos direcciones de AS27725 (200.14.48.178 y el destino, 200.14.48.134).
+Aquí los métodos se separan más, donde icmp e icmp-paris recorren prácticamente el mismo camino y llegan al destino, udp se queda dando vueltas en AS11960 y nunca llega, y udp-paris llega pero dos TTL más tarde. Los métodos UDP pasan por interfaces de AS11960 que ICMP nunca muestra (200.0.16.16 y 200.0.16.25), y eso alarga su camino
+
+\subsubsection{Rusia - 37.79.226.46}
+\begingroup
+\fontsize{8}{10}\selectfont
+\begin{longtable}{p{0.8cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}p{2.25cm}}
+\caption{Ruta observada con los seis métodos Scamper; Rusia, ronda 2.}\label{tabla1:37.79.226.46} \\
+\toprule
+\textbf{HOP} & \textbf{udp} & \textbf{icmp} & \textbf{udp-paris} & \textbf{icmp-paris} & \textbf{tcp} & \textbf{tcp-ack} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{HOP} & \textbf{udp} & \textbf{icmp} & \textbf{udp-paris} & \textbf{icmp-paris} & \textbf{tcp} & \textbf{tcp-ack} \\ \midrule
+\endhead
+1 & 192.168.100.1 & 192.168.100.1 & 192.168.100.1 & 192.168.100.1 & ? & ? \\
+2 & 100.88.0.1 & 100.88.0.1 & 100.88.0.1 & 100.88.0.1 & ? & ? \\
+3 & 10.87.0.3 & 10.87.0.2 & 10.87.0.3 & 10.87.0.2 & ? & ? \\
+4 & 10.87.0.46 & 10.87.0.46 & 10.87.0.46 & 10.87.0.46 & ? & ? \\
+5 & ? & ? & 10.87.0.46 & ? & ? & ? \\
+6 & 154.54.92.41 & 154.54.92.41 & ? & 154.54.92.41 & -- & -- \\
+7 & 154.54.3.29 & 154.54.3.29 & 154.54.92.41 & 154.54.3.29 & -- & -- \\
+8 & 154.54.168.85 & 154.54.168.85 & 154.54.29.157 & 154.54.168.85 & -- & -- \\
+9 & 154.54.10.210 & 154.54.10.210 & 154.54.167.185 & 154.54.10.210 & -- & -- \\
+10 & 195.22.211.61 & 195.22.211.61 & 154.54.10.210 & 195.22.211.61 & -- & -- \\
+11 & 195.22.214.161 & ? & 195.22.211.209 & 195.22.214.161 & -- & -- \\
+12 & ? & ? & ? & ? & -- & -- \\
+13 & ? & ? & ? & ? & -- & -- \\
+14 & 2.63.212.246 & 2.63.212.246 & ? & 2.63.212.246 & -- & -- \\
+15 & ? & 37.79.226.46 & 2.63.212.246 & 37.79.226.46 & -- & -- \\
+16 & ? & -- & ? & -- & -- & -- \\
+17 & ? & -- & ? & -- & -- & -- \\
+18 & ? & -- & ? & -- & -- & -- \\
+19 & ? & -- & ? & -- & -- & -- \\
+20 & -- & -- & ? & -- & -- & -- \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+Rusia queda a 15 saltos con ICMP. Hasta ell TTL 8 la ruta se parece más a la de La Habana. Esta sale de la red del operador por la misma interfaz de AS174 (154.54.92.41 en el TTL 6) y avanza por interfaces vecinas de ese AS. Alrededor del TTL 9 o 10 se separa hacia 195.22.211.x y 195.22.214.x (AS6762), vienen dos TTL sin respuesta (12 y 13) y finalmente aparecen 2.63.212.246 y el destino, ambos en AS12389. Con udp y udp-paris la ruta se detiene en 2.63.212.246, después hay una larga fila de ? hasta el TTL 19 o 20 y el destino nunca contesta, algo que coincide con las coberturas bajas de la tabla siguiente.
+
+%Las IP se muestran por TTL y método. Las ausencias al final de un método no extienden artificialmente su recorrido. Los ASN y las respuestas por intento se conservan en los originales y anexos.
+
+\subsubsection{Comparación de los tres destinos}
+\paragraph{Valparaíso}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.1cm}p{1.9cm}p{2.1cm}p{2.1cm}p{1.8cm}p{2.1cm}}
+\toprule
+\textbf{Método} & \textbf{IP únicas} & \textbf{Cobertura} & \textbf{Estabilidad} & \textbf{Sondas} & \textbf{Llegada / 3} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Método} & \textbf{IP únicas} & \textbf{Cobertura} & \textbf{Estabilidad} & \textbf{Sondas} & \textbf{Llegada / 3} \\ \midrule
+\endhead
+icmp & 9 & 100.0\% & 1.000 & 9 & 3 \\
+icmp-paris & 9 & 100.0\% & 1.000 & 9 & 3 \\
+udp & 9 & 100.0\% & 1.000 & 9 & 3 \\
+udp-paris & 9 & 100.0\% & 1.000 & 10 & 3 \\
+tcp & 0 & 0.0\% & n/d & 10 & 0 \\
+tcp-ack & 0 & 0.0\% & n/d & 10 & 0 \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+
+%Método(s) más informativo(s) según el criterio definido: icmp, icmp-paris, udp, udp-paris. El orden de la tabla usa las tres rondas; llegada al destino y estabilidad contextualizan el resultado. Los ceros TCP se interpretan con el diagnóstico de recepción de la sección de respuesta selectiva.
+
+En Valparaíso empatan los cuatro métodos que reciben respuesta, nueve IP únicas, cobertura al 100\%, estabilidad de 1.000 (las 3 rondas ven exactamente las mismas IP) y llegada al destino en las 3 rondas. Como no hay diferencias en lo descubierto, la comparación pasa al costo: icmp, icmp-paris y udp usan 9 sondas y udp-paris 10, por el salto repetido que se comentó antes. Los métodos más informativos según el criterio definido son entonces icmp, icmp-paris, udp y udp-paris, y los ceros de tcp y tcp-ack deben leerse con el diagnóstico de recepción de la Sección 3.6.
+
+\paragraph{La Habana}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.1cm}p{1.9cm}p{2.1cm}p{2.1cm}p{1.8cm}p{2.1cm}}
+\toprule
+\textbf{Método} & \textbf{IP únicas} & \textbf{Cobertura} & \textbf{Estabilidad} & \textbf{Sondas} & \textbf{Llegada / 3} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Método} & \textbf{IP únicas} & \textbf{Cobertura} & \textbf{Estabilidad} & \textbf{Sondas} & \textbf{Llegada / 3} \\ \midrule
+\endhead
+icmp & 13 & 76.5\% & 0.949 & 22 & 3 \\
+icmp-paris & 13 & 76.5\% & 0.949 & 22 & 3 \\
+udp-paris & 13 & 73.7\% & 0.601 & 24 & 3 \\
+udp & 11 & 83.3\% & 0.556 & 20 & 0 \\
+tcp & 0 & 0.0\% & n/d & 10 & 0 \\
+tcp-ack & 0 & 0.0\% & n/d & 10 & 0 \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+
+%Método(s) más informativo(s) según el criterio definido: icmp, icmp-paris. El orden de la tabla usa las tres rondas; llegada al destino y estabilidad contextualizan el resultado. Los ceros TCP se interpretan con el diagnóstico de recepción de la sección de respuesta selectiva.
+
+En La Habana los más informativos son icmp e icmp-paris, con 13 IP únicas, estabilidad de 0.949, llegada al destino en las 3 rondas y solo 22 sondas. udp-paris encuentra la misma cantidad de IP (13), pero con una estabilidad mucho menor (0.601) y más sondas (24), de una a otra ronda cambian las interfaces que responden. El caso de udp es el más llamativo, porque tiene la mayor cobertura (83.3 \%) y sin embargo no llega nunca al destino (0 de 3) y solo ve 11 IP. Eso muestra por qué la cobertura sola engaña, ya que mide qué fracción de los TTL registrados tuvo respuesta, y un recorrido que termina antes parece mejor de lo que es. Por eso el criterio de elección mira primero las IP únicas y deja la cobertura y la estabilidad como desempate. Los ceros de TCP se interpretan igual que en Valparaíso.
+
+\paragraph{Rusia}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3.1cm}p{1.9cm}p{2.1cm}p{2.1cm}p{1.8cm}p{2.1cm}}
+\toprule
+\textbf{Método} & \textbf{IP únicas} & \textbf{Cobertura} & \textbf{Estabilidad} & \textbf{Sondas} & \textbf{Llegada / 3} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Método} & \textbf{IP únicas} & \textbf{Cobertura} & \textbf{Estabilidad} & \textbf{Sondas} & \textbf{Llegada / 3} \\ \midrule
+\endhead
+icmp & 12 & 80.0\% & 0.944 & 19 & 3 \\
+icmp-paris & 12 & 80.0\% & 0.944 & 18 & 3 \\
+udp & 11 & 57.9\% & 0.795 & 27 & 0 \\
+udp-paris & 10 & 55.0\% & 0.758 & 30 & 0 \\
+tcp & 0 & 0.0\% & n/d & 10 & 0 \\
+tcp-ack & 0 & 0.0\% & n/d & 10 & 0 \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+En Rusia el patrón se repite y se acentúa. icpm e icmp-paris descubren 12 IP únicas con estabilidad de 0.944, llegan al destino en las 3 rondas y gastan 18 y 19 sondas. udp y udp-paris ven 11 y 10 IP, con coberturas de 57.9\% y 55.0\%, estabilidades más bajas (0.795 y 0.758) y no llegan al destino en ninguna ronda, a pesar de ser los que más sondas envían (27 y 30). Dicho de otra forma, más paquetes no significaron más información, el método más barato resultó ser también el más informativo. Los ceros de TCP se leen con la Sección 3.6.
+
+%Método(s) más informativo(s) según el criterio definido: icmp, icmp-paris. El orden de la tabla usa las tres rondas; llegada al destino y estabilidad contextualizan el resultado. Los ceros TCP se interpretan con el diagnóstico de recepción de la sección de respuesta selectiva.
+

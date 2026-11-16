@@ -1,0 +1,10 @@
+{
+  "revision_date": "2026-10-29",
+  "image_id": "sha256:e183bb169b3dc0e90beafa06456f0e8571a0184a9db6401fe9400a4dcf2d27be",
+  "network_mode": "none",
+  "command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex",
+  "pages": 70,
+  "pdf_sha256": "80f8e0614c1e3a18904207e5a35086d63ebbcb94b25acb6e8260b08f84f8614d",
+  "overfull_boxes": 0,
+  "undefined_references": 0
+}

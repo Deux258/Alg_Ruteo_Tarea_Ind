@@ -1,0 +1,55 @@
+\subsection{IPs con respuesta selectiva y diagnóstico TCP}\label{sec:selectiva}
+\subsubsection{SCAMPER}
+IP 37.79.226.46, destino 37.79.226.46. Se observó con icmp y no se observó con udp en las rondas y ventanas TTL comparables registradas. Resultado de repetición: corroborated\_\allowbreak{}observation.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{1.5cm}p{1.8cm}p{2.2cm}p{8.7cm}}
+\toprule
+\textbf{Método} & \textbf{Repetición} & \textbf{IP observada} & \textbf{Run / ID RIPE} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Método} & \textbf{Repetición} & \textbf{IP observada} & \textbf{Run / ID RIPE} \\ \midrule
+\endhead
+icmp & 1 & sí & scamper\_\allowbreak{}20261027T151550\_\allowbreak{}1b31253e \\
+udp & 1 & no & scamper\_\allowbreak{}20261027T151628\_\allowbreak{}0033ccea \\
+icmp & 2 & sí & scamper\_\allowbreak{}20261027T151818\_\allowbreak{}5de843b6 \\
+udp & 2 & no & scamper\_\allowbreak{}20261027T151906\_\allowbreak{}e77fd62c \\
+\bottomrule
+\end{longtable}
+\endgroup
+Hipótesis: comportamiento dependiente del protocolo, posible filtrado o política de respuesta. El protocolo con respuesta permite observar esa IP en este experimento. No se demostró una ACL concreta: otra ruta, balanceo o pérdida también pueden explicar la ausencia. Las pruebas corroboran el contraste observado, no una regla de firewall.
+
+\subsubsection{RIPE}
+IP 200.0.16.25, destino 200.14.48.134. Se observó con TCP y no se observó con ICMP en las rondas y ventanas TTL comparables registradas. Resultado de repetición: corroborated\_\allowbreak{}observation.
+
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{1.5cm}p{1.8cm}p{2.2cm}p{8.7cm}}
+\toprule
+\textbf{Método} & \textbf{Repetición} & \textbf{IP observada} & \textbf{Run / ID RIPE} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Método} & \textbf{Repetición} & \textbf{IP observada} & \textbf{Run / ID RIPE} \\ \midrule
+\endhead
+TCP & 1 & sí & ripe\_\allowbreak{}20261027T021029\_\allowbreak{}21cd8259 / 228007771 \\
+ICMP & 1 & no & ripe\_\allowbreak{}20261027T021245\_\allowbreak{}9bda16d8 / 228009257 \\
+TCP & 2 & sí & ripe\_\allowbreak{}20261027T021359\_\allowbreak{}987fefb9 / 228009551 \\
+ICMP & 2 & no & ripe\_\allowbreak{}20261027T021549\_\allowbreak{}02ab18c4 / 228009740 \\
+\bottomrule
+\end{longtable}
+\endgroup
+Hipótesis: comportamiento dependiente del protocolo, posible filtrado o política de respuesta. El protocolo con respuesta permite observar esa IP en este experimento. No se demostró una ACL concreta: otra ruta, balanceo o pérdida también pueden explicar la ausencia. Las pruebas corroboran el contraste observado, no una regla de firewall.
+
+\subsubsection{Discrepancia de recepción TCP}
+En 36 ejecuciones Scamper TCP se correlacionaron respuestas ICMP por direcciones, IPID, puertos y tiempo, pero no se incorporaron como saltos aceptados en WARTS. Se conserva el resultado de la herramienta separado de la captura. El control revisó 1176 tramas TCP exteriores completas, incluidos RST de control, sin checksums TCP inválidos. Este conteo no equivale a sondas emitidas.
+
+El control adicional con ICMP-rxerr finalizó con stop\_\allowbreak{}reason ERROR, mensaje de tipo no soportado y cero sondas. Se conserva como diagnóstico fallido y no cuenta como ruta válida. Su existencia no prueba filtrado ni corrige retrospectivamente los WARTS anteriores.
+
+\subsubsection{Lectura de la cabecera citada en ICMP}
+
+Un ejemplo que se puede seguir paso a paso es scamper\_20261026T204619\_270c47c3, trama 4. La respuesta exterior viene de 192.168.100.1 y es un ICMP de tipo y código 11/0 (tiempo excedido). Dentro de ese ICMP viene citada la solicitud original: destino 138.204.230.242, TTL 1, IPID 0x0001 y UDP de 32769 a 33435. Hay que distinguir los dos TTL, el exterior pertenece a la respuesta y no reemplaza al citado, que es el de la solicitud. La coincidencia se comprueba contra el paquete emitido, sus puertos, el identificador y el tiempo. 
+
+En las fichas, ip.proto 1 identifica ICMP, 6 TCP y 17 UDP; ICMP 8/0 es Echo Request. Los flags TCP 0x0002 y 0x0010 corresponden a SYN y ACK, respectivamente. Leo las secuencias con valores absolutos para no confundir la numeración relativa que muestra la interfaz gráfica con el valor que realmente se transmite.

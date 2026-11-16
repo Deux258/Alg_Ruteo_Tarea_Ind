@@ -1,0 +1,63 @@
+\section{Introducción}\label{sec:intro}
+
+%%%%%
+
+Cada vez que abrimos una página o hacemos una video llamada, nuestros paquetes cruzan una cadena de routers que casi nunca vemos. Path Discovery es el conjunto de técnicas que permite reconstruir esta cadena desde afuera, donde el origen envía sondas con un TTL que va creciendo (1, 2, 3, ...) y cada router que descarta una sonda porque su TTL se agotó responde con un mensaje ICMP de tiempo excedido, normalmente con la interfaz por la que entró el paquete. Juntando esas respuestas se arma, salto a salto, una ruta aproximada hacia el destino. 
+Para esto, hay que elegir el protocolo de las sondas (ICMP, UDP o TCP), porque no todas las redes tratan igual a cada uno. Por ejemplo: decidir si se mantiene constante el flujo para que los balanceadores de carga no repartan las sondas por caminos distintos, elegir entre seguir un solo camino o intentar enumerar todos los que existen (que es lo que hace tracelb), y/o decidir desde dónde se mide, porque una ruta de ida dice muy poco sobre la vuelta.
+
+En este trabajo se comparan dos formas de enfrentar el problema. La primera es Scamper, ejecutado desde mi conexión de banda ancha fija. La segunda es RIPE Atlas, una plataforma de sondas distribuidas que, además de repetir las mediciones desde la sonda origen (mi hogar), permite medir el sentido inverso desde una sonda cercana al destino hacia mi casa. Con ambas se caracteriza las rutas hacia tres destinos de contextos muy distintos: Valparaíso, La Habana y Rusia.
+
+Las preguntas que guían el informe son cuatro. Primero, qué método descubre más interfaces por destino y a qué costo en sondas. Segundo, qué cambia cuando se invierte el sentido de la medición. Tercero, qué patrones permiten reconocer las sondas de cada herramienta dentro de una captura de tráfico. Y cuarto, cómo se puede representar y publicar lo observado como un grafo dirigido que otra persona pueda revisar.
+
+El objetivo no es sacar conclusiones grandes sobre internet, sino documentar observaciones reproducibles y dejar claro hasta dónde llegan. Tres advertencias marcan ese alcance: una IP de respuesta es una interfaz observada y no equivale por sí sola a un router físico. Los ASN salen de asociaciones IP-prefijo y no constituyen una ruta BGP medida. Y un traceroute no mide velocidad de acceso ni demuestra censura. Estos reaparecen a lo largo del informe porque condicionan cómo se puede leer cada tabla.
+
+
+
+
+
+\subsection{Conexión de origen}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{4.2cm}p{10.3cm}}
+\toprule
+\textbf{Dato} & \textbf{Valor} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Dato} & \textbf{Valor} \\ \midrule
+\endhead
+Proveedor comercial & WOM \\
+Ubicación aproximada & Quilicura, Región Metropolitana de Chile \\
+IPv4 pública & 186.189.89.115 \\
+Prefijo & 186.189.89.0/24 \\
+ASN & AS52341 \\
+Sonda local & 1018487 \\
+Interfaz & wlan0 \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+La asosiación entre IP, prefijo y AS se obtuvo de RIPEstat y de sus respuestas conservadas. Además, la consulta a BGP HE confirma AS52341 (WOM S.A.) y muestra dos anuncios, 186.189.80.0/20 y 186.189.89.0/24, trabajando con el más específico. Sobre la red de acceso, las primeras direcciones que aparecen son privadas, y 100.88.0.1 cae dentro del rango 100.64.0.0 / 10, reservado para NAT a nivel de operador. 
+
+
+\subsection{Destinos y motivación}
+\begingroup
+\fontsize{9}{11}\selectfont
+\addtocounter{table}{-1}
+\begin{longtable}{p{3cm}p{6cm}p{3cm}}
+\toprule
+\textbf{Destino} & \textbf{IPv4} & \textbf{Sonda} \\ \midrule
+\endfirsthead
+\toprule
+\textbf{Destino} & \textbf{IPv4} & \textbf{Sonda} \\ \midrule
+\endhead
+Valparaíso & 138.204.230.242 & 6652 \\
+La Habana & 200.14.48.134 & 12734 \\
+Rusia & 37.79.226.46 & 3959 \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+Los destinos son las alternativas que admite el enunciado actualizado, donde Valparaíso (Chile), Habana (Cuba) y Rusia son los casos propuestos para contrastar contextos de conectividad muy distintos. El destino ruso anterior 90.150.251.81 (sonda 870), se conservó como antecedente y queda fuera de este análisis.
+
+\noindent Fuentes para la conexión de origen: RIPEstat \cite{ref4} y BGP HE \cite{ref7}.
