@@ -1,8 +1,0 @@
-{
-  "kind": "cross_round_packet_patterns",
-  "training_rule_count": 2238,
-  "sealed_at": "2026-10-26T12:38:03.631582+00:00",
-  "sha256": {
-    "predictions.json": "66410ec6bbea7df36570bd97999b39c47ead33eae22a3129f3a86d251383363c"
-  }
-}

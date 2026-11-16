@@ -1,1 +1,0 @@
-El informe final se encuentra en ../latex/. Este PDF es una copia idéntica para compatibilidad con el verificador de entrega. La versión anterior está en ../historico/path_discovery_pre_latex_20261027/.

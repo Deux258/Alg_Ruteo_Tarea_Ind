@@ -1,8 +1,0 @@
-{
-  "image": "jamesits/ripe-atlas@sha256:841459abe5aac56833e94832b2460423b5b9532b6420df73bfec54dd3303643b",
-  "manager": "docker-compose",
-  "identity_preserved": true,
-  "public_key_sha256": "550796887c1e7d4c24e440604f1466382d7780d27eee6222779204e511b8f1eb",
-  "public_key_file": "resultados/sonda_clave_publica.txt",
-  "register_url": "https://atlas.ripe.net/apply/swprobe/"
-}
