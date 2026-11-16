@@ -1,0 +1,16 @@
+services:
+  db:
+    image: pgrouting/pgrouting:16-3.5-3.7.3
+    environment:
+      POSTGRES_USER: ruteo
+      POSTGRES_PASSWORD: ruteo_local
+      POSTGRES_DB: ruteo
+    volumes:
+      - ruteo_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ruteo -d ruteo"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+volumes:
+  ruteo_db:

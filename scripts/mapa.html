@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Red de fibra y terremoto del Maule</title>
+  <style>/* LEAFLET_CSS */</style>
+  <script>/* LEAFLET_JS */</script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #172924; background: #f3f5f0; font: 15px/1.5 'DM Sans', system-ui, sans-serif; }
+    main { display: grid; grid-template-columns: minmax(290px, 365px) minmax(0, 1fr); min-height: 100dvh; }
+    aside { padding: clamp(20px, 3.2vw, 42px); }
+    h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.13; letter-spacing: -.05em; }
+    h2 { margin: 26px 0 8px; font-size: 16px; }
+    p { margin: 0 0 22px; color: #41534d; }
+    .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .metric { display: flex; flex-direction: column; justify-content: space-between;
+      background: #e4ece4; padding: 11px; border-radius: 8px; font-size: 12px; }
+    .metric strong { display: block; font-size: 25px; font-variant-numeric: tabular-nums; }
+    label { display: block; font-weight: 700; margin: 22px 0 6px; }
+    select { width: 100%; min-height: 40px; font: inherit; padding: 5px 8px; color: inherit;
+      border: 1px solid #8da198; background: #fff; border-radius: 6px; }
+    #leyenda { margin: 9px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+    .swatch { display: inline-block; width: 15px; height: 4px; margin: 0 8px 3px 0; border-radius: 2px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: right; }
+    th, td { border-bottom: 1px solid #d2dcd4; padding: 6px 0; }
+    th:first-child, td:first-child { text-align: left; }
+    .nota { font-size: 12px; margin: 18px 0 0; }
+    #mapa { height: 100dvh; position: sticky; top: 0; background: #d5e5e6; }
+    @media (max-width: 720px) {
+      main { display: flex; flex-direction: column; }
+      #mapa { position: relative; height: 62dvh; order: -1; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <aside aria-label="Resultados y escenarios">
+      <h1>Fibra óptica ante el 27F</h1>
+      <p>Maule · 27 de febrero de 2010 · Mw <span id="magnitud"></span></p>
+      <div class="metrics">
+        <div class="metric">ATTR inicial<strong id="antes"></strong></div>
+        <div class="metric">ATTR posterior esperado<strong id="despues"></strong></div>
+      </div>
+      <label for="escenario">Vista de enlaces</label>
+      <select id="escenario"><option value="">Probabilidad de falla</option></select>
+      <ul id="leyenda" aria-live="polite"></ul>
+      <h2>Conectividad por escenario</h2>
+      <table>
+        <thead><tr><th>Radio</th><th>Peso</th><th>Pares</th><th>ATTR</th></tr></thead>
+        <tbody id="escenarios"></tbody>
+      </table>
+      <p class="nota">Modelo ilustrativo con radios de daño compartidos. Las localidades representan
+        terminales aproximados en la topología de Yafün.</p>
+    </aside>
+    <div id="mapa" aria-label="Mapa interactivo de fibra, terminales y epicentro"></div>
+  </main>
+  <script>
+    'use strict';
+    const datos = /* DATOS_MAPA */;
+    const { attr, evento, terminales, red, fondo } = datos;
+    const porcentaje = new Intl.NumberFormat('es-CL', { style: 'percent', maximumFractionDigits: 2 });
+    const numero = new Intl.NumberFormat('es-CL', { maximumFractionDigits: 2 });
+    const formatearAttr = new Intl.NumberFormat('es-CL', { minimumFractionDigits: 4, maximumFractionDigits: 4 });
+    const formatoPares = n => `${n}/${attr.pares_totales}`;
+    document.querySelector('#magnitud').textContent = numero.format(evento.magnitud);
+    document.querySelector('#antes').textContent = formatearAttr.format(attr.antes);
+    document.querySelector('#despues').textContent = formatearAttr.format(attr.despues_esperado);
+
+    const selector = document.querySelector('#escenario');
+    const tabla = document.querySelector('#escenarios');
+    for (const escenario of attr.escenarios) {
+      selector.add(new Option(`Radio de ${numero.format(escenario.radio_km)} km`, escenario.id));
+      const fila = tabla.insertRow();
+      for (const dato of [`${numero.format(escenario.radio_km)} km`, porcentaje.format(escenario.probabilidad),
+                         formatoPares(escenario.pares_conectados), formatearAttr.format(escenario.attr)]) {
+        fila.insertCell().textContent = dato;
+      }
+    }
+
+    const epicentro = [evento.latitud, evento.longitud];
+    const mapa = L.map('mapa', { preferCanvas: true }).fitBounds([[-55, -75], [-18, -67]]);
+    mapa.createPane('fondo').style.zIndex = '250';
+    L.geoJSON(fondo, {
+      pane: 'fondo', interactive: false,
+      attribution: '<a href="https://www.naturalearthdata.com/">Natural Earth</a>',
+      style: pais => ({ color: '#a7b1a1', weight: 1, fillOpacity: 1,
+        fillColor: pais.properties.codigo === 'CHL' ? '#e4e9d6' : '#f0f1e7' })
+    }).addTo(mapa);
+    L.control.scale({ imperial: false }).addTo(mapa);
+
+    const colorPorProbabilidad = new Map([[0, '#426b65'], [0.25, '#ab6900'], [0.75, '#bd472c'], [1, '#890a48']]);
+    const colorFalla = '#a3194f';
+    const colorDisponible = '#426b65';
+    let escenarioActual;
+    let disco;
+    function estilo(enlace) {
+      const riesgo = enlace.properties;
+      const falla = escenarioActual && riesgo.distancia_km <= escenarioActual.radio_km;
+      return {
+        color: escenarioActual ? (falla ? colorFalla : colorDisponible) :
+          (colorPorProbabilidad.get(riesgo.probabilidad) ?? colorFalla),
+        weight: 2.5, opacity: 0.88
+      };
+    }
+    function ficha(titulo, lineas) {
+      const caja = document.createElement('div');
+      const nombre = document.createElement('strong');
+      nombre.textContent = titulo;
+      caja.append(nombre);
+      for (const linea of lineas) {
+        const detalle = document.createElement('div');
+        detalle.textContent = linea;
+        caja.append(detalle);
+      }
+      return caja;
+    }
+    const fibra = L.geoJSON(red, {
+      style: estilo,
+      onEachFeature(enlace, capa) {
+        const riesgo = enlace.properties;
+        capa.bindPopup(() => ficha(`Enlace ${enlace.id}`, [
+          `${numero.format(riesgo.distancia_km)} km al epicentro`,
+          `${porcentaje.format(riesgo.probabilidad)} de probabilidad de falla`,
+          ...(escenarioActual ? [
+            riesgo.distancia_km <= escenarioActual.radio_km ? 'Falla en este escenario' : 'Disponible en este escenario'
+          ] : [])
+        ]));
+      }
+    }).addTo(mapa);
+    const puntos = L.layerGroup().addTo(mapa);
+    for (const nodo of terminales) {
+      L.circleMarker([nodo.latitud, nodo.longitud], {
+        radius: 5, color: '#fff', weight: 1.5, fillColor: '#1d4b72', fillOpacity: 1
+      }).bindPopup(ficha(nodo.nombre, [
+        nodo.roles.replaceAll('|', ' · '),
+        `${numero.format(nodo.distancia_vertice_m)} m al vértice asignado`
+      ])).addTo(puntos);
+    }
+    L.circleMarker(epicentro, { radius: 8, color: '#fff', weight: 2, fillColor: colorFalla, fillOpacity: 1 })
+      .bindPopup(ficha('Epicentro del Maule', [`Mw ${numero.format(evento.magnitud)}`,
+        `${numero.format(evento.profundidad_km)} km de profundidad`])).addTo(puntos);
+    L.control.layers(null, { 'Fibra óptica': fibra, 'Terminales y epicentro': puntos },
+      { collapsed: false }).addTo(mapa);
+
+    function actualizarVista() {
+      escenarioActual = attr.escenarios.find(escenario => escenario.id === selector.value);
+      mapa.closePopup();
+      fibra.setStyle(estilo);
+      if (disco) mapa.removeLayer(disco);
+      const items = [];
+      if (escenarioActual) {
+        disco = L.circle(epicentro, { radius: escenarioActual.radio_km * 1000, color: colorFalla,
+          weight: 1, fillOpacity: 0.08, interactive: false }).addTo(mapa).bringToBack();
+        items.push([colorFalla, `Falla · ${numero.format(escenarioActual.enlaces_caidos)} enlaces`],
+          [colorDisponible, `Disponible · ${numero.format(red.features.length - escenarioActual.enlaces_caidos)} enlaces`]);
+      } else {
+        const niveles = [...new Set(red.features.map(enlace => enlace.properties.probabilidad))].sort((a, b) => a - b);
+        for (const probabilidad of niveles) {
+          items.push([colorPorProbabilidad.get(probabilidad) ?? colorFalla, porcentaje.format(probabilidad)]);
+        }
+      }
+      document.querySelector('#leyenda').replaceChildren(...items.map(([color, texto]) => {
+        const elemento = document.createElement('li');
+        const muestra = document.createElement('span');
+        muestra.className = 'swatch';
+        muestra.style.backgroundColor = color;
+        elemento.append(muestra, texto);
+        return elemento;
+      }));
+    }
+    selector.addEventListener('change', actualizarVista);
+    actualizarVista();
+  </script>
+</body>
+</html>

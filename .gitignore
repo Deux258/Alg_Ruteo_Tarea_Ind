@@ -11,3 +11,4 @@ capturas/
 entrega/
 *.tar.gz
 config/local.json
+/mapa.html

@@ -1,0 +1,26 @@
+{
+  "id": "discos_concentricos_maule_v1",
+  "descripcion": "Falla regional correlacionada con epicentro fijo y radio de daño aleatorio compartido",
+  "evento_archivo": "datos/sismo_maule_2010.geojson",
+  "evento_id": "official20100227063411530_30",
+  "magnitud_evento": 8.8,
+  "fuente_modelo": {
+    "autores": "Vass et al.",
+    "titulo": "Probabilistic Shared Risk Link Groups Modeling Correlated Resource Failures Caused by Disasters",
+    "anio": 2021,
+    "doi": "10.1109/JSAC.2021.3064652",
+    "url": "https://doi.org/10.1109/JSAC.2021.3064652",
+    "referencia": "Sección III, definición 3 y ecuaciones (4), (7) y (8); sección IV-A, discos circulares"
+  },
+  "calibracion": "ilustrativa_sin_calibracion_empirica",
+  "origen_parametros": "Radios y pesos elegidos para esta tarea según el plan inicial; sujetos a análisis de sensibilidad",
+  "distancia": "minima_geodesica_epicentro_trazado",
+  "unidad_distancia": "km",
+  "regla_falla": "distancia_km <= radio_km",
+  "dependencia": "un_radio_compartido_por_toda_la_red",
+  "escenarios": [
+    {"id": "radio_100", "radio_km": 100, "probabilidad": 0.25},
+    {"id": "radio_200", "radio_km": 200, "probabilidad": 0.50},
+    {"id": "radio_300", "radio_km": 300, "probabilidad": 0.25}
+  ]
+}

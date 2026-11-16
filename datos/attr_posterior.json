@@ -1,0 +1,34 @@
+{
+  "modelo_id": "discos_concentricos_maule_v1",
+  "evento_id": "official20100227063411530_30",
+  "pares_totales": 36,
+  "pares_conectados_antes": 4,
+  "antes": 0.1111111111111111,
+  "despues_esperado": 0.09027777777777778,
+  "escenarios": [
+    {
+      "id": "radio_100",
+      "radio_km": 100,
+      "probabilidad": 0.25,
+      "pares_conectados": 4,
+      "attr": 0.1111111111111111,
+      "enlaces_caidos": 171
+    },
+    {
+      "id": "radio_200",
+      "radio_km": 200,
+      "probabilidad": 0.5,
+      "pares_conectados": 4,
+      "attr": 0.1111111111111111,
+      "enlaces_caidos": 448
+    },
+    {
+      "id": "radio_300",
+      "radio_km": 300,
+      "probabilidad": 0.25,
+      "pares_conectados": 1,
+      "attr": 0.027777777777777776,
+      "enlaces_caidos": 673
+    }
+  ]
+}
