@@ -1,6 +1,7 @@
 # Tarea individual 2 de Algoritmos de Ruteo
 
 Diego Muñoz Barra
+Enlace a giteit: https://giteit.udp.cl/diego.munoz11/tarea-2-ind.git
 
 ## 1. Infraestructura de fibra óptica por Yafün
 
