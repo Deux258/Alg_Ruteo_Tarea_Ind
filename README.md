@@ -15,6 +15,22 @@ sha256sum datos/originales/resiliencia_uchile_corfo_subtel.pdf
 
 SHA-256 verificado: `e2046aa536fe9d96a89cf5e03b58e16d7ec147fe659482494393482597cd655f`.
 
+### Capa de fibra utilizada
+
+[`datos/fibra_yafun.geojson`](datos/fibra_yafun.geojson) contiene los 1.915 trazados de la capa `Respuesta_T5610/fibra_optica_detectada.shp`, incluida en `Respuesta_T5610.zip`. La conversión conserva las coordenadas WGS84 y el identificador original en `properties.id_fuente`. El `id` de cada entidad corresponde a su número de fila en el shapefile, comenzando en 1.
+
+Usando el zip [Respuesta T5610 en Canvas], el SHA-256 registrado para ese archivo es `39d96b25dac8c654d9977b7a3e0acfcbce034b8e1c94df9b49ca4293f52ceda0`.
+
+El GeoJSON está incluido en el repositorio y basta para ejecutar `main.py`. Para regenerarlo, guarda el ZIP en `datos/originales/Respuesta_T5610.zip` y ejecuta estos comandos desde la raíz del repositorio:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install pyshp==3.1.6
+.venv/bin/python scripts/extraer_fibra.py datos/originales/Respuesta_T5610.zip datos/fibra_yafun.geojson
+```
+
+En PowerShell, usa `python` para crear el entorno y `.\.venv\Scripts\python.exe` para los dos comandos siguientes.
+
 ## 2. Catálogo de nodos clave
 
 [`datos/nodos_clave.csv`](datos/nodos_clave.csv) contiene nueve ubicaciones de referencia. Cada fila registra el rol, evidencia, URL de la fuente, referencia dentro de la fuente, procedencia de las coordenadas y estado de asociación a la red. Una localidad con dos roles sigue siendo una sola ubicación. Los roles múltiples y sus fuentes se registran con `|` como separador.
@@ -31,7 +47,7 @@ El catálogo combina el levantamiento Yafün de 2018 con fuentes funcionales de 
 `trazado_cercano_id` apunta a la entidad más próxima del GeoJSON. 
 `distancia_fibra_m` aproxima la distancia mínima a la línea en metros, calculada en un plano local centrado en cada localidad. 
 
-Las nueve asociaciones están pendientes de verificar como empalmes físicos. Santiago, en particular, que queda a unos 11,2 km del trazado más próximo al punto representativo de la ciudad.
+Las nueve asociaciones están pendientes de verificar como empalmes físicos. El punto representativo de Santiago queda a unos 11,2 km del trazado más próximo.
 
 ## 3 y 4. Topología y ATTR inicial
 
@@ -116,4 +132,4 @@ Desde la raíz del repositorio, con Docker Compose y Python 3 disponibles:
 python3 main.py
 ```
 
-`main.py` inicia la base, carga la topología si falta, calcula las probabilidades y genera `main.sql`, `datos/attr_posterior.json` y `mapa.html`. Abrir `mapa.html` en el navegador. El mapa muestra ambos ATTR, los terminales, el epicentro y la red, con un selector para ver la probabilidad marginal o los enlaces caídos para cada radio. El HTML incluye los datos, la biblioteca Leaflet y un fondo vectorial de Sudamérica que funciona sin conexión. [Leaflet 1.9.4](https://leafletjs.com/reference-1.9.4.html) · [Natural Earth 1:50m, versión 5.1.2](https://github.com/nvkelso/natural-earth-vector/blob/v5.1.2/geojson/ne_50m_admin_0_countries.geojson)
+`main.py` inicia la base, carga la topología si falta, calcula las probabilidades y genera `main.sql`, `datos/attr_posterior.json` y `mapa.html`. Al abrir `mapa.html` en el navegador, el mapa muestra ambos ATTR, los terminales, el epicentro y la red, con un selector para ver la probabilidad marginal o los enlaces caídos para cada radio. El HTML incluye los datos, la biblioteca Leaflet y un fondo vectorial de Sudamérica que funciona sin conexión. [Leaflet 1.9.4](https://leafletjs.com/reference-1.9.4.html) · [Natural Earth 1:50m, versión 5.1.2](https://github.com/nvkelso/natural-earth-vector/blob/v5.1.2/geojson/ne_50m_admin_0_countries.geojson)

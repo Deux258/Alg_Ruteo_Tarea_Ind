@@ -11,7 +11,7 @@ def psql(sql):
     result = subprocess.run(
         ['docker', 'compose', 'exec', '-T', 'db', 'psql', '-X', '-qAt',
          '-v', 'ON_ERROR_STOP=1', '-U', 'ruteo', '-d', 'ruteo'],
-        cwd=ROOT, input=sql, text=True, capture_output=True,
+        cwd=ROOT, input=sql, encoding='utf-8', capture_output=True,
     )
     if result.returncode:
         raise RuntimeError(result.stderr.strip())
