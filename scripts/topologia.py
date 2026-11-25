@@ -25,38 +25,53 @@ def copy_rows(rows):
     return buffer.getvalue() + '\\.\n'
 
 
-def main():
-    features = json.loads((ROOT / 'datos/fibra_yafun.geojson').read_text(encoding='utf-8'))['features']
+def leer_terminales():
     with (ROOT / 'datos/nodos_clave.csv').open(encoding='utf-8', newline='') as stream:
-        nodes = list(csv.DictReader(stream))
+        return list(csv.DictReader(stream))
+
+
+def sql_entradas():
+    features = json.loads((ROOT / 'datos/fibra_yafun.geojson').read_text(encoding='utf-8'))['features']
+    nodes = leer_terminales()
     if not features or len(nodes) < 2 or len({n['id'] for n in nodes}) != len(nodes):
         raise ValueError('Se requieren enlaces y al menos dos nodos con identificadores únicos')
     edges = [(f['id'], f['properties']['id_fuente'], json.dumps(f['geometry'])) for f in features]
-    terminals = [(n['id'], n['nombre'], n['roles'], n['longitud'], n['latitud']) for n in nodes]
-    sql = '''
-BEGIN;
+    terminals = [(n['id'], n['nombre'], n['roles'], n['tipo'], n['longitud'], n['latitud']) for n in nodes]
+    return '''
+CREATE TEMP TABLE entrada_fibra (id bigint PRIMARY KEY, id_fuente text, geometria text) ON COMMIT DROP;
+COPY entrada_fibra FROM STDIN WITH (FORMAT csv);
+''' + copy_rows(edges) + '''
+CREATE TEMP TABLE entrada_terminales (
+  id text PRIMARY KEY, nombre text, roles text, tipo text,
+  longitud double precision, latitud double precision
+) ON COMMIT DROP;
+COPY entrada_terminales FROM STDIN WITH (FORMAT csv);
+''' + copy_rows(terminals)
+
+
+CREAR_TOPOLOGIA = '''
 CREATE EXTENSION IF NOT EXISTS postgis;
 CREATE EXTENSION IF NOT EXISTS pgrouting;
 CREATE SCHEMA tarea_ruteo;
-CREATE TABLE tarea_ruteo.entrada (id bigint PRIMARY KEY, id_fuente text, geometria text);
-COPY tarea_ruteo.entrada FROM STDIN WITH (FORMAT csv);
-''' + copy_rows(edges) + '''
 CREATE TABLE tarea_ruteo.enlaces AS
 SELECT id, id_fuente, ST_SetSRID(ST_GeomFromGeoJSON(geometria), 4326)::geometry(LineString,4326) AS geom,
        NULL::bigint AS source, NULL::bigint AS target
-FROM tarea_ruteo.entrada;
+FROM entrada_fibra;
 ALTER TABLE tarea_ruteo.enlaces ADD PRIMARY KEY (id);
+ALTER TABLE tarea_ruteo.enlaces ADD COLUMN probabilidad_falla_base double precision NOT NULL DEFAULT 0
+    CHECK (probabilidad_falla_base = 0);
 CREATE INDEX ON tarea_ruteo.enlaces USING gist (geom);
-DROP TABLE tarea_ruteo.entrada;
-SELECT pgr_createTopology('tarea_ruteo.enlaces', 0.000000001, 'geom', 'id');
+CREATE TABLE tarea_ruteo.ejecucion_topologia AS
+SELECT pgr_createTopology('tarea_ruteo.enlaces', 0.000000001, 'geom', 'id') AS estado,
+       0.000000001::numeric AS tolerancia_grados;
 DO $$ BEGIN
-  IF EXISTS (SELECT FROM tarea_ruteo.enlaces WHERE source IS NULL OR target IS NULL OR ST_IsEmpty(geom) OR NOT ST_IsValid(geom)) THEN
+  IF (SELECT estado FROM tarea_ruteo.ejecucion_topologia) IS DISTINCT FROM 'OK' OR
+     EXISTS (SELECT FROM tarea_ruteo.enlaces WHERE source IS NULL OR target IS NULL OR ST_IsEmpty(geom) OR NOT ST_IsValid(geom)) THEN
     RAISE EXCEPTION 'Topología incompleta o geometría inválida';
   END IF;
 END $$;
-CREATE TABLE tarea_ruteo.terminales (id text PRIMARY KEY, nombre text, roles text, longitud double precision, latitud double precision);
-COPY tarea_ruteo.terminales FROM STDIN WITH (FORMAT csv);
-''' + copy_rows(terminals) + '''
+CREATE TABLE tarea_ruteo.terminales AS SELECT * FROM entrada_terminales;
+ALTER TABLE tarea_ruteo.terminales ADD PRIMARY KEY (id);
 ALTER TABLE tarea_ruteo.terminales ADD COLUMN enlace_id bigint;
 ALTER TABLE tarea_ruteo.terminales ADD COLUMN vertice_id bigint;
 ALTER TABLE tarea_ruteo.terminales ADD COLUMN distancia_linea_m double precision;
@@ -80,20 +95,26 @@ UPDATE tarea_ruteo.terminales t SET enlace_id = s.enlace_id, vertice_id = s.vert
 FROM seleccion s JOIN tarea_ruteo.enlaces_vertices_pgr v ON v.id = s.vertice_id WHERE t.id = s.id;
 CREATE TABLE tarea_ruteo.componentes AS
 SELECT * FROM pgr_connectedComponents('SELECT id, source, target, 1::float8 AS cost, 1::float8 AS reverse_cost FROM tarea_ruteo.enlaces');
-COMMIT;
 '''
-    psql(sql)
+
+
+def sql_topologia():
+    return sql_entradas() + CREAR_TOPOLOGIA
+
+
+def resumir_topologia():
     result = psql('''
 WITH grupos AS (
-  SELECT c.component, count(*) AS cantidad FROM tarea_ruteo.terminales t
+  SELECT c.component, count(DISTINCT t.vertice_id) AS cantidad FROM tarea_ruteo.terminales t
   JOIN tarea_ruteo.componentes c ON c.node = t.vertice_id GROUP BY c.component
 ), metricas AS (
-  SELECT (SELECT count(*) FROM tarea_ruteo.terminales) AS terminales,
+  SELECT (SELECT count(DISTINCT vertice_id) FROM tarea_ruteo.terminales) AS terminales,
          coalesce(sum(cantidad * (cantidad - 1) / 2), 0) AS pares_conectados FROM grupos
 )
 SELECT json_build_object('enlaces', (SELECT count(*) FROM tarea_ruteo.enlaces),
  'vertices', (SELECT count(*) FROM tarea_ruteo.enlaces_vertices_pgr),
  'componentes', (SELECT count(DISTINCT component) FROM tarea_ruteo.componentes),
+ 'ubicaciones', (SELECT count(*) FROM tarea_ruteo.terminales),
  'terminales', terminales, 'pares_conectados', pares_conectados,
  'pares_totales', terminales * (terminales - 1) / 2,
  'attr', pares_conectados::numeric / (terminales * (terminales - 1) / 2),
@@ -105,6 +126,12 @@ SELECT json_build_object('enlaces', (SELECT count(*) FROM tarea_ruteo.enlaces),
 FROM metricas;
 ''')
     data = json.loads(result)
+    return data
+
+
+def main():
+    psql('BEGIN;\n' + sql_topologia() + 'COMMIT;\n')
+    data = resumir_topologia()
     (ROOT / 'datos/attr_base.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(data, ensure_ascii=False, indent=2))
 

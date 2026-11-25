@@ -1,34 +1,262 @@
 {
-  "modelo_id": "discos_concentricos_maule_v1",
+  "modelo_id": "maule_shakemap_mmi_vi_v2",
   "evento_id": "official20100227063411530_30",
-  "pares_totales": 36,
+  "pares_totales": 55,
   "pares_conectados_antes": 4,
-  "antes": 0.1111111111111111,
-  "despues_esperado": 0.09027777777777778,
+  "antes": 0.07272727272727272,
+  "despues_esperado": 0.05090909090909091,
   "escenarios": [
     {
-      "id": "radio_100",
-      "radio_km": 100,
-      "probabilidad": 0.25,
+      "id": "cuantil_01",
+      "radio_km": 0,
+      "probabilidad": 0.1,
       "pares_conectados": 4,
-      "attr": 0.1111111111111111,
-      "enlaces_caidos": 171
+      "attr": 0.07272727272727272,
+      "enlaces_caidos": 0
     },
     {
-      "id": "radio_200",
-      "radio_km": 200,
-      "probabilidad": 0.5,
+      "id": "cuantil_02",
+      "radio_km": 0,
+      "probabilidad": 0.1,
       "pares_conectados": 4,
-      "attr": 0.1111111111111111,
-      "enlaces_caidos": 448
+      "attr": 0.07272727272727272,
+      "enlaces_caidos": 0
     },
     {
-      "id": "radio_300",
-      "radio_km": 300,
-      "probabilidad": 0.25,
+      "id": "cuantil_03",
+      "radio_km": 0,
+      "probabilidad": 0.1,
+      "pares_conectados": 4,
+      "attr": 0.07272727272727272,
+      "enlaces_caidos": 0
+    },
+    {
+      "id": "cuantil_04",
+      "radio_km": 108.77629232716785,
+      "probabilidad": 0.1,
+      "pares_conectados": 4,
+      "attr": 0.07272727272727272,
+      "enlaces_caidos": 196
+    },
+    {
+      "id": "cuantil_05",
+      "radio_km": 163.09702620223123,
+      "probabilidad": 0.1,
+      "pares_conectados": 4,
+      "attr": 0.07272727272727272,
+      "enlaces_caidos": 376
+    },
+    {
+      "id": "cuantil_06",
+      "radio_km": 216.57405612652744,
+      "probabilidad": 0.1,
+      "pares_conectados": 4,
+      "attr": 0.07272727272727272,
+      "enlaces_caidos": 481
+    },
+    {
+      "id": "cuantil_07",
+      "radio_km": 258.076574906831,
+      "probabilidad": 0.1,
       "pares_conectados": 1,
-      "attr": 0.027777777777777776,
-      "enlaces_caidos": 673
+      "attr": 0.01818181818181818,
+      "enlaces_caidos": 580
+    },
+    {
+      "id": "cuantil_08",
+      "radio_km": 304.6722493357844,
+      "probabilidad": 0.1,
+      "pares_conectados": 1,
+      "attr": 0.01818181818181818,
+      "enlaces_caidos": 683
+    },
+    {
+      "id": "cuantil_09",
+      "radio_km": 349.3641420009991,
+      "probabilidad": 0.1,
+      "pares_conectados": 1,
+      "attr": 0.01818181818181818,
+      "enlaces_caidos": 803
+    },
+    {
+      "id": "cuantil_10",
+      "radio_km": 361.4232262170325,
+      "probabilidad": 0.1,
+      "pares_conectados": 1,
+      "attr": 0.01818181818181818,
+      "enlaces_caidos": 836
     }
-  ]
+  ],
+  "terminales": [
+    {
+      "id": "concepcion",
+      "nombre": "Concepción",
+      "roles": "generacion|intercambio",
+      "tipo": "Referencia de IXP/DNS",
+      "longitud": -73.04977,
+      "latitud": -36.82699,
+      "enlace_id": 560,
+      "vertice_id": 673,
+      "distancia_linea_m": 30.09760514,
+      "distancia_vertice_m": 48.845386,
+      "alcanzables_antes": 0,
+      "alcanzables_despues_esperado": 0.0
+    },
+    {
+      "id": "curico",
+      "nombre": "Curicó",
+      "roles": "intercambio",
+      "tipo": "Referencia de IXP/DNS",
+      "longitud": -71.23943,
+      "latitud": -34.98279,
+      "enlace_id": 1507,
+      "vertice_id": 1734,
+      "distancia_linea_m": 169.92652015,
+      "distancia_vertice_m": 282.72068968,
+      "alcanzables_antes": 0,
+      "alcanzables_despues_esperado": 0.0
+    },
+    {
+      "id": "freirina",
+      "nombre": "Freirina",
+      "roles": "recepcion",
+      "tipo": "Localidad receptora",
+      "longitud": -71.08124,
+      "latitud": -28.50917,
+      "enlace_id": 1740,
+      "vertice_id": 1639,
+      "distancia_linea_m": 67.36707485,
+      "distancia_vertice_m": 274.54439199,
+      "alcanzables_antes": 1,
+      "alcanzables_despues_esperado": 1.0
+    },
+    {
+      "id": "google_quilicura",
+      "nombre": "Google PARAM Quilicura",
+      "roles": "generacion",
+      "tipo": "Centro de datos",
+      "longitud": -70.69641934,
+      "latitud": -33.35773777,
+      "enlace_id": 284,
+      "vertice_id": 374,
+      "distancia_linea_m": 691.36237804,
+      "distancia_vertice_m": 1014.21118073,
+      "alcanzables_antes": 0,
+      "alcanzables_despues_esperado": 0.0
+    },
+    {
+      "id": "huasco",
+      "nombre": "Huasco",
+      "roles": "recepcion",
+      "tipo": "Localidad receptora",
+      "longitud": -71.22276,
+      "latitud": -28.46599,
+      "enlace_id": 1383,
+      "vertice_id": 1635,
+      "distancia_linea_m": 215.37774638,
+      "distancia_vertice_m": 215.37774638,
+      "alcanzables_antes": 1,
+      "alcanzables_despues_esperado": 1.0
+    },
+    {
+      "id": "las_cabras",
+      "nombre": "Las Cabras",
+      "roles": "recepcion",
+      "tipo": "Localidad receptora",
+      "longitud": -71.30616,
+      "latitud": -34.29027,
+      "enlace_id": 145,
+      "vertice_id": 203,
+      "distancia_linea_m": 376.2782004,
+      "distancia_vertice_m": 376.2782004,
+      "alcanzables_antes": 2,
+      "alcanzables_despues_esperado": 1.2
+    },
+    {
+      "id": "peumo",
+      "nombre": "Peumo",
+      "roles": "recepcion",
+      "tipo": "Localidad receptora",
+      "longitud": -71.17559,
+      "latitud": -34.38689,
+      "enlace_id": 147,
+      "vertice_id": 176,
+      "distancia_linea_m": 258.57347081,
+      "distancia_vertice_m": 260.65698596,
+      "alcanzables_antes": 2,
+      "alcanzables_despues_esperado": 1.2
+    },
+    {
+      "id": "pichidegua",
+      "nombre": "Pichidegua",
+      "roles": "recepcion",
+      "tipo": "Localidad receptora",
+      "longitud": -71.28826,
+      "latitud": -34.35497,
+      "enlace_id": 1263,
+      "vertice_id": 1489,
+      "distancia_linea_m": 19.71079749,
+      "distancia_vertice_m": 534.95722086,
+      "alcanzables_antes": 2,
+      "alcanzables_despues_esperado": 1.2
+    },
+    {
+      "id": "reuna_la_serena",
+      "nombre": "REUNA La Serena",
+      "roles": "intercambio|recepcion",
+      "tipo": "Nodo troncal",
+      "longitud": -71.25014,
+      "latitud": -29.90591,
+      "enlace_id": 1399,
+      "vertice_id": 574,
+      "distancia_linea_m": 104.28030148,
+      "distancia_vertice_m": 397.87003055,
+      "alcanzables_antes": 0,
+      "alcanzables_despues_esperado": 0.0
+    },
+    {
+      "id": "sam1_arica",
+      "nombre": "Estación SAm-1 Arica",
+      "roles": "intercambio",
+      "tipo": "Aterrizaje submarino",
+      "longitud": -70.28908333,
+      "latitud": -18.45513889,
+      "enlace_id": 683,
+      "vertice_id": 819,
+      "distancia_linea_m": 650.23201809,
+      "distancia_vertice_m": 1894.61023282,
+      "alcanzables_antes": 0,
+      "alcanzables_despues_esperado": 0.0
+    },
+    {
+      "id": "santiago",
+      "nombre": "Santiago",
+      "roles": "generacion|intercambio",
+      "tipo": "Referencia de IXP/DNS",
+      "longitud": -70.64827,
+      "latitud": -33.45694,
+      "enlace_id": 284,
+      "vertice_id": 374,
+      "distancia_linea_m": 11179.8692758,
+      "distancia_vertice_m": 11179.8692758,
+      "alcanzables_antes": 0,
+      "alcanzables_despues_esperado": 0.0
+    },
+    {
+      "id": "valparaiso",
+      "nombre": "Valparaíso",
+      "roles": "generacion",
+      "tipo": "Referencia DNS",
+      "longitud": -71.62963,
+      "latitud": -33.036,
+      "enlace_id": 477,
+      "vertice_id": 608,
+      "distancia_linea_m": 283.27362741,
+      "distancia_vertice_m": 283.27362741,
+      "alcanzables_antes": 0,
+      "alcanzables_despues_esperado": 0.0
+    }
+  ],
+  "diferencia_pp": -2.181818181818181,
+  "reduccion_relativa": 0.29999999999999993
 }

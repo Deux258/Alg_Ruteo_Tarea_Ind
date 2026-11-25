@@ -51,8 +51,7 @@
         <thead><tr><th>Radio</th><th>Peso</th><th>Pares</th><th>ATTR</th></tr></thead>
         <tbody id="escenarios"></tbody>
       </table>
-      <p class="nota">Modelo ilustrativo con radios de daño compartidos. Las localidades representan
-        terminales aproximados en la topología de Yafün.</p>
+      <p class="nota">Radios derivados de ShakeMap USGS. Los terminales se vinculan a la fibra por proximidad.</p>
     </aside>
     <div id="mapa" aria-label="Mapa interactivo de fibra, terminales y epicentro"></div>
   </main>
@@ -71,7 +70,8 @@
     const selector = document.querySelector('#escenario');
     const tabla = document.querySelector('#escenarios');
     for (const escenario of attr.escenarios) {
-      selector.add(new Option(`Radio de ${numero.format(escenario.radio_km)} km`, escenario.id));
+      const etiqueta = escenario.radio_km === 0 ? 'Sin daño en el modelo' : `Radio de ${numero.format(escenario.radio_km)} km`;
+      selector.add(new Option(etiqueta, escenario.id));
       const fila = tabla.insertRow();
       for (const dato of [`${numero.format(escenario.radio_km)} km`, porcentaje.format(escenario.probabilidad),
                          formatoPares(escenario.pares_conectados), formatearAttr.format(escenario.attr)]) {
@@ -90,17 +90,21 @@
     }).addTo(mapa);
     L.control.scale({ imperial: false }).addTo(mapa);
 
-    const colorPorProbabilidad = new Map([[0, '#426b65'], [0.25, '#ab6900'], [0.75, '#bd472c'], [1, '#890a48']]);
+    function colorPorProbabilidad(probabilidad) {
+      if (probabilidad === 0) return '#426b65';
+      const tono = 45 - 82 * probabilidad;
+      return `hsl(${tono} 76% ${40 - 10 * probabilidad}%)`;
+    }
     const colorFalla = '#a3194f';
     const colorDisponible = '#426b65';
     let escenarioActual;
     let disco;
     function estilo(enlace) {
       const riesgo = enlace.properties;
-      const falla = escenarioActual && riesgo.distancia_km <= escenarioActual.radio_km;
+      const falla = escenarioActual && escenarioActual.radio_km > 0 && riesgo.distancia_km <= escenarioActual.radio_km;
       return {
         color: escenarioActual ? (falla ? colorFalla : colorDisponible) :
-          (colorPorProbabilidad.get(riesgo.probabilidad) ?? colorFalla),
+          colorPorProbabilidad(riesgo.probabilidad),
         weight: 2.5, opacity: 0.88
       };
     }
@@ -124,7 +128,8 @@
           `${numero.format(riesgo.distancia_km)} km al epicentro`,
           `${porcentaje.format(riesgo.probabilidad)} de probabilidad de falla`,
           ...(escenarioActual ? [
-            riesgo.distancia_km <= escenarioActual.radio_km ? 'Falla en este escenario' : 'Disponible en este escenario'
+            escenarioActual.radio_km > 0 && riesgo.distancia_km <= escenarioActual.radio_km ?
+              'Falla en este escenario' : 'Disponible en este escenario'
           ] : [])
         ]));
       }
@@ -134,8 +139,9 @@
       L.circleMarker([nodo.latitud, nodo.longitud], {
         radius: 5, color: '#fff', weight: 1.5, fillColor: '#1d4b72', fillOpacity: 1
       }).bindPopup(ficha(nodo.nombre, [
-        nodo.roles.replaceAll('|', ' · '),
-        `${numero.format(nodo.distancia_vertice_m)} m al vértice asignado`
+        `${nodo.tipo} · ${nodo.roles.replaceAll('|', ' · ')}`,
+        `Vértice ${nodo.vertice_id} · a ${numero.format(nodo.distancia_vertice_m)} m`,
+        `Terminales alcanzables: ${nodo.alcanzables_antes} antes, ${numero.format(nodo.alcanzables_despues_esperado)} después (esperado)`
       ])).addTo(puntos);
     }
     L.circleMarker(epicentro, { radius: 8, color: '#fff', weight: 2, fillColor: colorFalla, fillOpacity: 1 })
@@ -151,14 +157,16 @@
       if (disco) mapa.removeLayer(disco);
       const items = [];
       if (escenarioActual) {
-        disco = L.circle(epicentro, { radius: escenarioActual.radio_km * 1000, color: colorFalla,
-          weight: 1, fillOpacity: 0.08, interactive: false }).addTo(mapa).bringToBack();
+        if (escenarioActual.radio_km > 0) {
+          disco = L.circle(epicentro, { radius: escenarioActual.radio_km * 1000, color: colorFalla,
+            weight: 1, fillOpacity: 0.08, interactive: false }).addTo(mapa).bringToBack();
+        }
         items.push([colorFalla, `Falla · ${numero.format(escenarioActual.enlaces_caidos)} enlaces`],
           [colorDisponible, `Disponible · ${numero.format(red.features.length - escenarioActual.enlaces_caidos)} enlaces`]);
       } else {
         const niveles = [...new Set(red.features.map(enlace => enlace.properties.probabilidad))].sort((a, b) => a - b);
         for (const probabilidad of niveles) {
-          items.push([colorPorProbabilidad.get(probabilidad) ?? colorFalla, porcentaje.format(probabilidad)]);
+          items.push([colorPorProbabilidad(probabilidad), porcentaje.format(probabilidad)]);
         }
       }
       document.querySelector('#leyenda').replaceChildren(...items.map(([color, texto]) => {

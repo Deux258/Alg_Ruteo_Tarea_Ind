@@ -1,5 +1,6 @@
 import json
 import math
+from statistics import NormalDist
 
 if __package__:
     from .topologia import ROOT, copy_rows, psql
@@ -20,6 +21,38 @@ CREATE TABLE IF NOT EXISTS tarea_ruteo.probabilidades_falla (
 """
 
 
+def escenarios_shakemap(modelo, atenuacion):
+    if atenuacion['eventid'] != modelo['evento_id']:
+        raise ValueError('La curva de atenuación pertenece a otro sismo')
+    distancias = atenuacion['distances']['repi']
+    curva = atenuacion['gmpe'][modelo['condicion_sitio']]['MMI']
+    umbral = modelo['umbral_mmi']
+    cantidad = modelo['cuantiles']
+    if not isinstance(cantidad, int) or cantidad < 1:
+        raise ValueError('El número de cuantiles debe ser un entero positivo')
+
+    normal = NormalDist()
+    escenarios = []
+    for indice in range(cantidad):
+        z = normal.inv_cdf((indice + 0.5) / cantidad)
+        excesos = [media + z * sigma - umbral
+                   for media, sigma in zip(curva['mean'], curva['stddev'], strict=True)]
+        if len(excesos) != len(distancias):
+            raise ValueError('La curva MMI y las distancias no coinciden')
+        if excesos[0] < 0:
+            radio = 0.0
+        else:
+            primer_cruce = next((i for i, valor in enumerate(excesos) if valor < 0), None)
+            if primer_cruce is None:
+                raise ValueError('El alcance de la curva USGS no basta para estimar el radio')
+            anterior = primer_cruce - 1
+            fraccion = excesos[anterior] / (excesos[anterior] - excesos[primer_cruce])
+            radio = distancias[anterior] + fraccion * (distancias[primer_cruce] - distancias[anterior])
+        escenarios.append({'id': f'cuantil_{indice + 1:02}', 'radio_km': radio,
+                          'probabilidad': 1 / cantidad})
+    return escenarios
+
+
 def main():
     model_path = ROOT / 'config/modelo_falla.json'
     model = json.loads(model_path.read_text(encoding='utf-8'))
@@ -31,12 +64,9 @@ def main():
     lon, lat, depth = event['geometry']['coordinates']
     if not all(math.isfinite(v) for v in (lon, lat, depth)) or not (-180 <= lon <= 180 and -90 <= lat <= 90):
         raise ValueError('Coordenadas inválidas')
-    scenarios = model['escenarios']
-    if (not scenarios or len({s['id'] for s in scenarios}) != len(scenarios)
-            or any(not math.isfinite(s['radio_km']) or s['radio_km'] <= 0
-                   or not math.isfinite(s['probabilidad']) or not 0 <= s['probabilidad'] <= 1 for s in scenarios)
-            or not math.isclose(sum(s['probabilidad'] for s in scenarios), 1, abs_tol=1e-12)):
-        raise ValueError('Escenarios inválidos')
+    atenuacion = json.loads((ROOT / model['atenuacion_archivo']).read_text(encoding='utf-8'))
+    scenarios = escenarios_shakemap(model, atenuacion)
+    model['escenarios'] = scenarios
     features = json.loads((ROOT / 'datos/fibra_yafun.geojson').read_text(encoding='utf-8'))['features']
     event_rows = [(event['id'], event['properties']['mag'], event['properties']['time'], lon, lat, depth, model['id'], json.dumps(model, ensure_ascii=False))]
     scenario_rows = [(s['id'], s['radio_km'], s['probabilidad']) for s in scenarios]
@@ -46,7 +76,7 @@ SELECT pg_advisory_xact_lock(7171717);
 CREATE TEMP TABLE entrada_evento (id text, magnitud double precision, tiempo_ms bigint, lon double precision, lat double precision, profundidad double precision, modelo_id text, modelo_json jsonb) ON COMMIT DROP;
 COPY entrada_evento FROM STDIN WITH (FORMAT csv);
 ''' + copy_rows(event_rows) + '''
-CREATE TEMP TABLE entrada_escenarios (id text PRIMARY KEY, radio_km double precision, peso double precision) ON COMMIT DROP;
+CREATE TEMP TABLE entrada_escenarios (id text PRIMARY KEY, radio_km double precision, peso numeric) ON COMMIT DROP;
 COPY entrada_escenarios FROM STDIN WITH (FORMAT csv);
 ''' + copy_rows(scenario_rows) + '''
 CREATE TEMP TABLE entrada_enlaces (id bigint PRIMARY KEY, geom_json text) ON COMMIT DROP;
@@ -69,7 +99,8 @@ WITH distancias AS (
  SELECT e.id, ST_Distance(e.geom::geography, ST_SetSRID(ST_MakePoint(i.lon,i.lat),4326)::geography)/1000.0 AS distancia_km, i.modelo_id
  FROM tarea_ruteo.enlaces e CROSS JOIN entrada_evento i
 ), resultados AS (
- SELECT d.id, d.modelo_id, d.distancia_km, COALESCE(sum(s.peso) FILTER (WHERE d.distancia_km <= s.radio_km),0) AS probabilidad
+ SELECT d.id, d.modelo_id, d.distancia_km,
+        COALESCE(sum(s.peso) FILTER (WHERE s.radio_km > 0 AND d.distancia_km <= s.radio_km),0) AS probabilidad
  FROM distancias d CROSS JOIN entrada_escenarios s GROUP BY d.id, d.modelo_id, d.distancia_km
 )
 INSERT INTO tarea_ruteo.probabilidades_falla SELECT modelo_id, id, distancia_km, probabilidad FROM resultados

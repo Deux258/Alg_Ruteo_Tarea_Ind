@@ -2,10 +2,11 @@
   "enlaces": 1915,
   "vertices": 2080,
   "componentes": 175,
-  "terminales": 9,
+  "ubicaciones": 12,
+  "terminales": 11,
   "pares_conectados": 4,
-  "pares_totales": 36,
-  "attr": 0.1111111111111111,
+  "pares_totales": 55,
+  "attr": 0.07272727272727272,
   "nodos": [
     {
       "id": "concepcion",
@@ -33,6 +34,15 @@
       "componente": 1039,
       "distancia_linea_m": 67.4,
       "distancia_vertice_m": 274.5
+    },
+    {
+      "id": "google_quilicura",
+      "nombre": "Google PARAM Quilicura",
+      "enlace_id": 284,
+      "vertice_id": 374,
+      "componente": 95,
+      "distancia_linea_m": 691.4,
+      "distancia_vertice_m": 1014.2
     },
     {
       "id": "huasco",
@@ -69,6 +79,24 @@
       "componente": 71,
       "distancia_linea_m": 19.7,
       "distancia_vertice_m": 535.0
+    },
+    {
+      "id": "reuna_la_serena",
+      "nombre": "REUNA La Serena",
+      "enlace_id": 1399,
+      "vertice_id": 574,
+      "componente": 17,
+      "distancia_linea_m": 104.3,
+      "distancia_vertice_m": 397.9
+    },
+    {
+      "id": "sam1_arica",
+      "nombre": "Estación SAm-1 Arica",
+      "enlace_id": 683,
+      "vertice_id": 819,
+      "componente": 818,
+      "distancia_linea_m": 650.2,
+      "distancia_vertice_m": 1894.6
     },
     {
       "id": "santiago",

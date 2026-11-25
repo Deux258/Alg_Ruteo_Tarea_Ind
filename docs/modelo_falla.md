@@ -1,69 +1,31 @@
-# Modelo probabilístico de falla por terremoto
+# Modelo de falla y fiabilidad de la red
 
-Se adopta un modelo de región circular de daño centrada en el epicentro del evento Maule 2010. El radio es aleatorio y compartido por toda la red. Una intersección entre el área de daño y un trazado causa la falla de ese enlace.
+## Parámetros y procedencia
 
-## Fundamento bibliográfico
+El epicentro del 27F se lee del GeoJSON oficial del Maule, con longitud −72,898°, latitud −36,122°, magnitud Mw 8,8 y profundidad 22,9 km. El modelo usa distancia epicentral superficial. La profundidad se conserva en la BD como atributo del evento. [Evento USGS](https://earthquake.usgs.gov/earthquakes/eventpage/official20100227063411530_30)
 
-Vass et al. (2021) describen fallas regionales mediante áreas de daño anidadas. Su definición 3 establece la falla de los enlaces que intersectan el área. Las ecuaciones (4) y (7) obtienen probabilidades individuales y conjuntas integrando los escenarios, y (8) expresa la probabilidad conjunta mediante el mínimo de las marginales cuando las áreas son anidadas. La sección IV-A considera discos centrados en el epicentro. [Artículo, DOI 10.1109/JSAC.2021.3064652](https://doi.org/10.1109/JSAC.2021.3064652)
+| Insumo o parámetro | Valor y justificación |
+| --- | --- |
+| Intensidad nominal media μ(d) y dispersión σ(d) | Series `gmpe.soil.MMI.mean` y `stddev` del ShakeMap Atlas del evento, en unidades MMI. USGS usa Vs30 = 180 m/s para la curva nominal de suelo. Se aplica como supuesto homogéneo al corredor de fibra. |
+| Distancia d | `distances.repi` de la curva, expresada en km. Para cada enlace, `ST_Distance(geom::geography, epicentro::geography)/1000` mide la distancia mínima al trazado completo. |
+| Umbral | VI en la escala MMI. Vass et al. usan el nivel VI de su escala MCS como umbral principal en la sección VIII-B. Se traslada el grado ordinal VI a MMI como aproximación metodológica. |
+| Incertidumbre | Desviación normal estándar compartida Z. Usar el mismo Z para toda la red representa la incertidumbre sobre el alcance de un solo evento y conserva áreas de daño anidadas. |
+| Cuadratura | Diez intervalos equiprobables de Z. Cada intervalo pesa 0,10 y se representa por su cuantil central. Se eligen diez para poder inspeccionar todos los casos en la tabla y el mapa. |
 
-La adaptación de esta tarea fija el epicentro observado, usa tres radios posibles y sustituye las integrales sobre escenarios por sumas ponderadas. Además, usa distancias geodésicas para representar la extensión geográfica de Chile. Los radios y sus pesos son decisiones de modelación de esta tarea. [Parámetros para los pasos siguientes](../config/modelo_falla.json)
+Fuentes de los parámetros y del método. [Vass et al., §§ III, IV-A y VIII](https://doi.org/10.1109/JSAC.2021.3064652) · [Manual de formatos ShakeMap](https://ghsc.code-pages.usgs.gov/esi/shakemap/docs2020/manual4_0/ug_products.html) · [Curva nominal del Maule](https://earthquake.usgs.gov/product/shakemap/official20100227063411530_30/atlas/1594161725779/download/attenuation_curves.json)
 
-## Evento y parámetros
+## Función y aplicación a fibra
 
-El centro se lee de las primeras dos coordenadas del GeoJSON USGS, en orden longitud y latitud, con valores −72,898° y −36,122°. El registro identifica el terremoto del 27 de febrero de 2010 de magnitud 8,8. La tercera coordenada representa profundidad en kilómetros y se conserva como metadato del evento. La distancia utilizada por este modelo es superficial. [Evento USGS](https://earthquake.usgs.gov/earthquakes/eventpage/official20100227063411530_30)
+Para el escenario j, zⱼ = Φ⁻¹((j − 0,5)/10) y la intensidad nominal ajustada a distancia d es μ(d) + σ(d)zⱼ. Rⱼ es la distancia del primer cruce descendente bajo MMI VI, interpolada linealmente entre dos muestras consecutivas. El primer cruce mantiene una región circular continua alrededor del epicentro. Cuando la curva empieza bajo VI, el escenario no causa cortes. Se usan las curvas nominales sin sumar el campo `mean_bias`.
 
-| Escenario | Radio de daño | Probabilidad del escenario |
-| --- | ---: | ---: |
-| radio_100 | 100 km | 0,25 |
-| radio_200 | 200 km | 0,50 |
-| radio_300 | 300 km | 0,25 |
+Un enlace con distancia mínima dₑ falla si Rⱼ > 0 y dₑ ≤ Rⱼ. Su probabilidad marginal pₑ es la suma de los pesos de esos escenarios. La disponibilidad de un enlace de fibra exige continuidad a lo largo de todo su trazado, por lo que un corte en cualquier punto elimina ese enlace del grafo. Compartir el radio mantiene la correlación de las fallas, incluida la de trazados coincidentes.
 
-Los pesos suman uno. Estos valores retoman el plan inicial como escenario académico ilustrativo. Su escala permite estudiar tres extensiones distintas alrededor del epicentro, con mayor peso en la intermedia. La magnitud identifica el evento de referencia. El modelo no proporciona una relación calibrada entre magnitud y radio. El resultado expresa incertidumbre supuesta sobre la extensión del daño, condicionada a ese terremoto.
+La curva describe agitación sísmica. El umbral de falla es un supuesto adoptado para la red y la capa SAIP aporta geometrías e identificadores. Harían falta registros de cortes y características de los cables, ductos y cruces para calibrar una fragilidad propia. El modelo circular y de suelo homogéneo simplifica diferencias de terreno, ruptura finita, tsunami, energía y recuperación. Evalúa el sismo de 2010 sobre una infraestructura levantada con posterioridad.
 
-Los datos de fibra disponibles contienen geometrías e identificadores. Una calibración empírica necesitaría inventarios de cortes y características constructivas o curvas de fragilidad compatibles con esta infraestructura. El GeoJSON USGS incluye referencias a ShakeMap, que describe movimiento del suelo y necesitaría una relación adicional de fragilidad para traducirse a falla de cable. Por ello, los parámetros adoptados se reportan con el estado `ilustrativa_sin_calibracion_empirica`.
+## ATTR
 
-## Probabilidad de falla de un enlace
+Para K vértices terminales distintos, el ATTR es la media de la probabilidad de que exista un camino entre cada par no ordenado de terminales:
 
-Sea \(d_e\) la distancia mínima desde el epicentro a cualquier punto del trazado del enlace \(e\). Para cada escenario \(s\), el indicador de falla es
+`ATTR = [Σ(i<j) P(i ↔ j)] / C(K,2)`.
 
-\[
-F_e(s)=\mathbf{1}[d_e\leq r_s].
-\]
-
-La probabilidad marginal se calcula como
-
-\[
-p_e=\sum_{s=1}^{3}w_s F_e(s).
-\]
-
-| Distancia mínima al trazado | Probabilidad de falla |
-| --- | ---: |
-| \(0\leq d_e\leq100\) km | 1,00 |
-| \(100<d_e\leq200\) km | 0,75 |
-| \(200<d_e\leq300\) km | 0,25 |
-| \(d_e>300\) km | 0,00 |
-
-Se incluye el borde del disco. Para evaluar el indicador se conserva la precisión de la distancia calculada, redondeándola únicamente para presentación. Se usa la geometría completa del trazado, incluidos sus segmentos intermedios. Un corte en cualquier punto inhabilita el enlace completo para el cálculo de conectividad.
-
-Los valores extremos, uno dentro de 100 km y cero fuera de 300 km, son consecuencias deliberadas de este conjunto de escenarios. Condicionan la estimación y requieren explicitarse al presentar resultados.
-
-## Fallas correlacionadas y ATTR posterior
-
-Cada escenario aplica un único radio a todos los enlaces. Si dos enlaces tienen distancias mínimas de 150 y 250 km, sus probabilidades son 0,75 y 0,25. Ambos fallan juntos en el escenario de 300 km, con probabilidad 0,25. Para cualquier conjunto no vacío de enlaces, la probabilidad de falla simultánea equivale a la suma de los pesos de los escenarios que los afectan a todos. Con estos discos anidados coincide con el mínimo de sus probabilidades individuales.
-
-En el paso 9 se evalúa cada grafo superviviente \(G_s=(V,\{e:d_e>r_s\})\). Se conservan todos los vértices y las mismas nueve asignaciones de terminales, incluidos los que quedan aislados. Si un componente contiene \(k_i\) terminales, el ATTR de ese escenario es
-
-\[
-\operatorname{ATTR}_s=\frac{\sum_i\binom{k_i}{2}}{\binom{9}{2}},
-\qquad
-\mathbb E[\operatorname{ATTR}_{después}]
-=\sum_{s=1}^{3}w_s\operatorname{ATTR}_s.
-\]
-
-La enumeración de tres escenarios obtiene el valor esperado exacto bajo este modelo. La base calculada con todos los enlaces disponibles es 4/36. El ATTR esperado posterior debe quedar entre cero y ese valor. La operación de los equipos se asume disponible, aunque sus conexiones pueden perderse por los cortes.
-
-## Aplicación en el repositorio
-
-[`scripts/probabilidades.py`](../scripts/probabilidades.py) carga el evento en PostGIS como punto 2D EPSG:4326, conserva la profundidad como atributo y calcula `ST_Distance(enlaces.geom::geography, epicentro.geom::geography) / 1000.0` para cada enlace. [`scripts/resultados.py`](../scripts/resultados.py) evalúa los escenarios con `pgr_connectedComponents`, incluye los terminales en vértices sin enlaces supervivientes y obtiene la media ponderada. [`main.py`](../main.py) genera la exportación SQL, el resumen de ATTR y el mapa Leaflet.
-
-Las asignaciones de terminales son aproximadas. El análisis aplica un evento de 2010 al levantamiento de infraestructura posterior entregado en el curso, por lo que las cifras representan un escenario hipotético sobre la red de Yafün.
+Por escenario, con kᵢ terminales en el componente i, el numerador se obtiene como `Σ C(kᵢ,2)`. Los vértices aislados siguen contando en K. El ATTR anterior usa la probabilidad de falla de base de 0 y el grafo completo. El posterior suma el ATTR de los diez escenarios ponderados por 0,10. La enumeración es exacta para esa distribución discreta y aproxima la incertidumbre normal continua. El programa coteja las probabilidades marginales almacenadas con los mismos radios y pesos que usa para el ATTR, y aplica cada escenario conjuntamente a todos los enlaces. La adaptación de la métrica se basa en la sección VI y las ecuaciones (8) y (9) del artículo base del curso. [Boettcher et al. (2018)](https://doi.org/10.1109/TLA.2018.8789553)
